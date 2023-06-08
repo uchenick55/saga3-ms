@@ -2,28 +2,37 @@ import React from "react";
 import Image from "react-bootstrap/Image";
 import s from "./Posts.module.css"
 import {NavLink} from "react-router-dom";
+import {AllPostsActions} from "../../redux/reducers/all-posts-reducer";
+import Avatar from "../../assets/svg/avatar-default.svg";
 
 type PostItemType = {
-    "userId": number,
-    "title": string,
-    "body": string
-    Avatar: string
+    "userId": number, // ID автора статей
+    "id": number, // id статьи
+    "title": string, // заголовок статьи
+    "body": string // тело статьи
+    Avatar: string // общая картирнка аватара статьи
+    getComments: (id: number) => void // колбек для диспатча получить комментарии статьи
 }
-const PostItem: React.FC<PostItemType> = ({userId, body, title, Avatar}) => {
+const PostItem: React.FC<PostItemType> = ({body, title, userId, Avatar, id, getComments}) => {
     return <div>
+
         <NavLink to={'/user-posts/' + userId}>
             <Image fluid={true} src={Avatar} className={s.PostItemImage}
-                   onClick={() => {
-
-                   }} alt={"Аватар пользователя"} title={`Все посты пользователя ${userId}`}
+                   alt={"Аватар пользователя"} title={`Все посты пользователя ${userId}`}
             />
         </NavLink>
-        <div>
+        <h3>
             {title}
-        </div>
+        </h3>
         <div>
             {body}
         </div>
+        <button onClick={() => {
+            getComments( id )
+        }
+        }>
+            Комментарии
+        </button>
 
     </div>
 }

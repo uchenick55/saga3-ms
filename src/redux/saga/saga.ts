@@ -13,25 +13,33 @@ import {
 } from "@redux-saga/core/effects";
 import {apiJsonPlaceholder} from "../../api/api";
 import {SET_INITIALISED_APP, AppActions} from "../reducers/app-reducer";
-import {AllPostsActions, GET_ALL_POSTS} from "../reducers/all-posts-reducer";
-import {PostType} from "../../common/commonTypes/commonTypes";
+import {AllPostsActions, GET_ALL_POSTS, GET_COMMENTS_BY_POST_ID} from "../reducers/all-posts-reducer";
+import {CommentType, PostType} from "../../common/commonTypes/commonTypes";
 
 const {toggleIsFetchingAC, setInitialisedAppAC} = AppActions // прелоадер на время загрузки
-const {setAllPostsAC} = AllPostsActions // задание всех постов в стор
+const {setAllPostsAC, setCommentsByPostIdAC} = AllPostsActions // задание всех постов в стор
 
-function* workerInitialApp () {
-    yield put(toggleIsFetchingAC(true)) // прелоадер показать
-    const response: Array<PostType> = yield call(apiJsonPlaceholder.getPosts) // данные всех постов с сервера
-    yield delay(500) // задержка из ТЗ
-    yield put(setAllPostsAC(response))// записываем данные постов в стор
-    yield put(setInitialisedAppAC()) // сменить флаг - приложение инициализировано
-    yield put(toggleIsFetchingAC(false)) // прелоадер убрать
+function* workerInitialApp() {
+    yield put( toggleIsFetchingAC( true ) ) // прелоадер показать
+    const response: Array<PostType> = yield call( apiJsonPlaceholder.getPosts ) // данные всех постов с сервера
+    yield delay( 500 ) // задержка из ТЗ
+    yield put( setAllPostsAC( response ) )// записываем данные постов в стор
+    yield put( setInitialisedAppAC() ) // сменить флаг - приложение инициализировано
+    yield put( toggleIsFetchingAC( false ) ) // прелоадер убрать
 }
 
-function* watchInitialAppSaga () {
-    yield takeLeading (GET_ALL_POSTS, workerInitialApp)
+function* workerGetCommentsById(props: {type: string, postId: number}) {
+    const response: Array<CommentType> = yield call( apiJsonPlaceholder.getCommentsByPostId, props.postId )
+    console.log(response)
+    yield put( setCommentsByPostIdAC( response ) )// записываем данные постов в стор
+
 }
 
-export default function* rootSaga () {
-    yield watchInitialAppSaga()
+function* watchSaga() {
+    yield takeLeading( GET_ALL_POSTS, workerInitialApp );
+    yield takeEvery( GET_COMMENTS_BY_POST_ID, workerGetCommentsById )
+}
+
+export default function* rootSaga() {
+    yield watchSaga()
 }

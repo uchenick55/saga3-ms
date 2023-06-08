@@ -5,7 +5,6 @@ import Preloader from "./common/Preloader/Preloader";
 import {AllPostsActions} from "./redux/reducers/all-posts-reducer";
 import {HashRouter} from "react-router-dom";
 import ErrorBoundary from "./common/ErrorBoundary/ErrorBoundary";
-import {Container} from "react-bootstrap";
 import ContentContainer from "./components/Content/ContentContainer";
 
 const App: React.FC = () => {

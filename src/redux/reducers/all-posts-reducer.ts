@@ -1,8 +1,10 @@
 import {InferActionsTypes} from "../store/store-redux";
-import {PostType} from "../../common/commonTypes/commonTypes";
+import {CommentType, PostType} from "../../common/commonTypes/commonTypes";
 
 export const GET_ALL_POSTS = "myApp/app-reducer/GET_ALL_POSTS"; //константа получения всех постов
 export const SET_ALL_POSTS = "myApp/app-reducer/SET_ALL_POSTS"; //константа записи всех постов в стейт
+export const GET_COMMENTS_BY_POST_ID = "myApp/app-reducer/GET_COMMENTS_BY_POST_ID"; //константа получения комментариев по ID статьи
+export const SET_COMMENTS_TO_STATE = "myApp/app-reducer/SET_COMMENTS_TO_STATE"; //константа записи в стейт комментариев по ID статьи
 
 export const AllPostsActions = {
     getAllPostsAC: () => { // экшн креатор получения всех постов
@@ -10,13 +12,21 @@ export const AllPostsActions = {
     },
     setAllPostsAC: (AllPosts:Array<PostType>) => { // экшн креатор записи всех постов в стейт
         return {type: SET_ALL_POSTS, AllPosts} as const
+    },
+    getCommentsByPostIdAC: (postId:number) => { // экшн креатор получения комментариев по ID статьи
+        return {type: GET_COMMENTS_BY_POST_ID, postId} as const
+    },
+    setCommentsByPostIdAC: (CommentsByPostIdAC:Array <CommentType>) => { // экшн креатор записи в стейт комментариев по ID статьи
+        return {type: SET_COMMENTS_TO_STATE, CommentsByPostIdAC} as const
     }
 }
 
-type AllPostsActionsTypes = InferActionsTypes<typeof AllPostsActions>
+export type AllPostsActionsTypes = InferActionsTypes<typeof AllPostsActions>
 
 const initialState = {//стейт по умолчанию
     AllPosts: [] as Array <PostType>, // массив постов
+    AllComments: [] as Array <CommentType>// массив всех комментариев
+
 }
 
 export type AllPostsInitialStateType = typeof initialState
@@ -29,7 +39,14 @@ const AllPostsReducer = (state: AllPostsInitialStateType = initialState, action:
                 ...state, // копия всего стейта
                 AllPosts: action.AllPosts, // смена флага инициализации приложения на true
             }
-           // console.log(action.AllPosts)
+            return stateCopy; // возврат копии стейта после изменения
+        case SET_COMMENTS_TO_STATE:  // экшн записи комментариев в стор
+            const AllCommentsFiltered:Array <CommentType> = // затираем все старые загруженные комментарии по данному ID поста, возможно уже написали новые
+                state.AllComments.filter(comment=>comment.postId!==action.CommentsByPostIdAC[0].postId)
+            stateCopy = {
+                ...state, // копия всего стейта
+                AllComments: [...AllCommentsFiltered, ...action.CommentsByPostIdAC]  , // записываем загруженные комментарии по данному ID в общий список комментариев
+            }
             return stateCopy; // возврат копии стейта после изменения
         default:
             return state; // по умолчанию стейт возврашается неизмененным

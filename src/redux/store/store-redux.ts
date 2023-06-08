@@ -30,7 +30,7 @@ export type GlobalStateType = ReturnType<reducersType>// глобальный т
 
 //https://habr.com/ru/companies/alfa/articles/452620/ + https://www.youtube.com/watch?v=2yJXFMqEbJs&list=PLcvhF2Wqh7DM3z1XqMw0kPuxpbyMo3HvN&index=9&t=870s
 //Конструкция, позволяющая автоматически получать общий тип, основываясь на объекте из ActionCreator для каждого редьюсера
-type PropertiesTypes<T>=T extends {[key:string]: infer U}? U:never
+export type PropertiesTypes<T>=T extends {[key:string]: infer U}? U:never
 //определяем тип переменной T = если переменная T является объектом {}, у которой ключ key является строкой (setStatus)
 // например setStatus: (newStatus: string) => { return {type: SET_STATUS, newStatus} as const},
 // то определяем тип экшн креатора (infer U) и возвращаем определенный тип, иначе ничего не возвращаем (never)
