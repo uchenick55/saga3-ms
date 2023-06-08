@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import Image from "react-bootstrap/Image";
 import s from "./Posts.module.css"
 import {NavLink} from "react-router-dom";
@@ -13,9 +13,9 @@ type PostItemType = {
     Avatar: string // общая картирнка аватара статьи
     getComments: (id: number) => void // колбек для диспатча получить комментарии статьи
 }
-const PostItem: React.FC<PostItemType> = ({body, title, userId, Avatar, id, getComments}) => {
+const PostItem: React.FC<PostItemType> = memo( ({body, title, userId, Avatar, id, getComments}) => {
+    console.log("PostItem")
     return <div>
-
         <NavLink to={'/user-posts/' + userId}>
             <Image fluid={true} src={Avatar} className={s.PostItemImage}
                    alt={"Аватар пользователя"} title={`Все посты пользователя ${userId}`}
@@ -35,5 +35,5 @@ const PostItem: React.FC<PostItemType> = ({body, title, userId, Avatar, id, getC
         </button>
 
     </div>
-}
+})
 export default PostItem

@@ -9,7 +9,6 @@ export const apiJsonPlaceholder = {
     getCommentsByPostId: async (postId:number) => {
         const response = await axios.get (`https://jsonplaceholder.typicode.com/comments`)
        // Имитируем получение комментариев только по данному ID статьи (сервер отдает сразу все)
-        console.log(response.data)
         const CommentsById: Array<CommentType> = response.data.filter((r: CommentType)=>r.postId === postId)
         return CommentsById
     }

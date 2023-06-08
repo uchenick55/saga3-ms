@@ -29,9 +29,11 @@ function* workerInitialApp() {
 }
 
 function* workerGetCommentsById(props: {type: string, postId: number}) {
+    yield put( toggleIsFetchingAC( true ) ) // прелоадер показать
+    yield delay( 500 ) // задержка из ТЗ
     const response: Array<CommentType> = yield call( apiJsonPlaceholder.getCommentsByPostId, props.postId )
-    console.log(response)
     yield put( setCommentsByPostIdAC( response ) )// записываем данные постов в стор
+    yield put( toggleIsFetchingAC( false ) ) // прелоадер убрать
 
 }
 

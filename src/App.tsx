@@ -8,7 +8,8 @@ import ErrorBoundary from "./common/ErrorBoundary/ErrorBoundary";
 import ContentContainer from "./components/Content/ContentContainer";
 
 const App: React.FC = () => {
-    const isFetching: boolean = useSelector( (state: GlobalStateType) => state.app.isFetching )
+    const initialisedApp: boolean = useSelector( (state: GlobalStateType) => state.app.initialisedApp )
+
 
     const dispatch = useDispatch()
 
@@ -16,7 +17,7 @@ const App: React.FC = () => {
         dispatch( AllPostsActions.getAllPostsAC() )// запускаем инициализацию приложения (получение данных с сервера)
     }, [] )
 
-    if (isFetching) { // если идет загрузка, показать прелоадер
+    if (!initialisedApp) { // если не инициализировано приложение, показать прелоадер
         return <Preloader/>
     }
 

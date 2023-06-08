@@ -1,5 +1,5 @@
 .spinner {
-    position: absolute;
+    position: fixed;
     left: 45%;
     top: 40%;
     height:60px;
