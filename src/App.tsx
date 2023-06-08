@@ -3,6 +3,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {GlobalStateType} from "./redux/store/store-redux";
 import Preloader from "./common/Preloader/Preloader";
 import {AllPostsActions} from "./redux/reducers/all-posts-reducer";
+import {HashRouter} from "react-router-dom";
+import ErrorBoundary from "./common/ErrorBoundary/ErrorBoundary";
+import {Container} from "react-bootstrap";
+import ContentContainer from "./components/Content/ContentContainer";
 
 const App: React.FC = () => {
     const isFetching: boolean = useSelector( (state: GlobalStateType) => state.app.isFetching )
@@ -18,8 +22,15 @@ const App: React.FC = () => {
     }
 
     return <div>
-        123
-    </div>
+        <HashRouter> {/*BrowserRouter для продакшн, HashRouter для gh-pages*/}
+                <ErrorBoundary> {/*Общий обработчик ошибок во всем приложении*/}
+                    <Container>
+                        {/*  <HeaderContainer/> заголовок*/}
+                        <ContentContainer/> {/*страницы контента в зависмости от URL*/}
+                        {/*<FooterBS/> */}
+                    </Container>
+                </ErrorBoundary>
+        </HashRouter>    </div>
 }
 
 export default App;
