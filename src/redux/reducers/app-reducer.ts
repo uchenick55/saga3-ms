@@ -4,10 +4,10 @@ export const SET_INITIALISED_APP = "myApp/app-reducer/SET_INITIALISED_APP"; //к
 export const TOGGLE_IS_FETCHING = "myApp/users-reducer/TOGGLE_IS_FETCHING";
 
 export const AppActions = {
-    setInitialisedApp: () => { // экшн креатор  инициализации приложения
+    setInitialisedAppAC: () => { // экшн креатор  инициализации приложения
         return {type: SET_INITIALISED_APP} as const
     },
-    toggleIsFetching: (isFetching: boolean) => {
+    toggleIsFetchingAC: (isFetching: boolean) => {
         return {type: TOGGLE_IS_FETCHING, isFetching} as const
     },
 }

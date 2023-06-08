@@ -16,8 +16,8 @@
       <change afterPath="$PROJECT_DIR$/../memo1/src/Bqq.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/saga/countSaga.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../redux-saga2/src/redux/store.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/Preloader/Preloader.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/Preloader/Preloader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/commonTypes/commonTypes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/all-posts-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
@@ -45,8 +45,10 @@
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/saga/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/saga/saga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/saga/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/saga/saga.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store/store-redux.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store/store-redux.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../samurai2.0" beforeDir="false" afterPath="$PROJECT_DIR$/../samurai2.0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sbrrt" beforeDir="false" afterPath="$PROJECT_DIR$/../sbrrt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scss_sass/scss_sass" beforeDir="false" afterPath="$PROJECT_DIR$/../scss_sass/scss_sass" afterDir="false" />
@@ -77,7 +79,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/common" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/redux/reducers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -93,6 +95,7 @@
       <recent name="D:\IT\Webstorm_projects\saga3-ms\src\redux" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IT\Webstorm_projects\saga3-ms\src\redux\reducers" />
       <recent name="D:\IT\Webstorm_projects\saga3-ms\src\common" />
       <recent name="D:\IT\Webstorm_projects\saga3-ms\src\redux\saga" />
       <recent name="D:\IT\Webstorm_projects\saga3-ms\src\store" />
@@ -123,7 +126,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1686203610021</updated>
-      <workItem from="1686203611386" duration="9191000" />
+      <workItem from="1686203611386" duration="14578000" />
     </task>
     <servers />
   </component>
@@ -146,6 +149,10 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="511" y="248" key="#ESLint/0.0.1280.672@0.0.1280.672" timestamp="1686203791538" />
+    <state x="387" y="139" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1686224988319">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="387" y="139" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.672@0.0.1280.672" timestamp="1686224988319" />
     <state x="371" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1686203738493">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
@@ -166,9 +173,9 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state width="1259" height="161" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1686204344203" />
-    <state x="347" y="45" width="587" height="582" key="find.popup" timestamp="1686213856320">
+    <state x="347" y="45" width="587" height="582" key="find.popup" timestamp="1686224443995">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="347" y="45" width="587" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686213856320" />
+    <state x="347" y="45" width="587" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686224443995" />
   </component>
 </project>

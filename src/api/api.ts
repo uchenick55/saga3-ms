@@ -2,6 +2,7 @@ import axios from 'axios'
 
 export const apiJsonPlaceholder = {
     getPosts: async () => {
-        return await axios.get (`https://jsonplaceholder.typicode.com/posts`)
+        const response = await axios.get (`https://jsonplaceholder.typicode.com/posts`)
+        return response.data
     }
 }

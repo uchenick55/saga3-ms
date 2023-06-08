@@ -3,9 +3,11 @@ import createSagaMiddleware from 'redux-saga'
 
 import rootSaga from "../saga/saga";
 import appReducer from "../reducers/app-reducer";
+import AllPostsReducer from "../reducers/all-posts-reducer";
 
 const reducers = combineReducers({
-    app: appReducer
+    app: appReducer,
+    allPosts: AllPostsReducer
 })
 
 const sagaMiddleware = createSagaMiddleware()

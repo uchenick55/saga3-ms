@@ -1,22 +1,20 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {AppActions} from "./redux/reducers/app-reducer";
 import {GlobalStateType} from "./redux/store/store-redux";
 import Preloader from "./common/Preloader/Preloader";
-import {delay} from "./redux/saga/saga";
+import {AllPostsActions} from "./redux/reducers/all-posts-reducer";
 
 const App: React.FC = () => {
-    const initialisedApp: boolean = useSelector( (state: GlobalStateType) => state.app.initialisedApp )
+    const isFetching: boolean = useSelector( (state: GlobalStateType) => state.app.isFetching )
 
     const dispatch = useDispatch()
+
     useEffect( () => {
-        delay(0.5).then(()=>{
-                dispatch( AppActions.setInitialisedApp() )// запускаем инициализацию приложения
-            }
-        )
+        dispatch( AllPostsActions.getAllPostsAC() )// запускаем инициализацию приложения (получение данных с сервера)
     }, [] )
-    if (!initialisedApp) { // если приложение еще не инициализировано
-        return <Preloader/> // показать статус загрузки
+
+    if (isFetching) { // если идет загрузка, показать прелоадер
+        return <Preloader/>
     }
 
     return <div>
