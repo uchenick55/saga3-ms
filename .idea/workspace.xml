@@ -16,10 +16,7 @@
       <change afterPath="$PROJECT_DIR$/../memo1/src/Bqq.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/saga/countSaga.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../redux-saga2/src/redux/store.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/saga/saga.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/store/store-redux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/store/store-redux.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
@@ -39,7 +36,6 @@
       <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../react-kabzda-1-8" beforeDir="false" afterPath="$PROJECT_DIR$/../react-kabzda-1-8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-kabzda-1-8/src/redux/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../react-kabzda-1-8/src/redux/app-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/App.jsx" afterDir="false" />
@@ -48,6 +44,8 @@
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store/store-redux.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../samurai2.0" beforeDir="false" afterPath="$PROJECT_DIR$/../samurai2.0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sbrrt" beforeDir="false" afterPath="$PROJECT_DIR$/../sbrrt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scss_sass/scss_sass" beforeDir="false" afterPath="$PROJECT_DIR$/../scss_sass/scss_sass" afterDir="false" />
@@ -123,7 +121,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1686203610021</updated>
-      <workItem from="1686203611386" duration="4172000" />
+      <workItem from="1686203611386" duration="6916000" />
     </task>
     <servers />
   </component>
@@ -166,5 +164,9 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state width="1259" height="161" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1686204344203" />
+    <state x="347" y="45" width="587" height="582" key="find.popup" timestamp="1686213856320">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="347" y="45" width="587" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686213856320" />
   </component>
 </project>
