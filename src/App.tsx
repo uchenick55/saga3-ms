@@ -23,14 +23,12 @@ const App: React.FC = () => {
 
     return <div>
         <HashRouter> {/*BrowserRouter для продакшн, HashRouter для gh-pages*/}
-                <ErrorBoundary> {/*Общий обработчик ошибок во всем приложении*/}
-                    <Container>
-                        {/*  <HeaderContainer/> заголовок*/}
-                        <ContentContainer/> {/*страницы контента в зависмости от URL*/}
-                        {/*<FooterBS/> */}
-                    </Container>
-                </ErrorBoundary>
-        </HashRouter>    </div>
+            <ErrorBoundary> {/*Общий обработчик ошибок во всем приложении*/}
+                {/*  <HeaderContainer/> заголовок*/}
+                <ContentContainer/> {/*страницы контента в зависмости от URL*/}
+                {/*<FooterBS/> */}
+            </ErrorBoundary>
+        </HashRouter></div>
 }
 
 export default App;
