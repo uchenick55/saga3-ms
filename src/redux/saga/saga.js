@@ -13,9 +13,10 @@ import {
     race,// неблокирующий - возвращает данные в стейт после первого из массива зарезолвится
 } from "@redux-saga/core/effects";
 import {apiJsonPlaceholder} from "../../api/api";
+import {SET_INITIALISED_APP} from "../reducers/app-reducer";
 
-const delay = (time) => new Promise ((resolve, reject) =>{ // задержка в выполнении yield
-    setTimeout(resolve, time*500)
+export const delay = (time) => new Promise ((resolve, reject) =>{ // задержка в выполнении yield
+    setTimeout(resolve, time*1000)
 })
 
 function* workerInitialApp () {
@@ -24,9 +25,8 @@ function* workerInitialApp () {
 }
 
 function* watchInitialAppSaga () {
-    const response = yield call(apiJsonPlaceholder.getPosts)
-    console.log(response)
-  //  yield takeEvery ("INITIAL_APP", workerInitialApp)
+
+    yield takeEvery (SET_INITIALISED_APP, workerInitialApp)
 
 }
 

@@ -16,7 +16,8 @@
       <change afterPath="$PROJECT_DIR$/../memo1/src/Bqq.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/saga/countSaga.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../redux-saga2/src/redux/store.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/store/store-redux.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/Preloader/Preloader.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/Preloader/Preloader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
@@ -43,9 +44,9 @@
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/countReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/countReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store/store-redux.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/saga/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/saga/saga.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../samurai2.0" beforeDir="false" afterPath="$PROJECT_DIR$/../samurai2.0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sbrrt" beforeDir="false" afterPath="$PROJECT_DIR$/../sbrrt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scss_sass/scss_sass" beforeDir="false" afterPath="$PROJECT_DIR$/../scss_sass/scss_sass" afterDir="false" />
@@ -76,7 +77,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/redux/saga" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/common" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -92,6 +93,7 @@
       <recent name="D:\IT\Webstorm_projects\saga3-ms\src\redux" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IT\Webstorm_projects\saga3-ms\src\common" />
       <recent name="D:\IT\Webstorm_projects\saga3-ms\src\redux\saga" />
       <recent name="D:\IT\Webstorm_projects\saga3-ms\src\store" />
     </key>
@@ -121,7 +123,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1686203610021</updated>
-      <workItem from="1686203611386" duration="6916000" />
+      <workItem from="1686203611386" duration="9191000" />
     </task>
     <servers />
   </component>

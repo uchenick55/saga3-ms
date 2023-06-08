@@ -1,11 +1,15 @@
 import {InferActionsTypes} from "../store/store-redux";
 
-const SET_INITIALISED_APP = "myApp/app-reducer/SET_INITIALISED_APP"; //константа инициализации приложения
+export const SET_INITIALISED_APP = "myApp/app-reducer/SET_INITIALISED_APP"; //константа инициализации приложения
+export const TOGGLE_IS_FETCHING = "myApp/users-reducer/TOGGLE_IS_FETCHING";
 
 export const AppActions = {
     setInitialisedApp: () => { // экшн креатор  инициализации приложения
         return {type: SET_INITIALISED_APP} as const
-    }
+    },
+    toggleIsFetching: (isFetching: boolean) => {
+        return {type: TOGGLE_IS_FETCHING, isFetching} as const
+    },
 }
 
 type AppActionTypes = InferActionsTypes<typeof AppActions>
@@ -17,13 +21,19 @@ const initialState = {//стейт по умолчанию для инициал
 
 export type AppInitialStateType = typeof initialState
 
-const appReducer = (state: AppInitialStateType = initialState, action:AppActionTypes): AppInitialStateType => {//редьюсер инициализации приложения
+const appReducer = (state: AppInitialStateType = initialState, action: AppActionTypes): AppInitialStateType => {//редьюсер инициализации приложения
     let stateCopy: AppInitialStateType;// объявлениечасти части стейта до изменения редьюсером
     switch (action.type) {
         case SET_INITIALISED_APP:  // экшн инициализации приложения
             stateCopy = {
                 ...state, // копия всего стейта
                 initialisedApp: true, // смена флага инициализации приложения на true
+            }
+            return stateCopy; // возврат копии стейта после изменения
+        case TOGGLE_IS_FETCHING:
+            stateCopy = {
+                ...state,
+                isFetching: action.isFetching
             }
             return stateCopy; // возврат копии стейта после изменения
         default:
