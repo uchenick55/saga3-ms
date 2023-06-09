@@ -8,6 +8,9 @@ import {AllPostsActions} from "../../redux/reducers/all-posts-reducer";
 import Preloader from "../../common/Preloader/Preloader";
 
 const AllPostsList: React.FC = () => {
+
+    console.log( "AllPostsList" )
+
     const AllPosts: Array<PostType> = useSelector( (state: GlobalStateType) => state.allPosts.AllPosts ) //все посты с сервера
     const dispatch = useDispatch()
     const {getCommentsByPostIdAC} = AllPostsActions // извлекаем из экшен креатор на получение комментариев
@@ -19,14 +22,37 @@ const AllPostsList: React.FC = () => {
     }, [] )
     const isFetching: boolean = useSelector( (state: GlobalStateType) => state.app.isFetching )
 
-    console.log( "AllPostsList" )
+    const AllPostsCopied:Array<PostType> = structuredClone(AllPosts) // полная копия массива постов
+
+    // определение направления сортировки по заголовкам массива постов
+    const [sortHeaderDirection, setSortHeaderDirection] = useState<boolean | undefined>(undefined)
+
+    // если направление сортировки определено, сортируем
+    {sortHeaderDirection !== undefined &&
+        AllPostsCopied.sort( (a: PostType, b: PostType) => { // сортируем массив постов по заголовкам
+            const partA = a.title.toLowerCase(); // ignore upper and lowercase
+            const partB = b.title.toLowerCase(); // ignore upper and lowercase
+            let compareResult = sortHeaderDirection // если прямая/обратная сортировка
+                ? (partA > partB) ? 1 : -1 // прямая сортировка
+                : (partA < partB) ? 1 : -1 // обратная сортировка
+            return compareResult // возврат 1 или -1 для сортировки
+        } )
+    }
+
     return <div>
         {isFetching && <Preloader/>} {/*если идет загрузка, показать прелоадер*/}
         <input type="text" value={SearchPostQuery}
                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchPostQuery( e.target.value )}/>
                <div onClick={()=>setSearchPostQuery("")}>x</div>
+
+        <button onClick={()=>{
+            sortHeaderDirection === undefined // если направление сортировки не определено
+                ? setSortHeaderDirection(true) // начальная прямая сортировка массива постов
+                : setSortHeaderDirection(!sortHeaderDirection) // при последующих активациях реверс сортировки
+        }}>Сортировка постов по заголовкам</button>
+
         {
-            AllPosts// Во всех постах с сервера
+            AllPostsCopied// Во всех постах с сервера
                 // фильтруем заголовки на содержание поисковой строки (переводим в один регистр для стравнения)
                 .filter( (post: PostType) => post.title.toLowerCase().includes( SearchPostQuery.toLowerCase() ) )
                 .map( (postItem, ind) => { // пробегаем по массиву
