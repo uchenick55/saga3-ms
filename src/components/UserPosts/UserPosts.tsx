@@ -5,17 +5,23 @@ import {PostType} from "../../common/commonTypes/commonTypes";
 import {GlobalStateType} from "../../redux/store/store-redux";
 import PostsListRender from "../PostsListRender/PostsListRender";
 import {AllPostsActions, PostsInitialState} from "../../redux/reducers/all-posts-reducer";
+import {compose} from "redux";
+import withRouter from "../../common/hoc/withRouter";
 
-const UserPosts: React.FC = () => {
+type OwnPropsType = {
+    ItemId: number // id пользователя
+}
+const UserPosts: React.FC<OwnPropsType> = ({ItemId}) => {
+    console.log( "UserPosts" )
+
     const dispatch = useDispatch()
     const AllPosts: Array<PostType> = useSelector( (state: GlobalStateType) => state.allPosts.AllPosts )  //все посты с сервера
-    const userId:number = 1
 
     //отфильтровать посты только по Id выбранного пользователя
-    const AllPostsFilteredByUser: Array<PostType> = AllPosts.filter((post:PostType)=>post.userId===userId)
+    const AllPostsFilteredByUser: Array<PostType> = AllPosts.filter((post:PostType)=>post.userId===ItemId)
 
     useEffect(()=>{
-        dispatch( UserActions.getUserDataAC(userId)  )//получить данные пользователя по его Id
+        dispatch( UserActions.getUserDataAC(ItemId)  )//получить данные пользователя по его Id
         dispatch( AllPostsActions.setPaginationDataAC( PostsInitialState.PaginationData ) ) // занулить пагинацию
     },[])
 
@@ -23,4 +29,7 @@ const UserPosts: React.FC = () => {
         <PostsListRender PostsList={useMemo(()=>AllPostsFilteredByUser,[AllPostsFilteredByUser])}/>
     </div>
 }
-export default UserPosts
+
+export default compose<React.ComponentType>(
+    withRouter// получить данные ID из URL браузера и добавить в пропсы
+)( UserPosts )
