@@ -16,3 +16,27 @@ export type CommentType = {
     "body": "est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et"
     // тело комментария
 }
+
+export type UserDataType = {
+    "id": number,
+    "name": string,
+    "username": string,
+    "email": string,
+    "address": {
+        "street": string,
+        "suite": string,
+        "city": string,
+        "zipcode": string,
+        "geo": {
+            "lat": string,
+            "lng": string
+        }
+    },
+    "phone": string,
+    "website": string,
+    "company": {
+        "name": string,
+        "catchPhrase": string,
+        "bs": string
+    }
+}

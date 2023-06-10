@@ -34,7 +34,7 @@ const initialState = {//стейт по умолчанию
         PageSize:5, // количество постов на одной странице
         CurrentPage: 1, // текущая страница пагинации
         CurrentRangeLocal: 1, // текущий диапазон пагинации
-        PortionSize: 8, // количество отображаемых страниц пагинации между порциями
+        PortionSize: 5, // количество отображаемых страниц пагинации между порциями
     }
 }
 export type PaginationDataType = typeof initialState.PaginationData
