@@ -10,7 +10,6 @@ const CommentItem: React.FC<CommentItemType> = ( ({email, name, body}) => {
         <b>{email}</b>
         <div>{name}</div>
         <div>{body}</div>
-
     </div>
 })
 export default CommentItem
