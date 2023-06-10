@@ -31,8 +31,7 @@ const initialState = {//стейт по умолчанию
     AllPosts: [] as Array <PostType>, // массив постов
     AllComments: [] as Array <CommentType>,// массив всех комментариев
     PaginationData: {// данные по пагинации
-        TotalPostsCount: 0, // общее число постов на сервере
-        PageSize:10, // количество постов на одной странице
+        PageSize:3, // количество постов на одной странице
         CurrentPage: 1, // текущая страница пагинации
         CurrentRangeLocal: 1, // текущий диапазон пагинации
         PortionSize: 6, // количество отображаемых страниц пагинации между порциями

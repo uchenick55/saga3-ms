@@ -15,17 +15,25 @@ const AllPostsList: React.FC = () => {
     const AllPosts: Array<PostType> = useSelector( (state: GlobalStateType) => state.allPosts.AllPosts ) //все посты с сервера
     const PaginationData: PaginationDataType = useSelector( (state: GlobalStateType) => state.allPosts.PaginationData ) //все данные пагинации
 
-    const {TotalPostsCount, PageSize, CurrentPage, CurrentRangeLocal, PortionSize} = PaginationData // данные пагинации из стейта
-
     const dispatch = useDispatch()
     const {getCommentsByPostIdAC, setPaginationDataAC} = AllPostsActions // извлекаем из экшен креатор на получение комментариев
 
     const [SearchPostQuery, setSearchPostQuery] = useState<string>( "" ) // поисковая строка с колбеком обновления
 
+    const onChangeSearchPostQuery = (SearchPostQuery:string) => {// задаем новый поисковый запрос
+        setSearchPostQuery(SearchPostQuery) // обновляем локальный стейт
+        if (PaginationData.CurrentPage !== 1) {//если страница пагинации !==1
+            setPaginationData({
+                PageSize:PageSize, CurrentPage: 1,// смена текущей старницы на первую при поиске
+                PortionSize: PortionSize, CurrentRangeLocal: CurrentRangeLocal,
+            })
+        }
+    }
+
     const getComments = useCallback( (postId: number) => { // мемоизируем колбек для ререндеров
         dispatch( getCommentsByPostIdAC( postId ) )
     }, [] )
-    const setPaginationData = useCallback( (PaginationData:PaginationDataType) => { // мемоизируем колбек для обновления данных пагинации
+    const setPaginationData = useCallback( (PaginationData: PaginationDataType) => { // мемоизируем колбек для обновления данных пагинации
         dispatch( setPaginationDataAC( PaginationData ) )
     }, [] )
     const isFetching: boolean = useSelector( (state: GlobalStateType) => state.app.isFetching )
@@ -45,17 +53,26 @@ const AllPostsList: React.FC = () => {
         AllPostsFiltered.sort( (a: PostType, b: PostType) => { // сортируем массив постов по заголовкам
             const partA = a.title.toLowerCase(); // ignore upper and lowercase
             const partB = b.title.toLowerCase(); // ignore upper and lowercase
-            let compareResult = sortHeaderDirection // если прямая/обратная сортировка
+            return sortHeaderDirection // если прямая/обратная сортировка
                 ? (partA > partB) ? 1 : -1 // прямая сортировка
-                : (partA < partB) ? 1 : -1 // обратная сортировка
-            return compareResult // возврат 1 или -1 для сортировки
+                : (partA < partB) ? 1 : -1 // возврат 1 или -1 для сортировки
         } )
     }
+    const { // данные пагинации из стейта
+        PageSize, // количество постов на одной странице
+        CurrentPage, // текущая страница пагинации
+        CurrentRangeLocal, // текущий диапазон пагинации
+        PortionSize,// количество отображаемых страниц пагинации между порциями
+
+    } = PaginationData
+    const AllPostsFiltSortPagin: Array<PostType> =
+        AllPostsFiltered.filter( (post: PostType, ind: number) =>
+            ind >= (PageSize*(CurrentPage-1)) && ind < (PageSize*CurrentPage) )
 
     return <div>
         {isFetching && <Preloader/>} {/*если идет загрузка, показать прелоадер*/}
         <input type="text" value={SearchPostQuery}
-               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchPostQuery( e.target.value )}/>
+               onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChangeSearchPostQuery(e.target.value )}/>
         <div onClick={() => setSearchPostQuery( "" )}>x</div>
 
         <button onClick={() => {
@@ -70,7 +87,7 @@ const AllPostsList: React.FC = () => {
         />
 
         {
-            AllPostsFiltered// Во всех отсортированных и отфильтрованых постах с сервера
+            AllPostsFiltSortPagin// Во всех отсортированных и отфильтрованых постах с сервера
                 .map( (postItem, ind) => { // пробегаем по массиву
                         const {body, id, title, userId} = postItem // извлекаем данные из массива постов
                         return <PostItem key={ind} body={body} title={title}

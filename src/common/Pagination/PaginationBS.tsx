@@ -5,6 +5,7 @@ import classes from "./Pagination.module.css"
 import {PaginationDataType} from "../../redux/reducers/all-posts-reducer";
 
 type PaginationBSType = PaginationDataType & {
+    TotalPostsCount: number, // общее число постов на сервере
     setPaginationData: (PaginationData:PaginationDataType) => void// экшн креатор записи в стейт комментариев по ID статьи
 }
 
@@ -42,14 +43,14 @@ const PaginationBS: React.FC<PaginationBSType> = memo( (
         if (setPortionValue === "prevPortion" && CurrentRangeLocal > 1) // если мы жмем prevPortion
         {
             setPaginationData({
-                TotalPostsCount: TotalPostsCount, PageSize:PageSize, CurrentPage: CurrentPage,
+                PageSize:PageSize, CurrentPage: CurrentPage,
                 PortionSize: PortionSize, CurrentRangeLocal: CurrentRangeLocal -1,// уменьшаем диапазон на 1
             })
         }
         if (setPortionValue === "nextPortion") // если мы жмем nextPortion
         {
             setPaginationData({
-                TotalPostsCount: TotalPostsCount, PageSize:PageSize, CurrentPage: CurrentPage,
+                PageSize:PageSize, CurrentPage: CurrentPage,
                 PortionSize: PortionSize, CurrentRangeLocal: CurrentRangeLocal +1,// увеличиваем диапазон на 1
             })
         }
@@ -63,7 +64,7 @@ const PaginationBS: React.FC<PaginationBSType> = memo( (
                 key={p} // ключ - страница
                 onClick={() => { // по клику
                     setPaginationData({
-                        TotalPostsCount: TotalPostsCount, PageSize:PageSize, CurrentPage: p,// смена текущей старницы на кликнутую
+                        PageSize:PageSize, CurrentPage: p,// смена текущей старницы на кликнутую
                         PortionSize: PortionSize, CurrentRangeLocal: CurrentRangeLocal,
                     })
                 }}
