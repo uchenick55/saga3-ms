@@ -4,32 +4,45 @@ import {GlobalStateType} from "../../redux/store/store-redux";
 import PostItem from "./PostItem";
 import {PostType} from "../../common/commonTypes/commonTypes";
 import Avatar from "../../assets/svg/avatar-default.svg"
-import {AllPostsActions} from "../../redux/reducers/all-posts-reducer";
+import {AllPostsActions, PaginationDataType} from "../../redux/reducers/all-posts-reducer";
 import Preloader from "../../common/Preloader/Preloader";
+import PaginationBS from "../../common/Pagination/PaginationBS";
 
 const AllPostsList: React.FC = () => {
 
     console.log( "AllPostsList" )
 
     const AllPosts: Array<PostType> = useSelector( (state: GlobalStateType) => state.allPosts.AllPosts ) //все посты с сервера
+    const PaginationData: PaginationDataType = useSelector( (state: GlobalStateType) => state.allPosts.PaginationData ) //все данные пагинации
+
+    const {TotalPostsCount, PageSize, CurrentPage, CurrentRangeLocal, PortionSize} = PaginationData // данные пагинации из стейта
+
     const dispatch = useDispatch()
-    const {getCommentsByPostIdAC} = AllPostsActions // извлекаем из экшен креатор на получение комментариев
+    const {getCommentsByPostIdAC, setPaginationDataAC} = AllPostsActions // извлекаем из экшен креатор на получение комментариев
 
     const [SearchPostQuery, setSearchPostQuery] = useState<string>( "" ) // поисковая строка с колбеком обновления
 
     const getComments = useCallback( (postId: number) => { // мемоизируем колбек для ререндеров
         dispatch( getCommentsByPostIdAC( postId ) )
     }, [] )
+    const setPaginationData = useCallback( (PaginationData:PaginationDataType) => { // мемоизируем колбек для обновления данных пагинации
+        dispatch( setPaginationDataAC( PaginationData ) )
+    }, [] )
     const isFetching: boolean = useSelector( (state: GlobalStateType) => state.app.isFetching )
 
-    const AllPostsCopied:Array<PostType> = structuredClone(AllPosts) // полная копия массива постов
+    const AllPostsCopied: Array<PostType> = structuredClone( AllPosts ) // полная копия массива постов
+
+    // фильтруем заголовки на содержание поисковой строки (переводим в один регистр для стравнения)
+    const AllPostsFiltered: Array<PostType> =
+        AllPostsCopied.filter( (post: PostType) => post.title.toLowerCase().includes( SearchPostQuery.toLowerCase() ) )
 
     // определение направления сортировки по заголовкам массива постов
-    const [sortHeaderDirection, setSortHeaderDirection] = useState<boolean | undefined>(undefined)
+    const [sortHeaderDirection, setSortHeaderDirection] = useState<boolean | undefined>( undefined )
 
     // если направление сортировки определено, сортируем
-    {sortHeaderDirection !== undefined &&
-        AllPostsCopied.sort( (a: PostType, b: PostType) => { // сортируем массив постов по заголовкам
+    {
+        sortHeaderDirection !== undefined &&
+        AllPostsFiltered.sort( (a: PostType, b: PostType) => { // сортируем массив постов по заголовкам
             const partA = a.title.toLowerCase(); // ignore upper and lowercase
             const partB = b.title.toLowerCase(); // ignore upper and lowercase
             let compareResult = sortHeaderDirection // если прямая/обратная сортировка
@@ -43,18 +56,21 @@ const AllPostsList: React.FC = () => {
         {isFetching && <Preloader/>} {/*если идет загрузка, показать прелоадер*/}
         <input type="text" value={SearchPostQuery}
                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchPostQuery( e.target.value )}/>
-               <div onClick={()=>setSearchPostQuery("")}>x</div>
+        <div onClick={() => setSearchPostQuery( "" )}>x</div>
 
-        <button onClick={()=>{
+        <button onClick={() => {
             sortHeaderDirection === undefined // если направление сортировки не определено
-                ? setSortHeaderDirection(true) // начальная прямая сортировка массива постов
-                : setSortHeaderDirection(!sortHeaderDirection) // при последующих активациях реверс сортировки
-        }}>Сортировка постов по заголовкам</button>
+                ? setSortHeaderDirection( true ) // начальная прямая сортировка массива постов
+                : setSortHeaderDirection( !sortHeaderDirection ) // при последующих активациях реверс сортировки
+        }}>Сортировка постов по заголовкам
+        </button>
+        <PaginationBS TotalPostsCount={AllPostsFiltered.length} PageSize={PageSize}
+                      CurrentPage={CurrentPage} CurrentRangeLocal={CurrentRangeLocal}
+                      PortionSize={PortionSize} setPaginationData={setPaginationData}
+        />
 
         {
-            AllPostsCopied// Во всех постах с сервера
-                // фильтруем заголовки на содержание поисковой строки (переводим в один регистр для стравнения)
-                .filter( (post: PostType) => post.title.toLowerCase().includes( SearchPostQuery.toLowerCase() ) )
+            AllPostsFiltered// Во всех отсортированных и отфильтрованых постах с сервера
                 .map( (postItem, ind) => { // пробегаем по массиву
                         const {body, id, title, userId} = postItem // извлекаем данные из массива постов
                         return <PostItem key={ind} body={body} title={title}

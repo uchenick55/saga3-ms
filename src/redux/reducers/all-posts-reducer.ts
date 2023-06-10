@@ -5,6 +5,7 @@ export const GET_ALL_POSTS = "myApp/app-reducer/GET_ALL_POSTS"; //констан
 export const SET_ALL_POSTS = "myApp/app-reducer/SET_ALL_POSTS"; //константа записи всех постов в стейт
 export const GET_COMMENTS_BY_POST_ID = "myApp/app-reducer/GET_COMMENTS_BY_POST_ID"; //константа получения комментариев по ID статьи
 export const SET_COMMENTS_TO_STATE = "myApp/app-reducer/SET_COMMENTS_TO_STATE"; //константа записи в стейт комментариев по ID статьи
+export const SET_PAGINATION_DATA = "myApp/app-reducer/SET_PAGINATION_DATA"; //константа записи в стейт данных пагинации
 
 export const AllPostsActions = {
     getAllPostsAC: () => { // экшн креатор получения всех постов
@@ -18,6 +19,9 @@ export const AllPostsActions = {
     },
     setCommentsByPostIdAC: (CommentsByPostIdAC:Array <CommentType>) => { // экшн креатор записи в стейт комментариев по ID статьи
         return {type: SET_COMMENTS_TO_STATE, CommentsByPostIdAC} as const
+    },
+    setPaginationDataAC: (PaginationData:PaginationDataType) => { // экшн креатор записи в стейт комментариев по ID статьи
+        return {type: SET_PAGINATION_DATA, PaginationData} as const
     }
 }
 
@@ -25,9 +29,16 @@ export type AllPostsActionsTypes = InferActionsTypes<typeof AllPostsActions>
 
 const initialState = {//стейт по умолчанию
     AllPosts: [] as Array <PostType>, // массив постов
-    AllComments: [] as Array <CommentType>// массив всех комментариев
-
+    AllComments: [] as Array <CommentType>,// массив всех комментариев
+    PaginationData: {// данные по пагинации
+        TotalPostsCount: 0, // общее число постов на сервере
+        PageSize:10, // количество постов на одной странице
+        CurrentPage: 1, // текущая страница пагинации
+        CurrentRangeLocal: 1, // текущий диапазон пагинации
+        PortionSize: 6, // количество отображаемых страниц пагинации между порциями
+    }
 }
+export type PaginationDataType = typeof initialState.PaginationData
 
 export type AllPostsInitialStateType = typeof initialState
 
@@ -46,6 +57,12 @@ const AllPostsReducer = (state: AllPostsInitialStateType = initialState, action:
             stateCopy = {
                 ...state, // копия всего стейта
                 AllComments: [...AllCommentsFiltered, ...action.CommentsByPostIdAC]  , // записываем загруженные комментарии по данному ID в общий список комментариев
+            }
+            return stateCopy; // возврат копии стейта после изменения
+        case SET_PAGINATION_DATA:  // экшн записи данных пагинации в стор
+            stateCopy = {
+                ...state, // копия всего стейта
+                PaginationData: action.PaginationData , // записываем обновленные данные пагинации в стейт
             }
             return stateCopy; // возврат копии стейта после изменения
         default:
