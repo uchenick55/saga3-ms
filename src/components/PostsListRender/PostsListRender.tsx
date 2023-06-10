@@ -1,18 +1,20 @@
-import React, {useCallback, useState} from "react";
+import React, {memo, useCallback, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {GlobalStateType} from "../../redux/store/store-redux";
 import PostItem from "./PostItem";
 import {PostType} from "../../common/commonTypes/commonTypes";
 import Avatar from "../../assets/svg/avatar-default.svg"
-import {AllPostsActions, PaginationDataType} from "../../redux/reducers/all-posts-reducer";
+import {AllPostsActions, PaginationDataType, PostsInitialState} from "../../redux/reducers/all-posts-reducer";
 import Preloader from "../../common/Preloader/Preloader";
 import PaginationBS from "../../common/Pagination/PaginationBS";
 
-const AllPostsList: React.FC = () => {
+type PostsListRenderType = {
+    PostsList: Array<PostType>
+}
+const PostsListRender: React.FC<PostsListRenderType> = memo( ({PostsList}) => {
 
-    console.log( "AllPostsList" )
+    console.log( "PostsListRender" )
 
-    const AllPosts: Array<PostType> = useSelector( (state: GlobalStateType) => state.allPosts.AllPosts ) //все посты с сервера
     const PaginationData: PaginationDataType = useSelector( (state: GlobalStateType) => state.allPosts.PaginationData ) //все данные пагинации
 
     const dispatch = useDispatch()
@@ -20,14 +22,11 @@ const AllPostsList: React.FC = () => {
 
     const [SearchPostQuery, setSearchPostQuery] = useState<string>( "" ) // поисковая строка с колбеком обновления
 
-    const onChangeSearchPostQuery = (SearchPostQuery:string) => {// задаем новый поисковый запрос
-        setSearchPostQuery(SearchPostQuery) // обновляем локальный стейт
+    const onChangeSearchPostQuery = (SearchPostQuery: string) => {// задаем новый поисковый запрос
+        setSearchPostQuery( SearchPostQuery ) // обновляем локальный стейт
         if (PaginationData.CurrentPage !== 1) {//если страница пагинации !==1
-            console.log("смена текущей страницы и диапазона пагинации на 1 при поиске")
-            setPaginationData({
-                PageSize:PageSize, CurrentPage: 1,// смена текущей старницы и диапазона пагинации на 1 при поиске
-                PortionSize: PortionSize, CurrentRangeLocal: 1,
-            })
+            console.log( "смена текущей страницы и диапазона пагинации на 1 при поиске" )
+            setPaginationData( PostsInitialState.PaginationData )
         }
     }
 
@@ -39,11 +38,11 @@ const AllPostsList: React.FC = () => {
     }, [] )
     const isFetching: boolean = useSelector( (state: GlobalStateType) => state.app.isFetching )
 
-    const AllPostsCopied: Array<PostType> = structuredClone( AllPosts ) // полная копия массива постов
+    const PostsListCopied: Array<PostType> = structuredClone( PostsList ) // полная копия массива постов
 
     // фильтруем заголовки на содержание поисковой строки (переводим в один регистр для стравнения)
-    const AllPostsFiltered: Array<PostType> =
-        AllPostsCopied.filter( (post: PostType) => post.title.toLowerCase().includes( SearchPostQuery.toLowerCase() ) )
+    const PostsListFiltered: Array<PostType> =
+        PostsListCopied.filter( (post: PostType) => post.title.toLowerCase().includes( SearchPostQuery.toLowerCase() ) )
 
     // определение направления сортировки по заголовкам массива постов
     const [sortHeaderDirection, setSortHeaderDirection] = useState<boolean | undefined>( undefined )
@@ -51,7 +50,7 @@ const AllPostsList: React.FC = () => {
     // если направление сортировки определено, сортируем
     {
         sortHeaderDirection !== undefined &&
-        AllPostsFiltered.sort( (a: PostType, b: PostType) => { // сортируем массив постов по заголовкам
+        PostsListFiltered.sort( (a: PostType, b: PostType) => { // сортируем массив постов по заголовкам
             const partA = a.title.toLowerCase(); // ignore upper and lowercase
             const partB = b.title.toLowerCase(); // ignore upper and lowercase
             return sortHeaderDirection // если прямая/обратная сортировка
@@ -66,14 +65,14 @@ const AllPostsList: React.FC = () => {
         PortionSize,// количество отображаемых страниц пагинации между порциями
 
     } = PaginationData
-    const AllPostsFiltSortPagin: Array<PostType> =
-        AllPostsFiltered.filter( (post: PostType, ind: number) =>
-            ind >= (PageSize*(CurrentPage-1)) && ind < (PageSize*CurrentPage) )
+    const PostsListFiltSortPagin: Array<PostType> =
+        PostsListFiltered.filter( (post: PostType, ind: number) =>
+            ind >= (PageSize * (CurrentPage - 1)) && ind < (PageSize * CurrentPage) )
 
     return <div>
         {isFetching && <Preloader/>} {/*если идет загрузка, показать прелоадер*/}
         <input type="text" value={SearchPostQuery}
-               onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChangeSearchPostQuery(e.target.value )}/>
+               onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChangeSearchPostQuery( e.target.value )}/>
         <div onClick={() => setSearchPostQuery( "" )}>x</div>
 
         <button onClick={() => {
@@ -82,13 +81,13 @@ const AllPostsList: React.FC = () => {
                 : setSortHeaderDirection( !sortHeaderDirection ) // при последующих активациях реверс сортировки
         }}>Сортировка постов по заголовкам
         </button>
-        <PaginationBS TotalPostsCount={AllPostsFiltered.length} PageSize={PageSize}
+        <PaginationBS TotalPostsCount={PostsListFiltered.length} PageSize={PageSize}
                       CurrentPage={CurrentPage} CurrentRangeLocal={CurrentRangeLocal}
                       PortionSize={PortionSize} setPaginationData={setPaginationData}
         />
 
         {
-            AllPostsFiltSortPagin// Во всех отсортированных и отфильтрованых постах с сервера
+            PostsListFiltSortPagin// Во всех отсортированных и отфильтрованых постах с сервера
                 .map( (postItem, ind) => { // пробегаем по массиву
                         const {body, id, title, userId} = postItem // извлекаем данные из массива постов
                         return <PostItem key={ind} body={body} title={title}
@@ -97,5 +96,5 @@ const AllPostsList: React.FC = () => {
                     }
                 )}
     </div>
-}
-export default AllPostsList
+} )
+export default PostsListRender

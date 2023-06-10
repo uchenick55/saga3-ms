@@ -27,7 +27,7 @@ export const AllPostsActions = {
 
 export type AllPostsActionsTypes = InferActionsTypes<typeof AllPostsActions>
 
-const initialState = {//стейт по умолчанию
+export const PostsInitialState = {//стейт по умолчанию
     AllPosts: [] as Array <PostType>, // массив постов
     AllComments: [] as Array <CommentType>,// массив всех комментариев
     PaginationData: {// данные по пагинации
@@ -37,11 +37,11 @@ const initialState = {//стейт по умолчанию
         PortionSize: 5, // количество отображаемых страниц пагинации между порциями
     }
 }
-export type PaginationDataType = typeof initialState.PaginationData
+export type PaginationDataType = typeof PostsInitialState.PaginationData
 
-export type AllPostsInitialStateType = typeof initialState
+export type AllPostsInitialStateType = typeof PostsInitialState
 
-const AllPostsReducer = (state: AllPostsInitialStateType = initialState, action: AllPostsActionsTypes): AllPostsInitialStateType => {//редьюсер инициализации приложения
+const AllPostsReducer = (state: AllPostsInitialStateType = PostsInitialState, action: AllPostsActionsTypes): AllPostsInitialStateType => {//редьюсер инициализации приложения
     let stateCopy: AllPostsInitialStateType;// объявлениечасти части стейта до изменения редьюсером
     switch (action.type) {
         case SET_ALL_POSTS:  // экшн записи массива постов
