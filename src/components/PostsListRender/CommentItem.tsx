@@ -1,13 +1,13 @@
 import React from "react";
 type CommentItemType = {
-    "name": "quo vero reiciendis velit similique earum", // заголовок комментария
-    "email": "Jayne_Kuhic@sydney.com", // почта того, кто оставил комментарий
-    "body": "est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et"
-
+    "name": string// заголовок комментария
+    "email": string, // почта того, кто оставил комментарий
+    "body": string // тело комментария
 }
 const CommentItem: React.FC<CommentItemType> = ( ({email, name, body}) => {
+    console.log( "мапинг комментариев" )
     return <div>
-        <div>{email}</div>
+        <b>{email}</b>
         <div>{name}</div>
         <div>{body}</div>
 

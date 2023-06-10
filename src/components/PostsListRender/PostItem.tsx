@@ -1,10 +1,11 @@
-import React from "react";
+import React, {memo} from "react";
 import Image from "react-bootstrap/Image";
 import s from "./Posts.module.css"
 import {NavLink} from "react-router-dom";
 import {CommentType} from "../../common/commonTypes/commonTypes";
 import {useSelector} from "react-redux";
 import {GlobalStateType} from "../../redux/store/store-redux";
+import CommentItem from "./CommentItem";
 
 type PostItemType = {
     "userId": number, // ID автора статей
@@ -14,7 +15,7 @@ type PostItemType = {
     Avatar: string // общая картирнка аватара статьи
     getComments: (id: number) => void // колбек для диспатча получить комментарии статьи
 }
-const PostItem: React.FC<PostItemType> = ( ({body, title, userId, Avatar, id, getComments}) => {
+const PostItem: React.FC<PostItemType> = memo( ({body, title, userId, Avatar, id, getComments}) => {
     console.log( "PostItem" )
     const AllComments: Array<CommentType> =
         useSelector( (state: GlobalStateType) => state.allPosts.AllComments )
@@ -26,27 +27,16 @@ const PostItem: React.FC<PostItemType> = ( ({body, title, userId, Avatar, id, ge
                    alt={"Аватар пользователя"} title={`Все посты пользователя ${userId}`}
             />
         </NavLink>
-        <h3>
-            {title}
-        </h3>
-        <div>
-            {body}
-        </div>
+        <h3> {title} </h3>
+        <div> {body} </div>
         <button onClick={() => {
             getComments( id )
-        }
-        }>
+        }}>
             Комментарии
         </button>
         {CommentsFilteredById.map( (comment: CommentType) => {
             const {id, name, email, body} = comment
-            console.log("CommentsFilteredById")
-            return <div key={id}>
-
-                <div>{email}</div>
-                <div>{name}</div>
-                <div>{body}</div>
-            </div>
+            return <CommentItem key={id} name={name} body={body} email={email}/>
         } )}
 
     </div>
