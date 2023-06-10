@@ -23,9 +23,10 @@ const AllPostsList: React.FC = () => {
     const onChangeSearchPostQuery = (SearchPostQuery:string) => {// задаем новый поисковый запрос
         setSearchPostQuery(SearchPostQuery) // обновляем локальный стейт
         if (PaginationData.CurrentPage !== 1) {//если страница пагинации !==1
+            console.log("смена текущей страницы и диапазона пагинации на 1 при поиске")
             setPaginationData({
-                PageSize:PageSize, CurrentPage: 1,// смена текущей старницы на первую при поиске
-                PortionSize: PortionSize, CurrentRangeLocal: CurrentRangeLocal,
+                PageSize:PageSize, CurrentPage: 1,// смена текущей старницы и диапазона пагинации на 1 при поиске
+                PortionSize: PortionSize, CurrentRangeLocal: 1,
             })
         }
     }

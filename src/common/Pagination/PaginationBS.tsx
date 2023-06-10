@@ -19,22 +19,20 @@ const PaginationBS: React.FC<PaginationBSType> = memo( (
         setPaginationData, // экшн креатор записи в стейт комментариев по ID статьи
     }) => {
     console.log( "PaginationBS" )
-    // currentRange - текущий диапазон. Он в PortionSize меньше PagesCount
-    //setCurrentRange - изменение currentRange по клику на кнопку
-    // PortionSizeLeft - Нижнее значение порций (не меньше 1)
-    // const [mouseHovered, setMouseHovered] = useState("");
+    console.log(Math.ceil(TotalPostsCount/(PageSize*PortionSize)))
+    console.log(CurrentRangeLocal)
     const PagesCount = Math.ceil( TotalPostsCount / PageSize ); // сколько всего страниц можно вызвать
-    //с пользователями пачками по PageSize
-    const pages = []; // определяем массив страниц под всех пользователей
+    //с постами пачками по PageSize
+    const pages = []; // определяем массив страниц под все элементы
     for (let i = 1; i <= PagesCount; i++) {
         // В этот массив
-        pages.push( i ); // добавляем все страницы пользователей
+        pages.push( i ); // добавляем все страницы элементов
     }
 
     const PortionSizeLeft = 1 + PortionSize * (CurrentRangeLocal - 1); // Нижнее значение порций (не меньше 1)
     const PortionSizeRight = PortionSize * CurrentRangeLocal; // Верхнее значение страниц (не больше PagesCount)
     const slicedPages2 = pages.filter(
-        // фильтруем весь массив страниц пользователей
+        // фильтруем весь массив страниц элементов
         (p) => p >= PortionSizeLeft && p <= PortionSizeRight // оставляем только в заданном диапазоне
     );
 
@@ -57,14 +55,14 @@ const PaginationBS: React.FC<PaginationBSType> = memo( (
     };
     const PaginationItemMemo = memo( Pagination.Item )
 
-    const renderSlicedPages = useMemo( () => slicedPages2.map( (p) => { // мапинг отобранного массива
+    const renderSlicedPages = ( slicedPages2.map( (p) => { // мапинг отобранного массива
         return (
             <PaginationItemMemo // пагинация бутстрапа
                 active={p === CurrentPage} // акттивная страница
-                key={p} // ключ - страница
+                key={p} // ключ
                 onClick={() => { // по клику
                     setPaginationData({
-                        PageSize:PageSize, CurrentPage: p,// смена текущей старницы на кликнутую
+                        PageSize:PageSize, CurrentPage: p,// смена текущей страницы после клика
                         PortionSize: PortionSize, CurrentRangeLocal: CurrentRangeLocal,
                     })
                 }}
@@ -73,16 +71,16 @@ const PaginationBS: React.FC<PaginationBSType> = memo( (
             </PaginationItemMemo>
 
         );
-    } ), [slicedPages2] )
+    } ) )
 
     return (
         <div className={classes.pagination}>
             <Pagination className={"pagination align-items-center justify-content-center"}> {/*стиль мышки рука */}
-                <Pagination.Prev onClick={() => {
+                <Pagination.Prev disabled={CurrentRangeLocal===1} onClick={() => {
                     setPortion( "prevPortion" )
                 }}/> {/*диапазон пагинации вниз*/}
                 {renderSlicedPages} {/*отрисовка пагинации страниц внутри кнопок*/}
-                <Pagination.Next onClick={() => {
+                <Pagination.Next disabled={Math.ceil(TotalPostsCount/(PageSize*PortionSize)) <= CurrentRangeLocal} onClick={() => {
                     setPortion( "nextPortion" )
                 }}/> {/*диапазон пагинации вверх*/}
             </Pagination>

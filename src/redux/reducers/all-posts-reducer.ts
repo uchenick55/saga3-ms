@@ -31,10 +31,10 @@ const initialState = {//стейт по умолчанию
     AllPosts: [] as Array <PostType>, // массив постов
     AllComments: [] as Array <CommentType>,// массив всех комментариев
     PaginationData: {// данные по пагинации
-        PageSize:3, // количество постов на одной странице
+        PageSize:5, // количество постов на одной странице
         CurrentPage: 1, // текущая страница пагинации
         CurrentRangeLocal: 1, // текущий диапазон пагинации
-        PortionSize: 6, // количество отображаемых страниц пагинации между порциями
+        PortionSize: 8, // количество отображаемых страниц пагинации между порциями
     }
 }
 export type PaginationDataType = typeof initialState.PaginationData
