@@ -88,7 +88,7 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
 
         {paginationRender} {/*пагинация*/}
 
-        {renderPosts} {/*отрисовка постов*/}
+        {PostsListFiltSortPagin.length>0? renderPosts: <div>ничего не найдено</div> } {/*отрисовка постов*/}
 
     </div>
 } )
