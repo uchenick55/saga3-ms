@@ -25,21 +25,12 @@ const UserPosts: React.FC<OwnPropsType> = ({ItemId}) => {
     //отфильтровать посты только по Id выбранного пользователя
     const AllPostsFilteredByUser: Array<PostType> = AllPosts.filter((post:PostType)=>post.userId===ItemId)
 
-    const navigate = useNavigate(); // хук для навигации по страницам (кнопка назад)
-
-    const goBackRender = <img src={goBack} className={s.goBack}
-                                                   alt={"go back"} title={"go back"}
-                                                   onClick={() => navigate( -1 )} // при клике перейти назад по истории
-    />
-
-
     useEffect(()=>{
         dispatch( UserActions.getUserDataAC(ItemId)  )//получить данные пользователя по его Id
         dispatch( AllPostsActions.setPaginationDataAC( PostsInitialState.PaginationData ) ) // занулить пагинацию
     },[])
 
     return <div>
-        {goBackRender}
         <UserCard UserData={UserData}/>
         <PostsListRender PostsList={AllPostsFilteredByUser}/>
 

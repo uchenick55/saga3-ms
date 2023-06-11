@@ -6,6 +6,8 @@ import {AllPostsActions} from "./redux/reducers/all-posts-reducer";
 import {HashRouter} from "react-router-dom";
 import ErrorBoundary from "./common/ErrorBoundary/ErrorBoundary";
 import ContentContainer from "./components/Content/ContentContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import {Container} from "react-bootstrap";
 
 const App: React.FC = () => {
     const initialisedApp: boolean = useSelector( (state: GlobalStateType) => state.app.initialisedApp )
@@ -24,7 +26,7 @@ const App: React.FC = () => {
     return <div>
         <HashRouter> {/*BrowserRouter для продакшн, HashRouter для gh-pages*/}
             <ErrorBoundary> {/*Общий обработчик ошибок во всем приложении*/}
-                {/*  <HeaderContainer/> заголовок*/}
+                <HeaderContainer /> {/*заголовок*/}
                 <ContentContainer/> {/*страницы контента в зависмости от URL*/}
                 {/*<FooterBS/> */}
             </ErrorBoundary>
