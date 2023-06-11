@@ -27,7 +27,7 @@ const PostsInputRender: React.FC<PostsInputRenderType> = (
             if (setSearchPostQueryTmp === QueryTmp) { // если по истечениию задержки поисковый запрос не изменился
                 onChangeSearchPostQuery(QueryTmp) // применить поисковый запрос для фильтрации
             }
-        }, 1000); // задержка 1 сек
+        }, 500); // задержка, мс
         return () => {
             clearTimeout(id); //
         };

@@ -9,7 +9,7 @@ const AllPostsList:React.FC = () => {
     const AllPosts: Array<PostType> = useSelector( (state: GlobalStateType) => state.allPosts.AllPosts )  //все посты с сервера
 
     return <div>
-        <PostsListRender PostsList={useMemo(()=>AllPosts,[AllPosts])}/>
+        <PostsListRender PostsList={AllPosts}/>
     </div>
 }
 export default AllPostsList
