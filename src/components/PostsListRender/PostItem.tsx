@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React, {memo, useState} from "react";
 import Image from "react-bootstrap/Image";
 import s from "./Posts.module.css"
 import {NavLink} from "react-router-dom";
@@ -18,7 +18,9 @@ type PostItemType = {
 const PostItem: React.FC<PostItemType> = memo( ({body, title, userId, Avatar, id, getComments}) => {
     console.log( "PostItem" )
     const AllComments: Array<CommentType> =
-        useSelector( (state: GlobalStateType) => state.allPosts.AllComments )
+        useSelector( (state: GlobalStateType) => state.allPosts.AllComments ) // получить комментарии
+    const ShowComments: Array<number> =
+        useSelector( (state: GlobalStateType) => state.allPosts.ShowComments ) // показать / скрыть комментарии
     const CommentsFilteredById: Array<CommentType> = AllComments.filter( comment => comment.postId === id )
 
     return <div>
@@ -34,7 +36,7 @@ const PostItem: React.FC<PostItemType> = memo( ({body, title, userId, Avatar, id
         }}>
             Комментарии
         </button>
-        {CommentsFilteredById.map( (comment: CommentType) => {
+        {ShowComments.includes(id) && CommentsFilteredById.map( (comment: CommentType) => {
             const {id, name, email, body} = comment
             return <CommentItem key={id} name={name} body={body} email={email}/>
         } )}

@@ -11,16 +11,16 @@ export const AllPostsActions = {
     getAllPostsAC: () => { // экшн креатор получения всех постов
         return {type: GET_ALL_POSTS} as const
     },
-    setAllPostsAC: (AllPosts:Array<PostType>) => { // экшн креатор записи всех постов в стейт
+    setAllPostsAC: (AllPosts: Array<PostType>) => { // экшн креатор записи всех постов в стейт
         return {type: SET_ALL_POSTS, AllPosts} as const
     },
-    getCommentsByPostIdAC: (postId:number) => { // экшн креатор получения комментариев по ID статьи
+    getCommentsByPostIdAC: (postId: number) => { // экшн креатор получения комментариев по ID статьи
         return {type: GET_COMMENTS_BY_POST_ID, postId} as const
     },
-    setCommentsByPostIdAC: (CommentsByPostIdAC:Array <CommentType>) => { // экшн креатор записи в стейт комментариев по ID статьи
-        return {type: SET_COMMENTS_TO_STATE, CommentsByPostIdAC} as const
+    setCommentsByPostIdAC: (CommentsByPostId: Array<CommentType>) => { // экшн креатор записи в стейт комментариев по ID статьи
+        return {type: SET_COMMENTS_TO_STATE, CommentsByPostId} as const
     },
-    setPaginationDataAC: (PaginationData:PaginationDataType) => { // экшн креатор записи в стейт комментариев по ID статьи
+    setPaginationDataAC: (PaginationData: PaginationDataType) => { // экшн креатор записи в стейт комментариев по ID статьи
         return {type: SET_PAGINATION_DATA, PaginationData} as const
     }
 }
@@ -28,10 +28,11 @@ export const AllPostsActions = {
 export type AllPostsActionsTypes = InferActionsTypes<typeof AllPostsActions>
 
 export const PostsInitialState = {//стейт по умолчанию
-    AllPosts: [] as Array <PostType>, // массив постов
-    AllComments: [] as Array <CommentType>,// массив всех комментариев
+    AllPosts: [] as Array<PostType>, // массив постов
+    AllComments: [] as Array<CommentType>,// массив всех комментариев
+    ShowComments: [] as Array<number>, //массив содержащий ID постов, на которые нужно показать комментарии
     PaginationData: {// данные по пагинации
-        PageSize:5, // количество постов на одной странице
+        PageSize: 5, // количество постов на одной странице
         CurrentPage: 1, // текущая страница пагинации
         CurrentRangeLocal: 1, // текущий диапазон пагинации
         PortionSize: 5, // количество отображаемых страниц пагинации между порциями
@@ -51,17 +52,21 @@ const AllPostsReducer = (state: AllPostsInitialStateType = PostsInitialState, ac
             }
             return stateCopy; // возврат копии стейта после изменения
         case SET_COMMENTS_TO_STATE:  // экшн записи комментариев в стор
-            const AllCommentsFiltered:Array <CommentType> = // затираем все старые загруженные комментарии по данному ID поста, возможно уже написали новые
-                state.AllComments.filter(comment=>comment.postId!==action.CommentsByPostIdAC[0].postId)
+            const AllCommentsFiltered: Array<CommentType> = // затираем все старые загруженные комментарии по данному ID поста, возможно уже написали новые
+                state.AllComments.filter( comment => comment.postId !== action.CommentsByPostId[0].postId )
             stateCopy = {
                 ...state, // копия всего стейта
-                AllComments: [...AllCommentsFiltered, ...action.CommentsByPostIdAC]  , // записываем загруженные комментарии по данному ID в общий список комментариев
+                AllComments: [...AllCommentsFiltered, ...action.CommentsByPostId], // записываем загруженные комментарии по данному ID в общий список комментариев
+                ShowComments: state.ShowComments.includes( action.CommentsByPostId[0].postId ) // если такой ID уже добавлен в массив
+                    ? state.ShowComments.filter( postId => postId !== action.CommentsByPostId[0].postId ) // удалаяем этот id из массива
+                    : [...state.ShowComments, action.CommentsByPostId[0].postId] // если id нет, добавляем
             }
+            console.log(stateCopy.ShowComments)
             return stateCopy; // возврат копии стейта после изменения
         case SET_PAGINATION_DATA:  // экшн записи данных пагинации в стор
             stateCopy = {
                 ...state, // копия всего стейта
-                PaginationData: action.PaginationData , // записываем обновленные данные пагинации в стейт
+                PaginationData: action.PaginationData, // записываем обновленные данные пагинации в стейт
             }
             return stateCopy; // возврат копии стейта после изменения
         default:

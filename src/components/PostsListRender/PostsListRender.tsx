@@ -51,8 +51,6 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
     // определение направления сортировки по заголовкам массива постов
     const [sortHeaderDirection, setSortHeaderDirection] = useState<boolean | undefined>( undefined )
 
-    //Фильтруем список постов с учетом поиска
-
     // фильтруем заголовки на содержание поисковой строки (переводим в один регистр для стравнения)
     let PostsListFiltered: Array<PostType> = postListSearchFilterFn(PostsListCopied, SearchPostQuery)
 
@@ -88,7 +86,9 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
 
         {paginationRender} {/*пагинация*/}
 
-        {PostsListFiltSortPagin.length>0? renderPosts: <div>ничего не найдено</div> } {/*отрисовка постов*/}
+        {PostsListFiltSortPagin.length>0
+            ? renderPosts //отрисовка постов
+            : <div>ничего не найдено</div> }
 
     </div>
 } )
