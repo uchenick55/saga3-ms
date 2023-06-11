@@ -23,10 +23,8 @@
       <change afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/saga/countSaga.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../redux-saga2/.idea/redux-saga2.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../redux-saga2/src/redux/store.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostsInputRender.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PostsListRender/RenderPosts.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PostsListRender/RenderSortButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PostsListRender/SortPosts.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/PostsListRender/Functions/postListPaginFn.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/PostsListRender/Functions/postListSearchFilterFn.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tmp/script1.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tmp2/src/Tmp.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tmp2/src/Tmp2.tsx" afterDir="false" />
@@ -58,8 +56,12 @@
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/countReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/countReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/CommentItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/CommentItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/Pagination/PaginationBS.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/Pagination/PaginationBS.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/PostsInputRender.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostsInputRender.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/PostsListRender.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostsListRender.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/RenderPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/RenderPosts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/RenderSortButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/RenderSortButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/SortPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/Functions/postListSortFn.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../samurai2.0" beforeDir="false" afterPath="$PROJECT_DIR$/../samurai2.0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sbrrt" beforeDir="false" afterPath="$PROJECT_DIR$/../sbrrt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scss_sass/scss_sass" beforeDir="false" afterPath="$PROJECT_DIR$/../scss_sass/scss_sass" afterDir="false" />
@@ -92,7 +94,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../github-repository-search" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/PostsListRender" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -105,15 +107,16 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IT\Webstorm_projects\saga3-ms\src\components\PostsListRender\Functions" />
       <recent name="D:\IT\Webstorm_projects\saga3-ms\src\components\AllPostsList2" />
       <recent name="D:\IT\Webstorm_projects\saga3-ms\src\redux" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IT\Webstorm_projects\saga3-ms\src\components\PostsListRender" />
       <recent name="D:\IT\Webstorm_projects\saga3-ms\src\common\hoc" />
       <recent name="D:\IT\Webstorm_projects\saga3-ms\src\redux\reducers" />
       <recent name="D:\IT\Webstorm_projects\saga3-ms\src\common" />
       <recent name="D:\IT\Webstorm_projects\saga3-ms\src\assets\swg" />
-      <recent name="D:\IT\Webstorm_projects\saga3-ms\src\components" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -144,6 +147,7 @@
       <workItem from="1686203611386" duration="54156000" />
       <workItem from="1686370223022" duration="14375000" />
       <workItem from="1686402109399" duration="20281000" />
+      <workItem from="1686462184600" duration="4500000" />
     </task>
     <servers />
   </component>
@@ -167,10 +171,10 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="511" y="248" key="#ESLint/0.0.1280.672@0.0.1280.672" timestamp="1686203791538" />
-    <state x="387" y="139" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1686224988319">
+    <state x="387" y="139" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1686467077720">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="387" y="139" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.672@0.0.1280.672" timestamp="1686224988319" />
+    <state x="387" y="139" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.672@0.0.1280.672" timestamp="1686467077720" />
     <state x="371" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1686203738493">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
@@ -179,26 +183,26 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="287" y="69" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1686425974093" />
-    <state width="1259" height="161" key="GridCell.Tab.0.bottom" timestamp="1686418773687">
+    <state width="1259" height="161" key="GridCell.Tab.0.bottom" timestamp="1686466813537">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1259" height="161" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1686418773687" />
-    <state width="1259" height="161" key="GridCell.Tab.0.center" timestamp="1686418773687">
+    <state width="1259" height="161" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1686466813537" />
+    <state width="1259" height="161" key="GridCell.Tab.0.center" timestamp="1686466813537">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1259" height="161" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1686418773687" />
-    <state width="1259" height="161" key="GridCell.Tab.0.left" timestamp="1686418773687">
+    <state width="1259" height="161" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1686466813537" />
+    <state width="1259" height="161" key="GridCell.Tab.0.left" timestamp="1686466813537">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1259" height="161" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1686418773687" />
-    <state width="1259" height="161" key="GridCell.Tab.0.right" timestamp="1686418773687">
+    <state width="1259" height="161" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1686466813537" />
+    <state width="1259" height="161" key="GridCell.Tab.0.right" timestamp="1686466813537">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1259" height="161" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1686418773687" />
-    <state x="347" y="45" width="587" height="582" key="find.popup" timestamp="1686418922520">
+    <state width="1259" height="161" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1686466813537" />
+    <state x="347" y="45" width="587" height="582" key="find.popup" timestamp="1686464209599">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="347" y="45" width="587" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686418922520" />
+    <state x="347" y="45" width="587" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686464209599" />
     <state x="303" y="-1" width="672" height="678" key="search.everywhere.popup" timestamp="1686234639717">
       <screen x="0" y="0" width="1280" height="672" />
     </state>

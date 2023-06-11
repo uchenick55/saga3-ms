@@ -8,6 +8,7 @@ type RenderPostsType = {
     getComments: (postId: number) => void
 }
 const RenderPosts:React.FC<RenderPostsType> = ({PostsList, getComments}) => {
+    console.log("RenderPosts")
     return <div>{
         PostsList// Во всех отсортированных и отфильтрованых постах с сервера
             .map( (postItem, ind) => { // пробегаем по массиву

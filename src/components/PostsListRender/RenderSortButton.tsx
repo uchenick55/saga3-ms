@@ -5,6 +5,7 @@ type RenderSortButtonType = {
     setSortHeaderDirection: (sortHeaderDirection: boolean | undefined) => void
 }
 const RenderSortButton:React.FC<RenderSortButtonType> = ({sortHeaderDirection, setSortHeaderDirection}) => {
+    console.log("RenderSortButton")
     return <button onClick={() => {
         sortHeaderDirection === undefined // если направление сортировки не определено
             ? setSortHeaderDirection( true ) // начальная прямая сортировка массива постов

@@ -10,7 +10,7 @@ type PostsInputRenderType = {
 }
 const PostsInputRender: React.FC<PostsInputRenderType> = (
     {SearchPostQuery, setSearchPostQuery, setPaginationData, PostsInitialState, PaginationData}) => {
-
+    console.log("PostsInputRender")
     const onChangeSearchPostQuery = (SearchPostQuery: string) => {// задаем новый поисковый запрос
         setSearchPostQuery( SearchPostQuery ) // обновляем локальный стейт
         if (PaginationData.CurrentPage !== 1) {//если страница пагинации !==1
@@ -18,7 +18,6 @@ const PostsInputRender: React.FC<PostsInputRenderType> = (
             setPaginationData( PostsInitialState.PaginationData )
         }
     }
-
 
     return <div>
         <input autoFocus={true} type="text" value={SearchPostQuery}

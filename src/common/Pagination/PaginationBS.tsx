@@ -9,7 +9,7 @@ type PaginationBSType = PaginationDataType & {
     setPaginationData: (PaginationData:PaginationDataType) => void// экшн креатор записи в стейт комментариев по ID статьи
 }
 
-const PaginationBS: React.FC<PaginationBSType> = memo( (
+const PaginationBS: React.FC<PaginationBSType> = memo ( (
     {
         TotalPostsCount, // общее число постов на сервере
         PageSize, // количество постов на одной странице
