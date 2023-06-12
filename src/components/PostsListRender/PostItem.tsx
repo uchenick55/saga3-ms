@@ -1,4 +1,4 @@
-import React, {memo, useState} from "react";
+import React, {memo} from "react";
 import Image from "react-bootstrap/Image";
 import s from "./Posts.module.css"
 import {NavLink} from "react-router-dom";

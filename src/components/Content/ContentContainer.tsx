@@ -1,4 +1,4 @@
-import React, {memo, Suspense} from "react";
+import React, {Suspense} from "react";
 import {Route, Routes} from "react-router-dom";
 import classes from "./ContentContainer.module.css"
 import ErrorBoundary from "../../common/ErrorBoundary/ErrorBoundary";

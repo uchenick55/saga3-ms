@@ -1,5 +1,5 @@
 import PostsListRender from "../PostsListRender/PostsListRender";
-import React, {useMemo} from "react";
+import React from "react";
 import {PostType} from "../../common/commonTypes/commonTypes";
 import {useSelector} from "react-redux";
 import {GlobalStateType} from "../../redux/store/store-redux";

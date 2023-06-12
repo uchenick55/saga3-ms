@@ -1,8 +1,5 @@
 import axios from 'axios'
 import {CommentType, ErrorType, JSPHResponseType, PostType, UserDataType} from "../common/commonTypes/commonTypes";
-import {AppActions} from "../redux/reducers/app-reducer";
-
-const {setErrorAC} = AppActions
 
 export const apiJsonPlaceholder = {
     getPosts: () => { // получить посты (100 шт по умолчанию)

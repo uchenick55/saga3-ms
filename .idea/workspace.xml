@@ -23,7 +23,6 @@
       <change afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/saga/countSaga.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../redux-saga2/.idea/redux-saga2.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../redux-saga2/src/redux/store.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ErrorsRender.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tmp/script1.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tmp2/src/Tmp.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tmp2/src/Tmp2.tsx" afterDir="false" />
@@ -55,19 +54,16 @@
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/countReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/countReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/svg/back-arrow1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/svg/back-arrow1.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/Pagination/PaginationBS.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/Pagination/PaginationBS.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/classes/common.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/classes/common.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/commonTypes/commonTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/commonTypes/commonTypes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AboutMe/AboutMe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutMe/AboutMe.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AllPostsList/AllPostsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AllPostsList/AllPostsList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/CommentItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/CommentItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserPosts/UserCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserPosts/UserCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content/ContentContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/ContentContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/PostItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/PostsInputRender.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostsInputRender.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserPosts/UserPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserPosts/UserPosts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/saga/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/saga/saga.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../samurai2.0" beforeDir="false" afterPath="$PROJECT_DIR$/../samurai2.0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sbrrt" beforeDir="false" afterPath="$PROJECT_DIR$/../sbrrt" afterDir="false" />
@@ -155,7 +151,7 @@
       <workItem from="1686203611386" duration="54156000" />
       <workItem from="1686370223022" duration="14375000" />
       <workItem from="1686402109399" duration="20281000" />
-      <workItem from="1686462184600" duration="48997000" />
+      <workItem from="1686462184600" duration="49928000" />
     </task>
     <servers />
   </component>
@@ -207,10 +203,10 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state width="1259" height="161" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1686555512799" />
-    <state x="347" y="45" width="587" height="582" key="find.popup" timestamp="1686566910542">
+    <state x="347" y="45" width="587" height="582" key="find.popup" timestamp="1686568085547">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="347" y="45" width="587" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686566910542" />
+    <state x="347" y="45" width="587" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686568085547" />
     <state x="303" y="0" width="672" height="670" key="search.everywhere.popup" timestamp="1686554820762">
       <screen x="0" y="0" width="1280" height="672" />
     </state>

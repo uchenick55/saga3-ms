@@ -1,8 +1,6 @@
 import React from "react";
-import Nav from "react-bootstrap/Nav";
 import Image from "react-bootstrap/Image";
 import myAvatar from "../../assets/jpeg/myAvarat.jpg";
-import s from "../../common/classes/common.module.css";
 
 const AboutMe: React.FC = () => {
     return <div>

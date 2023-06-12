@@ -7,7 +7,6 @@ import {HashRouter} from "react-router-dom";
 import ErrorBoundary from "./common/ErrorBoundary/ErrorBoundary";
 import ContentContainer from "./components/Content/ContentContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import {Container} from "react-bootstrap";
 import {ErrorType} from "./common/commonTypes/commonTypes";
 import ErrorsRender from "./components/ErrorsRender";
 
@@ -20,7 +19,7 @@ const App: React.FC = () => {
 
     useEffect( () => {
         dispatch( AllPostsActions.getAllPostsAC() )// запускаем инициализацию приложения (получение данных с сервера)
-    }, [] )
+    }, [dispatch] )
 
     if (!initialisedApp && !Errors) { // если не инициализировано приложение и ошибки отсутствуют, показать прелоадер
         return <Preloader/>

@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo} from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {UserActions} from "../../redux/reducers/user-reducer";
 import {PostType, UserDataType} from "../../common/commonTypes/commonTypes";
@@ -25,7 +25,7 @@ const UserPosts: React.FC<OwnPropsType> = ({ItemId}) => {
     useEffect(()=>{
         dispatch( UserActions.getUserDataAC(ItemId)  )//получить данные пользователя по его Id
         dispatch( AllPostsActions.setPaginationDataAC( PostsInitialState.PaginationData ) ) // занулить пагинацию
-    },[])
+    },[dispatch, ItemId])
 
     return <div>
         <h2>Подробности о пользователе</h2>
