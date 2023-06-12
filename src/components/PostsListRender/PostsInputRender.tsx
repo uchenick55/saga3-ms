@@ -36,7 +36,7 @@ const PostsInputRender: React.FC<PostsInputRenderType> = (
         return () => {
             clearTimeout(id); //
         };
-    }, [QueryTmp, onChangeSearchPostQuery]);
+    }, [QueryTmp]);
 
 
     return <div>

@@ -35,7 +35,7 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
         dispatch( setPaginationDataAC( PaginationData ) )
     },[])
 
-    const {getCommentsByPostIdAC, setPaginationDataAC} = AllPostsActions // извлекаем из экшен креатор на получение комментариев
+    const {getCommentsByPostIdAC, setPaginationDataAC, setSearchPostQueryAC} = AllPostsActions // извлекаем из экшен креатор на получение комментариев
 
     const getComments = useCallback( (postId: number) => { // мемоизируем колбек получения комментариев для ререндеров
         dispatch( getCommentsByPostIdAC( postId ) )
@@ -46,7 +46,8 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
     const PostsListCopied: Array<PostType> = structuredClone( PostsList ) // полная копия массива постов
 
     //// Фильтрация постов по поисковой строке
-    const [SearchPostQuery, setSearchPostQuery] = useState<string>( "" ) // поисковая строка с колбеком обновления
+    const SearchPostQuery: string = useSelector( (state: GlobalStateType) => state.allPosts.SearchPostQuery ) //
+    const setSearchPostQuery =(SearchPostQuery:string) => dispatch(setSearchPostQueryAC(SearchPostQuery))
 
     // определение направления сортировки по заголовкам массива постов
     const [sortHeaderDirection, setSortHeaderDirection] = useState<boolean | undefined>( undefined )

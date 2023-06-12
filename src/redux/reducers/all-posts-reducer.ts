@@ -7,6 +7,7 @@ export const GET_COMMENTS_BY_POST_ID = "myApp/app-reducer/GET_COMMENTS_BY_POST_I
 export const SET_COMMENTS_TO_STATE = "myApp/app-reducer/SET_COMMENTS_TO_STATE"; //константа записи в стейт комментариев по ID статьи
 export const SET_PAGINATION_DATA = "myApp/app-reducer/SET_PAGINATION_DATA"; //константа записи в стейт данных пагинации
 export const SET_SHOW_COMMENTS = "myApp/app-reducer/SET_SHOW_COMMENTS"; //константа записи в стейт данных пагинации
+export const SET_SEARCH_POST_QUERY = "myApp/app-reducer/SET_SEARCH_POST_QUERY"; //
 
 export const AllPostsActions = {
     getAllPostsAC: () => { // экшн креатор получения всех постов
@@ -26,6 +27,9 @@ export const AllPostsActions = {
     },
     setShowCommentsAC: (ShowComments: Array<number>) => { // экшн креатор записи в стейт обновленного ShowComments,
         return {type: SET_SHOW_COMMENTS, ShowComments} as const
+    },
+    setSearchPostQueryAC: (SearchPostQuery: string) => { //
+        return {type: SET_SEARCH_POST_QUERY, SearchPostQuery} as const
     }
 }
 
@@ -40,7 +44,8 @@ export const PostsInitialState = {//стейт по умолчанию
         CurrentPage: 1, // текущая страница пагинации
         CurrentRangeLocal: 1, // текущий диапазон пагинации
         PortionSize: 5, // количество отображаемых страниц пагинации между порциями
-    }
+    },
+    SearchPostQuery: "123"
 }
 export type PaginationDataType = typeof PostsInitialState.PaginationData
 
@@ -73,6 +78,12 @@ const AllPostsReducer = (state: AllPostsInitialStateType = PostsInitialState, ac
             stateCopy = {
                 ...state, // копия всего стейта
                 ShowComments: action.ShowComments, // записываем обновленный массив ShowComments в стейт
+            }
+            return stateCopy; // возврат копии стейта после изменения
+        case SET_SEARCH_POST_QUERY:  //
+            stateCopy = {
+                ...state, // копия всего стейта
+                SearchPostQuery: action.SearchPostQuery, // записываем обновленный SearchPostQuery в стейт
             }
             return stateCopy; // возврат копии стейта после изменения
         default:
