@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/28.10d19b5d.chunk.css","mappings":"AAAA,8BACI,uBAEJ,CCHA,4BACI,UACJ","sources":["common/Pagination/Pagination.module.css","components/PostsListRender/Posts.module.css"],"sourcesContent":[".pagination {\r\n    opacity: var(--opacity1);\r\n;\r\n}\r\n",".PostItemImage {\r\n    width: 5rem;\r\n}"],"names":[],"sourceRoot":""}
