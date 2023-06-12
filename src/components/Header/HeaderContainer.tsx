@@ -12,7 +12,7 @@ import Image from "react-bootstrap/Image";
 function HeaderContainer() {
     const navigate = useNavigate(); // хук для навигации по страницам (кнопка назад)
 
-    const goBackRender = <img src={goBack} className={s.goBack}
+    const goBackRender = <Image src={goBack} className={s.goBack }
                               alt={"go back"} title={"go back"}
                               onClick={() => navigate( -1 )} // при клике перейти назад по истории
     />
@@ -23,27 +23,25 @@ function HeaderContainer() {
                 collapseOnSelect={true}
         >
             <Container fluid>
-                <Navbar.Brand href="#">        {goBackRender}
+                <Navbar.Brand>
+                    {goBackRender}
                 </Navbar.Brand>
                 <Navbar.Toggle/>
                 <Navbar.Offcanvas
                     placement="start"
                 >
                     <Offcanvas.Header closeButton>
-                        <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${false}`}>
-                            Меню
-                        </Offcanvas.Title>
+                        <Offcanvas.Title/>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
-                        <Nav className="justify-content-end flex-grow-1 pe-3">
+                        <Nav>
                             <Nav.Link href='/'>Список постов</Nav.Link>
                             <Nav.Link href='/#/about-me'>Обо мне
-                            <Image fluid={true} src={myAvatar} className={s.PostItemImage}
+                            <Image fluid={true} src={myAvatar} className={"rounded"}
                                    alt={"аватар"} title={`аватар`}
                             /></Nav.Link>
                             <Nav.Item>Евгений Сазонов</Nav.Item>
                             <Nav.Link href="mailto:uchenick55@yandex.ru">uchenick55@yandex.ru</Nav.Link>
-
                         </Nav>
                     </Offcanvas.Body>
                 </Navbar.Offcanvas>

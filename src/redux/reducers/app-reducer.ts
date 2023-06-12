@@ -1,7 +1,9 @@
 import {InferActionsTypes} from "../store/store-redux";
+import {ErrorType} from "../../common/commonTypes/commonTypes";
 
 export const SET_INITIALISED_APP = "myApp/app-reducer/SET_INITIALISED_APP"; //константа инициализации приложения
-export const TOGGLE_IS_FETCHING = "myApp/users-reducer/TOGGLE_IS_FETCHING";
+export const TOGGLE_IS_FETCHING = "myApp/users-reducer/TOGGLE_IS_FETCHING";// константа отображения/скрытия прелоадера
+export const SET_ERROR = "myApp/users-reducer/SET_ERROR"; // константа ошибки с сервера
 
 export const AppActions = {
     setInitialisedAppAC: () => { // экшн креатор  инициализации приложения
@@ -10,6 +12,9 @@ export const AppActions = {
     toggleIsFetchingAC: (isFetching: boolean) => {
         return {type: TOGGLE_IS_FETCHING, isFetching} as const
     },
+    setErrorAC: (error: ErrorType) => {
+        return {type: SET_ERROR, error} as const
+    },
 }
 
 type AppActionTypes = InferActionsTypes<typeof AppActions>
@@ -17,6 +22,7 @@ type AppActionTypes = InferActionsTypes<typeof AppActions>
 const initialState = {//стейт по умолчанию для инициализации приложения
     initialisedApp: false, // флаг приложение инициализировано?
     isFetching: false, // статус загрузки (крутилка)
+    error: {} as ErrorType
 }
 
 export type AppInitialStateType = typeof initialState
@@ -34,6 +40,12 @@ const appReducer = (state: AppInitialStateType = initialState, action: AppAction
             stateCopy = {
                 ...state,
                 isFetching: action.isFetching
+            }
+            return stateCopy; // возврат копии стейта после изменения
+        case SET_ERROR:
+            stateCopy = {
+                ...state,
+                error: action.error
             }
             return stateCopy; // возврат копии стейта после изменения
         default:

@@ -40,3 +40,22 @@ export type UserDataType = {
         "bs": string
     }
 }
+
+export type ErrorType = {
+    code: string,
+    config: {},
+    message:string,
+    name: string,
+    request: object,
+    stack: string
+
+}
+
+export type JSPHResponseType<D=Array<PostType>> = { // тип ответа от сервера, по умолчанию - посты
+    config: object,
+    data: D,
+    headers: object,
+    request: object,
+    status: number,
+    statusText: string
+}

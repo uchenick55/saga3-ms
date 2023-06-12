@@ -14,24 +14,44 @@ import {
 import {apiJsonPlaceholder} from "../../api/api";
 import {AppActions} from "../reducers/app-reducer";
 import {AllPostsActions, GET_ALL_POSTS, GET_COMMENTS_BY_POST_ID} from "../reducers/all-posts-reducer";
-import {CommentType, PostType, UserDataType} from "../../common/commonTypes/commonTypes";
+import {CommentType, ErrorType, JSPHResponseType, PostType, UserDataType} from "../../common/commonTypes/commonTypes";
 import {GET_USER_DATA, UserActions} from "../reducers/user-reducer";
 import {GlobalStateType} from "../store/store-redux";
 
-const {toggleIsFetchingAC, setInitialisedAppAC} = AppActions // прелоадер и инициализация приложения
+const {toggleIsFetchingAC, setInitialisedAppAC, setErrorAC} = AppActions // прелоадер и инициализация приложения
 const {setAllPostsAC, setCommentsByPostIdAC, setShowCommentsAC} = AllPostsActions // задание всех постов и комментариев в стор
 const {setUserDataAC} = UserActions // получение данных пользователя по ID
 
-function* workerInitialApp() {
+function* workerInitialApp() { // получение всех постов и инициализация приложения
     yield put( toggleIsFetchingAC( true ) ) // прелоадер показать
-    const response: Array<PostType> = yield call( apiJsonPlaceholder.getPosts ) // данные всех постов с сервера
     yield delay( 500 ) // задержка из ТЗ
-    yield put( setAllPostsAC( response ) )// записываем данные постов в стор
-    yield put( setInitialisedAppAC() ) // сменить флаг - приложение инициализировано
+
+    const {response, error}:{response:JSPHResponseType<Array<PostType>>, error: ErrorType}  =
+        yield call( apiJsonPlaceholder.getPosts ) // данные всех постов с сервера
+
+    if (response) { // если есть данные
+        yield put( setAllPostsAC( response.data ) )// записываем данные постов в стейт
+        yield put( setInitialisedAppAC() ) // сменить флаг - приложение инициализировано
+    } else {
+        yield put( setErrorAC( error) )// записываем ошибку ответа от сервера
+    }
     yield put( toggleIsFetchingAC( false ) ) // прелоадер убрать
 }
 
-function* workerGetCommentsById(props: {type: string, postId: number}) {
+function* workerGetUserDataById(props: {type: string, id: number}) { // получить данные о пользователе
+    yield put( toggleIsFetchingAC( true ) ) // прелоадер показать
+    yield delay( 500 ) // задержка из ТЗ
+    const {response, error}:{response:JSPHResponseType<Array<UserDataType>>, error: ErrorType}  =
+        yield call( apiJsonPlaceholder.getUserDataById, props.id )
+    if (response) {// если есть данные
+        yield put( setUserDataAC( response.data[0] ) )// записываем данные постов в стор
+    } else {
+        yield put( setErrorAC( error) )// записываем ошибку ответа от сервера
+    }
+    yield put( toggleIsFetchingAC( false ) ) // прелоадер убрать
+}
+
+function* workerGetCommentsById(props: {type: string, postId: number}) { // получить комментарии к посту
     // получаем массив ShowComments - какие комментарии отображаются, какие нет
     const ShowComments:Array<number> = yield select((state:GlobalStateType) => state.allPosts.ShowComments) // массив что показывать из комментариев
 
@@ -44,20 +64,18 @@ function* workerGetCommentsById(props: {type: string, postId: number}) {
         //1) загружаем пачку комментариев (вдруг напечатали новые)
         yield put( toggleIsFetchingAC( true ) ) // прелоадер показать
         yield delay( 500 ) // задержка из ТЗ        const response: Array<CommentType> = yield call( apiJsonPlaceholder.getCommentsByPostId, props.postId )
-        const response: Array<CommentType> = yield call( apiJsonPlaceholder.getCommentsByPostId, props.postId )
-        yield put( setCommentsByPostIdAC( response ) )// записываем данные постов в стор
+           const {response, error}:{response:JSPHResponseType<Array<CommentType>>, error: ErrorType}  =
+               yield call( apiJsonPlaceholder.getCommentsByPostId, props.postId )
+        if (response) {// если есть данные
+            yield put( setCommentsByPostIdAC( response.data ) )// записываем данные постов в стор
+            //2) добавляем postId в ShowComments через локальный AC
+            yield put( setShowCommentsAC([...ShowComments, props.postId] ) )// записываем данные постов в стор
+        } else {
+            yield put( setErrorAC( error) )// записываем ошибку ответа от сервера
+        }
         yield put( toggleIsFetchingAC( false ) ) // прелоадер убрать
-        //2) добавляем postId в ShowComments через локальный AC
-        yield put( setShowCommentsAC([...ShowComments, props.postId] ) )// записываем данные постов в стор
 
     }
-}
-function* workerGetUserDataById(props: {type: string, id: number}) {
-    yield put( toggleIsFetchingAC( true ) ) // прелоадер показать
-    yield delay( 500 ) // задержка из ТЗ
-    const response: UserDataType = yield call( apiJsonPlaceholder.getUserDataById, props.id )
-    yield put( setUserDataAC( response ) )// записываем данные постов в стор
-    yield put( toggleIsFetchingAC( false ) ) // прелоадер убрать
 }
 
 function* watchSaga() {

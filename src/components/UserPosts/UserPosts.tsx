@@ -7,9 +7,6 @@ import PostsListRender from "../PostsListRender/PostsListRender";
 import {AllPostsActions, PostsInitialState} from "../../redux/reducers/all-posts-reducer";
 import {compose} from "redux";
 import withRouter from "../../common/hoc/withRouter";
-import goBack from "../../assets/svg/back-arrow1.svg"
-import {useNavigate} from 'react-router-dom';
-import s from "../../common/classes/common.module.css"
 import UserCard from "./UserCard";
 
 type OwnPropsType = {
@@ -31,6 +28,7 @@ const UserPosts: React.FC<OwnPropsType> = ({ItemId}) => {
     },[])
 
     return <div>
+        <h2>Подробности о пользователе</h2>
         <UserCard UserData={UserData}/>
         <PostsListRender PostsList={AllPostsFilteredByUser}/>
 

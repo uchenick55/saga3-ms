@@ -8,9 +8,12 @@ import ErrorBoundary from "./common/ErrorBoundary/ErrorBoundary";
 import ContentContainer from "./components/Content/ContentContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {Container} from "react-bootstrap";
+import {ErrorType} from "./common/commonTypes/commonTypes";
+import ErrorsRender from "./components/ErrorsRender";
 
 const App: React.FC = () => {
     const initialisedApp: boolean = useSelector( (state: GlobalStateType) => state.app.initialisedApp )
+    const Errors: ErrorType = useSelector( (state: GlobalStateType) => state.app.error )
 
 
     const dispatch = useDispatch()
@@ -19,18 +22,23 @@ const App: React.FC = () => {
         dispatch( AllPostsActions.getAllPostsAC() )// запускаем инициализацию приложения (получение данных с сервера)
     }, [] )
 
-    if (!initialisedApp) { // если не инициализировано приложение, показать прелоадер
+    if (!initialisedApp && !Errors) { // если не инициализировано приложение и ошибки отсутствуют, показать прелоадер
         return <Preloader/>
     }
 
     return <div>
-        <HashRouter> {/*BrowserRouter для продакшн, HashRouter для gh-pages*/}
-            <ErrorBoundary> {/*Общий обработчик ошибок во всем приложении*/}
-                <HeaderContainer /> {/*заголовок*/}
-                <ContentContainer/> {/*страницы контента в зависмости от URL*/}
-                {/*<FooterBS/> */}
-            </ErrorBoundary>
-        </HashRouter></div>
+        {Errors.stack // вывод ошибок запроса или контента
+            ? <ErrorsRender Errors={Errors} /> //вывод ошибок при наличии
+            : <HashRouter> {/*BrowserRouter для продакшн, HashRouter для gh-pages*/}
+                <ErrorBoundary> {/*Общий обработчик ошибок во всем приложении*/}
+                    <HeaderContainer/> {/*заголовок*/}
+                    <ContentContainer/> {/*страницы контента в зависмости от URL*/}
+                    {/*<FooterBS/> */}
+                </ErrorBoundary>
+            </HashRouter>
+        }
+
+    </div>
 }
 
 export default App;

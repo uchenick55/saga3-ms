@@ -7,7 +7,6 @@ type UserCardType = {
 const UserCard: React.FC<UserCardType> = ({UserData}) => { // отрисовка карточки пользователя (автора постов)
     const {id, name, username, email, address, phone, website, company} = UserData
     return <div>
-        <h2>UserData</h2>
         <ul>
             <li>id: {id}</li>
             <li>name: {name}</li>

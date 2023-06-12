@@ -1,16 +1,26 @@
 import axios from 'axios'
+import {CommentType, ErrorType, JSPHResponseType, PostType, UserDataType} from "../common/commonTypes/commonTypes";
+import {AppActions} from "../redux/reducers/app-reducer";
+
+const {setErrorAC} = AppActions
 
 export const apiJsonPlaceholder = {
-    getPosts: async () => { // получить посты (100 шт по умолчанию)
-        const response = await axios.get (`https://jsonplaceholder.typicode.com/posts`)
-        return response.data
+    getPosts: () => { // получить посты (100 шт по умолчанию)
+        return axios.get <JSPHResponseType<Array<PostType>>>
+        ( `https://jsonplaceholder.typicode.com/posts` )
+            .then( (response) => ({response}) )// успешный ответ
+            .catch( (error: ErrorType) => ({error}) ) // ошибка запроса в ответе
     },
-    getCommentsByPostId: async (postId:number) => { // получить комментарии по postId
-        const response = await axios.get (`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
-        return response.data
+    getUserDataById: (id: number) => {  //получить данные пользователя по его ID
+        return axios.get<JSPHResponseType<Array<UserDataType>>>
+        ( `https://jsonplaceholder.typicode.com/users?id=${id}` )
+            .then( (response) => ({response}) )// успешный ответ
+            .catch( (error: ErrorType) => ({error}) ) // ошибка запроса в ответе
     },
-    getUserDataById: async (id:number) => { // получить данные пользователя по его ID
-        const response = await axios.get (`https://jsonplaceholder.typicode.com/users?id=${id}`)
-        return response.data[0]
-    }
+    getCommentsByPostId: (postId: number) => {  //получить комментарии по postId
+        return axios.get<JSPHResponseType<CommentType>>
+        ( `https://jsonplaceholder.typicode.com/comments?postId=${postId}` )
+            .then( (response) => ({response}) )// успешный ответ
+            .catch( (error: ErrorType) => ({error}) ) // ошибка запроса в ответе
+    },
 }

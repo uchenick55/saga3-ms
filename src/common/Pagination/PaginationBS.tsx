@@ -59,6 +59,7 @@ const PaginationBS: React.FC<PaginationBSType> = memo ( (
                 active={p === CurrentPage} // акттивная страница
                 key={p} // ключ
                 onClick={() => { // по клику
+                    p!== CurrentPage && // кликать по текущей странице пагинации нельзя
                     setPaginationData({
                         PageSize:PageSize, CurrentPage: p,// смена текущей страницы после клика
                         PortionSize: PortionSize, CurrentRangeLocal: CurrentRangeLocal,

@@ -1,9 +1,12 @@
 .goBack {
     width: 3rem;
-    background-color: black;
-    border-radius: 50%;
+    cursor: pointer;
 }
 
 .ContentContainer {
     margin-top: 5rem;
+}
+
+.PostItemImage {
+
 }

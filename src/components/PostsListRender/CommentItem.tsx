@@ -8,7 +8,6 @@ const CommentItem: React.FC<CommentItemType> = memo( ({email, name, body}) => {
     console.log( "мапинг комментариев" )
     return <div>
         <b>{email}</b>
-        <div>{name}</div>
         <div>{body}</div>
     </div>
 })
