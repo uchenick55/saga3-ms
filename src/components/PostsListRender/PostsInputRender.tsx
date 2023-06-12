@@ -21,6 +21,11 @@ const PostsInputRender: React.FC<PostsInputRenderType> = (
         }
     }
 
+    const onClearField = () => {
+        setSearchPostQuery( "" )
+        setQueryTmp("")
+    }
+
     useEffect(() => { // задержка ввода input (не реагирует на каждый символ сразу)
         const setSearchPostQueryTmp = QueryTmp // временное значение до задержки
         const id = setTimeout(() => {
@@ -37,7 +42,7 @@ const PostsInputRender: React.FC<PostsInputRenderType> = (
     return <div>
         <input autoFocus={true} type="text" value={QueryTmp}
                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setQueryTmp(e.target.value) }}/>
-        <div onClick={() => setSearchPostQuery( "" )}>x</div>
+        <div onClick={() =>onClearField()}>x</div>
     </div>
 }
 
