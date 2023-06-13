@@ -48,13 +48,13 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
     const isFetching: boolean = useSelector( (state: GlobalStateType) => state.app.isFetching ) // статус индикации загрузки
 
     // извлечь поисковый запрос из стейта
-    const SearchPostQuery: string = useSelector( (state: GlobalStateType) => state.allPosts.SearchPostQuery ) //
+    const searchPostQuery: string = useSelector( (state: GlobalStateType) => state.allPosts.searchPostQuery ) //
 
     // извлечь направления сортировки по заголовкам массива постов
-    const sortHeaderDirection: boolean | undefined = useSelector( (state: GlobalStateType) => state.allPosts.SortHeaderDirection )
+    const sortHeaderDirection: boolean | undefined = useSelector( (state: GlobalStateType) => state.allPosts.sortHeaderDirection )
 
     // фильтруем заголовки на содержание поисковой строки (переводим в один регистр для стравнения)
-    let PostsListFiltered: Array<PostType> = postListSearchFilterFn(PostsListCopied, SearchPostQuery)
+    let PostsListFiltered: Array<PostType> = postListSearchFilterFn(PostsListCopied, searchPostQuery)
 
     //сортируем фильтрованый список
     const PostsListFiltSort: Array<PostType> = postListSortFn( PostsListFiltered, sortHeaderDirection )

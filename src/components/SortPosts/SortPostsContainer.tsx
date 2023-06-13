@@ -10,7 +10,7 @@ const SortPostsContainer: React.FC = () => {
     const dispatch = useDispatch()
 
     // определение направления сортировки по заголовкам массива постов
-    const sortHeaderDirection: boolean | undefined = useSelector( (state: GlobalStateType) => state.allPosts.SortHeaderDirection )
+    const sortHeaderDirection: boolean | undefined = useSelector( (state: GlobalStateType) => state.allPosts.sortHeaderDirection )
     // колбек направления сортировки по заголовкам массива постов
     const setSortHeaderDirection = (sortHeaderDirection:boolean | undefined) => dispatch(setSortHeaderDirectionAC(sortHeaderDirection))
 

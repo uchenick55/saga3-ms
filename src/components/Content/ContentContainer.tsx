@@ -4,7 +4,7 @@ import classes from "./ContentContainer.module.css"
 import ErrorBoundary from "../../common/ErrorBoundary/ErrorBoundary";
 import {Container} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
-import {AppActions} from "../../redux/reducers/app-reducer";
+import {appActions} from "../../redux/reducers/app-reducer";
 import {GlobalStateType} from "../../redux/store/store-redux";
 import checkURL from "../../common/functions/checkURL";
 
@@ -14,7 +14,7 @@ const AboutMe = React.lazy( () => import("../AboutMe/AboutMe") )
 
 let ContentContainer: React.FC = () => { // вынес роутинг контента в отдельную компоненту
 
-    const {setPatchAC}= AppActions // получить AC на обновление пути из URL
+    const {setPatchAC}= appActions // получить AC на обновление пути из URL
 
     const location = useLocation()
 

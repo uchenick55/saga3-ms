@@ -29,11 +29,11 @@ export const allPostsActions = {
     setShowCommentsAC: (showComments: Array<number>) => { // экшн креатор записи в стейт обновленного showComments,
         return {type: SET_SHOW_COMMENTS, showComments} as const
     },
-    setSearchPostQueryAC: (SearchPostQuery: string) => { //
-        return {type: SET_SEARCH_POST_QUERY, SearchPostQuery} as const
+    setSearchPostQueryAC: (searchPostQuery: string) => { //
+        return {type: SET_SEARCH_POST_QUERY, searchPostQuery} as const
     },
-    setSortHeaderDirectionAC: (SortHeaderDirection: boolean | undefined) => { //
-        return {type: SET_SORT_HEADER_DIRECTION, SortHeaderDirection} as const
+    setSortHeaderDirectionAC: (sortHeaderDirection: boolean | undefined) => { //
+        return {type: SET_SORT_HEADER_DIRECTION, sortHeaderDirection} as const
     }
 }
 
@@ -49,8 +49,8 @@ export const PostsInitialState = {//стейт по умолчанию
         currentRangeLocal: 1, // текущий диапазон пагинации
         portionSize: 5, // количество отображаемых страниц пагинации между порциями
     },
-    SearchPostQuery: "", // поисковый запрос
-    SortHeaderDirection: undefined as boolean | undefined//направление сортировки
+    searchPostQuery: "", // поисковый запрос
+    sortHeaderDirection: undefined as boolean | undefined//направление сортировки
 }
 export type paginationDataType = typeof PostsInitialState.paginationData
 
@@ -88,13 +88,13 @@ const AllPostsReducer = (state: allPostsInitialStateType = PostsInitialState, ac
         case SET_SEARCH_POST_QUERY:  //
             stateCopy = {
                 ...state, // копия всего стейта
-                SearchPostQuery: action.SearchPostQuery, // записываем обновленный SearchPostQuery в стейт
+                searchPostQuery: action.searchPostQuery, // записываем обновленный searchPostQuery в стейт
             }
             return stateCopy; // возврат копии стейта после изменения
         case SET_SORT_HEADER_DIRECTION:  // задать направление сортировки постов
             stateCopy = {
                 ...state, // копия всего стейта
-                SortHeaderDirection: action.SortHeaderDirection, // записываем обновленный SortHeaderDirection в стейт
+                sortHeaderDirection: action.sortHeaderDirection, // записываем обновленный sortHeaderDirection в стейт
             }
             return stateCopy; // возврат копии стейта после изменения
         default:

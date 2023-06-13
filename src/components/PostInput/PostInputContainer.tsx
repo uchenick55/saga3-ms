@@ -14,9 +14,9 @@ const PostInputContainer: React.FC = () => {// Фильтрация постов
     const patchFromState: string = useSelector( (state: GlobalStateType) => state.app.patch) //
 
     // извлекаем из стейта значение поисковой строки
-    const SearchPostQuery: string = useSelector( (state: GlobalStateType) => state.allPosts.SearchPostQuery ) //
+    const searchPostQuery: string = useSelector( (state: GlobalStateType) => state.allPosts.searchPostQuery ) //
    //колбек на обновление поисковой строки
-    const setSearchPostQuery = (SearchPostQuery: string) => dispatch( setSearchPostQueryAC( SearchPostQuery ) )
+    const setSearchPostQuery = (searchPostQuery: string) => dispatch( setSearchPostQueryAC( searchPostQuery ) )
 
     //колбек для обновления данных пагинации
     const setPaginationData =(paginationData: paginationDataType) => {
@@ -27,7 +27,7 @@ const PostInputContainer: React.FC = () => {// Фильтрация постов
     const paginationData: paginationDataType = useSelector( (state: GlobalStateType) => state.allPosts.paginationData )
 
     return <PostsInputRender //поле поиска по заголовкам постов
-        SearchPostQuery={SearchPostQuery} setSearchPostQuery={setSearchPostQuery}
+        searchPostQuery={searchPostQuery} setSearchPostQuery={setSearchPostQuery}
         setPaginationData={setPaginationData} PostsInitialState={PostsInitialState}
         paginationData={paginationData} patchFromState={patchFromState}
     />

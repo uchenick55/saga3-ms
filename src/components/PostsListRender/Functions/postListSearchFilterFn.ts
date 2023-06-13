@@ -2,10 +2,10 @@ import {PostType} from "../../../common/commonTypes/commonTypes";
 
 type postListSearchFilterFnType = (
     PostsList: Array<PostType>,
-    SearchPostQuery:string
+    searchPostQuery:string
 ) => Array<PostType>
 //делим посты в соответствии с пагинацией
-const postListSearchFilterFn: postListSearchFilterFnType = (PostsList, SearchPostQuery) => {
-    return PostsList.filter( (post: PostType) => post.title.toLowerCase().includes( SearchPostQuery.toLowerCase() ) )
+const postListSearchFilterFn: postListSearchFilterFnType = (PostsList, searchPostQuery) => {
+    return PostsList.filter( (post: PostType) => post.title.toLowerCase().includes( searchPostQuery.toLowerCase() ) )
 }
 export default postListSearchFilterFn

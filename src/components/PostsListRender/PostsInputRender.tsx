@@ -10,20 +10,20 @@ import Image from "react-bootstrap/Image";
 import Menu from "../Menu/Menu";
 
 type PostsInputRenderType = {
-    SearchPostQuery: string,
+    searchPostQuery: string,
     PostsInitialState: allPostsInitialStateType,
     paginationData: paginationDataType,
     patchFromState: string
-    setSearchPostQuery: (SearchPostQuery: string) => void
+    setSearchPostQuery: (searchPostQuery: string) => void
     setPaginationData: (paginationData: paginationDataType) => void
 }
 const PostsInputRender: React.FC<PostsInputRenderType> = (
-    {SearchPostQuery, setSearchPostQuery, setPaginationData, PostsInitialState, paginationData, patchFromState}) => {
+    {searchPostQuery, setSearchPostQuery, setPaginationData, PostsInitialState, paginationData, patchFromState}) => {
     console.log( "PostsInputRender" )
-    const [QueryTmp, setQueryTmp] = useState( SearchPostQuery )
+    const [QueryTmp, setQueryTmp] = useState( searchPostQuery )
 
-    const onChangeSearchPostQuery = (SearchPostQuery: string) => {// задаем новый поисковый запрос
-        setSearchPostQuery( SearchPostQuery ) // обновляем локальный стейт
+    const onChangeSearchPostQuery = (searchPostQuery: string) => {// задаем новый поисковый запрос
+        setSearchPostQuery( searchPostQuery ) // обновляем локальный стейт
         if (paginationData.сurrentPage !== 1) {//если страница пагинации !==1
             console.log( "смена текущей страницы и диапазона пагинации на 1 при поиске" )
             setPaginationData( PostsInitialState.paginationData )

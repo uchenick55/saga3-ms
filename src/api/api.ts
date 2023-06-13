@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {CommentType, ErrorType, JSPHResponseType, PostType, UserDataType} from "../common/commonTypes/commonTypes";
+import {CommentType, ErrorType, JSPHResponseType, PostType, userDataType} from "../common/commonTypes/commonTypes";
 
 export const apiJsonPlaceholder = {
     getPosts: () => { // получить посты (100 шт по умолчанию)
@@ -9,7 +9,7 @@ export const apiJsonPlaceholder = {
             .catch( (error: ErrorType) => ({error}) ) // ошибка запроса в ответе
     },
     getUserDataById: (id: number) => {  //получить данные пользователя по его ID
-        return axios.get<JSPHResponseType<Array<UserDataType>>>
+        return axios.get<JSPHResponseType<Array<userDataType>>>
         ( `https://jsonplaceholder.typicode.com/users?id=${id}` )
             .then( (response) => ({response}) )// успешный ответ
             .catch( (error: ErrorType) => ({error}) ) // ошибка запроса в ответе

@@ -1,12 +1,12 @@
-import {UserDataType} from "../../common/commonTypes/commonTypes";
+import {userDataType} from "../../common/commonTypes/commonTypes";
 import React from "react";
 import {Accordion, Col, ListGroup, Row} from "react-bootstrap";
 
 type UserCardType = {
-    UserData: UserDataType
+    userData: userDataType
 }
-const UserCard: React.FC<UserCardType> = ({UserData}) => { // отрисовка карточки пользователя (автора постов)
-    const {id, name, username, email, address, phone, website, company} = UserData
+const UserCard: React.FC<UserCardType> = ({userData}) => { // отрисовка карточки пользователя (автора постов)
+    const {id, name, username, email, address, phone, website, company} = userData
     return <div className='my-3'>
         <Accordion defaultActiveKey="0" >
             <Accordion.Item eventKey="0">

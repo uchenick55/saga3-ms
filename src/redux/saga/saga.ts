@@ -12,15 +12,15 @@ import {
     //race, неблокирующий - возвращает данные в стейт после первого из массива зарезолвится
 } from "@redux-saga/core/effects";
 import {apiJsonPlaceholder} from "../../api/api";
-import {AppActions} from "../reducers/app-reducer";
+import {appActions} from "../reducers/app-reducer";
 import {allPostsActions, GET_ALL_POSTS, GET_COMMENTS_BY_POST_ID} from "../reducers/all-posts-reducer";
-import {CommentType, ErrorType, JSPHResponseType, PostType, UserDataType} from "../../common/commonTypes/commonTypes";
-import {GET_USER_DATA, UserActions} from "../reducers/user-reducer";
+import {CommentType, ErrorType, JSPHResponseType, PostType, userDataType} from "../../common/commonTypes/commonTypes";
+import {GET_USER_DATA, userActions} from "../reducers/user-reducer";
 import {GlobalStateType} from "../store/store-redux";
 
-const {toggleIsFetchingAC, setInitialisedAppAC, setErrorAC} = AppActions // прелоадер и инициализация приложения
+const {toggleIsFetchingAC, setInitialisedAppAC, setErrorAC} = appActions // прелоадер и инициализация приложения
 const {setAllPostsAC, setCommentsByPostIdAC, setShowCommentsAC} = allPostsActions // задание всех постов и комментариев в стор
-const {setUserDataAC} = UserActions // получение данных пользователя по ID
+const {setUserDataAC} = userActions // получение данных пользователя по ID
 
 function* workerInitialApp() { // получение всех постов и инициализация приложения
     yield put( toggleIsFetchingAC( true ) ) // прелоадер показать
@@ -41,7 +41,7 @@ function* workerInitialApp() { // получение всех постов и и
 function* workerGetUserDataById(props: {type: string, id: number}) { // получить данные о пользователе
     yield put( toggleIsFetchingAC( true ) ) // прелоадер показать
     yield delay( 500 ) // задержка из ТЗ
-    const {response, error}:{response:JSPHResponseType<Array<UserDataType>>, error: ErrorType}  =
+    const {response, error}:{response:JSPHResponseType<Array<userDataType>>, error: ErrorType}  =
         yield call( apiJsonPlaceholder.getUserDataById, props.id )
     if (response) {// если есть данные
         yield put( setUserDataAC( response.data[0] ) )// записываем данные постов в стор

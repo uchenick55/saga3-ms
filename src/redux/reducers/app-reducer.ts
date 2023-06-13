@@ -6,7 +6,7 @@ export const TOGGLE_IS_FETCHING = "myApp/users-reducer/TOGGLE_IS_FETCHING";// к
 export const SET_ERROR = "myApp/users-reducer/SET_ERROR"; // константа ошибки с сервера
 export const SET_PATCH = "myApp/users-reducer/SET_PATCH"; // константа пути из URL
 
-export const AppActions = {
+export const appActions = {
     setInitialisedAppAC: () => { // экшн креатор  инициализации приложения
         return {type: SET_INITIALISED_APP} as const
     },
@@ -21,7 +21,7 @@ export const AppActions = {
     },
 }
 
-type AppActionTypes = InferActionsTypes<typeof AppActions>
+type appActionTypes = InferActionsTypes<typeof appActions>
 
 const initialState = {//стейт по умолчанию для инициализации приложения
     initialisedApp: false, // флаг приложение инициализировано?
@@ -30,10 +30,10 @@ const initialState = {//стейт по умолчанию для инициал
     patch: "" // путь из адресной строки
 }
 
-export type AppInitialStateType = typeof initialState
+type appInitialStateType = typeof initialState
 
-const appReducer = (state: AppInitialStateType = initialState, action: AppActionTypes): AppInitialStateType => {//редьюсер инициализации приложения
-    let stateCopy: AppInitialStateType;// объявлениечасти части стейта до изменения редьюсером
+const appReducer = (state: appInitialStateType = initialState, action: appActionTypes): appInitialStateType => {//редьюсер инициализации приложения
+    let stateCopy: appInitialStateType;// объявлениечасти части стейта до изменения редьюсером
     switch (action.type) {
         case SET_INITIALISED_APP:  // экшн инициализации приложения
             stateCopy = {

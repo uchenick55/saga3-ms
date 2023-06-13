@@ -17,7 +17,7 @@ export type CommentType = {
     // тело комментария
 }
 
-export type UserDataType = {
+export type userDataType = {
     "id": number,
     "name": string,
     "username": string,
