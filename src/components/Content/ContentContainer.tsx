@@ -12,7 +12,7 @@ const AboutMe = React.lazy( () => import("../AboutMe/AboutMe") )
 let ContentContainer: React.FC = () => { // вынес роутинг контента в отдельную компоненту
 
     return <div>
-        <Container className={s.ContentContainer}>
+        <Container style={{marginTop: "6rem", marginBottom: "2rem" }} className='border-1'>
             <ErrorBoundary> {/*Локальный обработчик ошибок ContentContainer*/}
                 <Suspense fallback={
                     <div>Загрузка...</div>}> {/*Оборачивает компоненты, по которым идет Lazy import и выдает fallback на время загрузки*/}

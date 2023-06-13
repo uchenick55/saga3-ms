@@ -7,7 +7,8 @@ import React from "react";
 const GoBack: React.FC = () => {
     const navigate = useNavigate(); // хук для навигации по страницам (кнопка назад)
 
-    return <Image src={goBack} className={s.goBack}
+    return <Image src={goBack}
+                    style={{cursor: "pointer", width: "2rem"}}
                   alt={"go back"} title={"go back"}
                   onClick={() => navigate( -1 )} // при клике перейти назад по истории
     />

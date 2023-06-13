@@ -73,12 +73,13 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
     return <div>
         {isFetching && <Preloader/>} {/*если идет загрузка, показать прелоадер*/}
 
-        {paginationRender} {/*пагинация*/}
-
         {PostsListFiltSortPagin.length>0
             ? renderPosts //отрисовка постов
             : <div>ничего не найдено</div>
         }
+
+        {paginationRender} {/*пагинация*/}
+
     </div>
 } )
 export default PostsListRender

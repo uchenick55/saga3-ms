@@ -24,7 +24,7 @@ const PostItem: React.FC<PostItemType> = memo( ({body, title, userId, Avatar, id
         useSelector( (state: GlobalStateType) => state.allPosts.ShowComments ) // показать / скрыть комментарии
     const CommentsFilteredById: Array<CommentType> = AllComments.filter( comment => comment.postId === id )
 
-    return <div className='my-5'>
+    return <div className='my-4'>
         {/* аватарка автора поста со ссылкой на его страницу */}
         <NavLink to={'/user-posts/' + userId}>
             <Image fluid={true} src={Avatar} className="float-start my-2 mx-4 shadow" style={{width: "5rem"}}

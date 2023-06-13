@@ -9,6 +9,7 @@ import ContentContainer from "./components/Content/ContentContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {ErrorType} from "./common/commonTypes/commonTypes";
 import ErrorsRender from "./components/ErrorsRender";
+import FooterContainer from "./components/Footer/FooterContainer";
 
 const App: React.FC = () => {
     const initialisedApp: boolean = useSelector( (state: GlobalStateType) => state.app.initialisedApp )
@@ -32,7 +33,7 @@ const App: React.FC = () => {
                 <ErrorBoundary> {/*Общий обработчик ошибок во всем приложении*/}
                     <HeaderContainer/> {/*заголовок*/}
                     <ContentContainer/> {/*страницы контента в зависмости от URL*/}
-                    {/*<FooterBS/> */}
+                    <FooterContainer/>
                 </ErrorBoundary>
             </HashRouter>
         }
