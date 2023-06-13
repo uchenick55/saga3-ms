@@ -1,4 +1,4 @@
-import {allPostsInitialStateType, PaginationDataType} from "../../redux/reducers/all-posts-reducer";
+import {allPostsInitialStateType, paginationDataType} from "../../redux/reducers/all-posts-reducer";
 import React, {useEffect, useState} from "react";
 import {Col, InputGroup, Row} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
@@ -12,21 +12,21 @@ import Menu from "../Menu/Menu";
 type PostsInputRenderType = {
     SearchPostQuery: string,
     PostsInitialState: allPostsInitialStateType,
-    PaginationData: PaginationDataType,
+    paginationData: paginationDataType,
     patchFromState: string
     setSearchPostQuery: (SearchPostQuery: string) => void
-    setPaginationData: (PaginationData: PaginationDataType) => void
+    setPaginationData: (paginationData: paginationDataType) => void
 }
 const PostsInputRender: React.FC<PostsInputRenderType> = (
-    {SearchPostQuery, setSearchPostQuery, setPaginationData, PostsInitialState, PaginationData, patchFromState}) => {
+    {SearchPostQuery, setSearchPostQuery, setPaginationData, PostsInitialState, paginationData, patchFromState}) => {
     console.log( "PostsInputRender" )
     const [QueryTmp, setQueryTmp] = useState( SearchPostQuery )
 
     const onChangeSearchPostQuery = (SearchPostQuery: string) => {// задаем новый поисковый запрос
         setSearchPostQuery( SearchPostQuery ) // обновляем локальный стейт
-        if (PaginationData.CurrentPage !== 1) {//если страница пагинации !==1
+        if (paginationData.сurrentPage !== 1) {//если страница пагинации !==1
             console.log( "смена текущей страницы и диапазона пагинации на 1 при поиске" )
-            setPaginationData( PostsInitialState.PaginationData )
+            setPaginationData( PostsInitialState.paginationData )
         }
     }
 

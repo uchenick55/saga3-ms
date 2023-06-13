@@ -1,5 +1,5 @@
 import PostsInputRender from "../PostsListRender/PostsInputRender";
-import {allPostsActions, PaginationDataType, PostsInitialState} from "../../redux/reducers/all-posts-reducer";
+import {allPostsActions, paginationDataType, PostsInitialState} from "../../redux/reducers/all-posts-reducer";
 import React, {useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {GlobalStateType} from "../../redux/store/store-redux";
@@ -19,17 +19,17 @@ const PostInputContainer: React.FC = () => {// Фильтрация постов
     const setSearchPostQuery = (SearchPostQuery: string) => dispatch( setSearchPostQueryAC( SearchPostQuery ) )
 
     //колбек для обновления данных пагинации
-    const setPaginationData =(PaginationData: PaginationDataType) => {
-        dispatch( setPaginationDataAC( PaginationData ) )
+    const setPaginationData =(paginationData: paginationDataType) => {
+        dispatch( setPaginationDataAC( paginationData ) )
     }
 
     //все данные пагинации
-    const PaginationData: PaginationDataType = useSelector( (state: GlobalStateType) => state.allPosts.PaginationData )
+    const paginationData: paginationDataType = useSelector( (state: GlobalStateType) => state.allPosts.paginationData )
 
     return <PostsInputRender //поле поиска по заголовкам постов
         SearchPostQuery={SearchPostQuery} setSearchPostQuery={setSearchPostQuery}
         setPaginationData={setPaginationData} PostsInitialState={PostsInitialState}
-        PaginationData={PaginationData} patchFromState={patchFromState}
+        paginationData={paginationData} patchFromState={patchFromState}
     />
 }
 export default PostInputContainer

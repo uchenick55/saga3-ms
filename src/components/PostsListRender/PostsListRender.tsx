@@ -4,7 +4,7 @@ import {GlobalStateType} from "../../redux/store/store-redux";
 import {PostType} from "../../common/commonTypes/commonTypes";
 import {
     allPostsActions,
-    PaginationDataType,
+    paginationDataType,
     PostsInitialState
 } from "../../redux/reducers/all-posts-reducer";
 import Preloader from "../../common/Preloader/Preloader";
@@ -25,14 +25,14 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
     const dispatch = useDispatch()
 
     //все данные пагинации
-    const PaginationData: PaginationDataType = useSelector( (state: GlobalStateType) => state.allPosts.PaginationData )
+    const paginationData: paginationDataType = useSelector( (state: GlobalStateType) => state.allPosts.paginationData )
 
     const { // извлекаем переменные из пагинации
-        PageSize, CurrentPage, CurrentRangeLocal, PortionSize,
-    } = PaginationData
+        pageSize, сurrentPage, currentRangeLocal, portionSize,
+    } = paginationData
 
-    const setPaginationData = useCallback ((PaginationData: PaginationDataType) => { // мемоизируем колбек для обновления данных пагинации
-        dispatch( setPaginationDataAC( PaginationData ) )
+    const setPaginationData = useCallback ((paginationData: paginationDataType) => { // мемоизируем колбек для обновления данных пагинации
+        dispatch( setPaginationDataAC( paginationData ) )
     },[])
 
     const {getCommentsByPostIdAC, setPaginationDataAC, setSearchPostQueryAC, setSortHeaderDirectionAC} = allPostsActions // извлекаем колбеки из allPostsActions
@@ -60,12 +60,12 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
     const PostsListFiltSort: Array<PostType> = postListSortFn( PostsListFiltered, sortHeaderDirection )
 
     //Делаем пагинацию для отсортированого и отфильтрованого списка
-    const PostsListFiltSortPagin: Array<PostType> = postListPaginFn( PostsListFiltSort, PageSize, CurrentPage )
+    const PostsListFiltSortPagin: Array<PostType> = postListPaginFn( PostsListFiltSort, pageSize, сurrentPage )
 
     const paginationRender = <PaginationBS // отрисовка пагинации
-        TotalPostsCount={PostsListFiltered.length} PageSize={PageSize}
-        CurrentPage={CurrentPage} CurrentRangeLocal={CurrentRangeLocal}
-        PortionSize={PortionSize} setPaginationData={setPaginationData}
+        TotalPostsCount={PostsListFiltered.length} pageSize={pageSize}
+        сurrentPage={сurrentPage} currentRangeLocal={currentRangeLocal}
+        portionSize={portionSize} setPaginationData={setPaginationData}
     />
 
     const renderPosts = <RenderPosts PostsList={PostsListFiltSortPagin} getComments={getComments}/>
@@ -73,12 +73,13 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
     return <div>
         {isFetching && <Preloader/>} {/*если идет загрузка, показать прелоадер*/}
 
+        {paginationRender} {/*пагинация*/}
+
         {PostsListFiltSortPagin.length>0
             ? renderPosts //отрисовка постов
             : <div>ничего не найдено</div>
         }
 
-        {paginationRender} {/*пагинация*/}
 
     </div>
 } )

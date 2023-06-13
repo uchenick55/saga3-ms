@@ -23,8 +23,8 @@ export const allPostsActions = {
     setCommentsByPostIdAC: (CommentsByPostId: Array<CommentType>) => { // экшн креатор записи в стейт комментариев по ID статьи
         return {type: SET_COMMENTS_TO_STATE, CommentsByPostId} as const
     },
-    setPaginationDataAC: (PaginationData: PaginationDataType) => { // экшн креатор записи в стейт комментариев по ID статьи
-        return {type: SET_PAGINATION_DATA, PaginationData} as const
+    setPaginationDataAC: (paginationData: paginationDataType) => { // экшн креатор записи в стейт комментариев по ID статьи
+        return {type: SET_PAGINATION_DATA, paginationData} as const
     },
     setShowCommentsAC: (showComments: Array<number>) => { // экшн креатор записи в стейт обновленного showComments,
         return {type: SET_SHOW_COMMENTS, showComments} as const
@@ -43,16 +43,16 @@ export const PostsInitialState = {//стейт по умолчанию
     allPosts: [] as Array<PostType>, // массив постов
     allComments: [] as Array<CommentType>,// массив всех комментариев
     showComments: [] as Array<number>, //массив содержащий ID постов, на которые нужно показать комментарии
-    PaginationData: {// данные по пагинации
-        PageSize: 5, // количество постов на одной странице
-        CurrentPage: 1, // текущая страница пагинации
-        CurrentRangeLocal: 1, // текущий диапазон пагинации
-        PortionSize: 5, // количество отображаемых страниц пагинации между порциями
+    paginationData: {// данные по пагинации
+        pageSize: 5, // количество постов на одной странице
+        сurrentPage: 1, // текущая страница пагинации
+        currentRangeLocal: 1, // текущий диапазон пагинации
+        portionSize: 5, // количество отображаемых страниц пагинации между порциями
     },
     SearchPostQuery: "", // поисковый запрос
     SortHeaderDirection: undefined as boolean | undefined//направление сортировки
 }
-export type PaginationDataType = typeof PostsInitialState.PaginationData
+export type paginationDataType = typeof PostsInitialState.paginationData
 
 export type allPostsInitialStateType = typeof PostsInitialState
 
@@ -76,7 +76,7 @@ const AllPostsReducer = (state: allPostsInitialStateType = PostsInitialState, ac
         case SET_PAGINATION_DATA:  // экшн записи данных пагинации в стор
             stateCopy = {
                 ...state, // копия всего стейта
-                PaginationData: action.PaginationData, // записываем обновленные данные пагинации в стейт
+                paginationData: action.paginationData, // записываем обновленные данные пагинации в стейт
             }
             return stateCopy; // возврат копии стейта после изменения
         case SET_SHOW_COMMENTS:  // экшн записи showComments в стейт

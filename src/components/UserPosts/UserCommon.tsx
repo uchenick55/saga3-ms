@@ -24,7 +24,7 @@ const UserCommon: React.FC<OwnPropsType> = ({ItemId}) => {
 
     useEffect(()=>{
         dispatch( UserActions.getUserDataAC(ItemId)  )//получить данные пользователя по его Id
-        dispatch( allPostsActions.setPaginationDataAC( PostsInitialState.PaginationData ) ) // занулить пагинацию
+        dispatch( allPostsActions.setPaginationDataAC( PostsInitialState.paginationData ) ) // занулить пагинацию
     },[dispatch, ItemId])
 
     return <div>
