@@ -1,6 +1,5 @@
 import React, {memo} from "react";
 import Image from "react-bootstrap/Image";
-import s from "./Posts.module.css"
 import {NavLink} from "react-router-dom";
 import {commentType} from "../../common/commonTypes/commonTypes";
 import {useSelector} from "react-redux";

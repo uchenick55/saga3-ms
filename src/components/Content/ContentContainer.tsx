@@ -1,6 +1,5 @@
 import React, {Suspense, useEffect} from "react";
 import {Route, Routes, useLocation} from "react-router-dom";
-import classes from "./ContentContainer.module.css"
 import ErrorBoundary from "../../common/ErrorBoundary/ErrorBoundary";
 import {Container} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
@@ -29,16 +28,16 @@ const ContentContainer: React.FC = () => { // вынес роутинг конт
         if (patchFromState!== UpdatedPatch) {
             dispatch( setPatchAC( UpdatedPatch ))
             // обновить данные пути patch в app-reducer
-            console.log(UpdatedPatch)
+            console.log("UpdatedPatch", UpdatedPatch)
         }
-    }, [location, setPatchAC] )
+    }, [location, setPatchAC, dispatch, patchFromState] )
     
     return <div>
         <Container style={{marginTop: "6rem", marginBottom: "2rem" }} className='border-1'>
             <ErrorBoundary> {/*Локальный обработчик ошибок ContentContainer*/}
                 <Suspense fallback={
                     <div>Загрузка...</div>}> {/*Оборачивает компоненты, по которым идет Lazy import и выдает fallback на время загрузки*/}
-                    <div className={classes.contentContainer}>
+                    <div>
                         <Routes> {/*в зависимости от URL подгрузка разного контента*/}
                             <Route path='' element={<AllPostsList2/>}/> {/*Общий список постов*/}
                             <Route path='/user-posts/*' element={<UserPosts/>}/> {/*посты выбранного пользователя*/}

@@ -4,7 +4,6 @@ import Nav from "react-bootstrap/Nav";
 import Image from "react-bootstrap/Image";
 import myAvatar from "../../assets/jpeg/myAvarat.jpg";
 import React from "react";
-import {NavLink} from "react-router-dom";
 
 const Menu: React.FC = () => {
     return <div>

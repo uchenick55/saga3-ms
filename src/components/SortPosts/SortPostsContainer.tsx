@@ -12,11 +12,12 @@ const SortPostsContainer: React.FC = () => {
     // определение направления сортировки по заголовкам массива постов
     const sortHeaderDirection: boolean | undefined = useSelector( (state: globalStateType) => state.allPosts.sortHeaderDirection )
     // колбек направления сортировки по заголовкам массива постов
-    const setSortHeaderDirection = (sortHeaderDirection:boolean | undefined) => dispatch(setSortHeaderDirectionAC(sortHeaderDirection))
+    const setSortHeaderDirection = useCallback((sortHeaderDirection:boolean | undefined) =>
+        dispatch(setSortHeaderDirectionAC(sortHeaderDirection)),[dispatch, setSortHeaderDirectionAC])
 
     return <RenderSortButton // отрисовка кнопки сортировки
         sortHeaderDirection={sortHeaderDirection}
-        setSortHeaderDirection={useCallback(setSortHeaderDirection,[]) }/>
+        setSortHeaderDirection={setSortHeaderDirection }/>
 }
 
 export default SortPostsContainer

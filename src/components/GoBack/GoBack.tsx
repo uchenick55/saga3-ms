@@ -1,7 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import goBack from "../../assets/svg/back-arrow1.svg";
-import s from "../../common/classes/common.module.css";
 import React from "react";
 
 const GoBack: React.FC = () => {

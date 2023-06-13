@@ -5,7 +5,6 @@ import Form from 'react-bootstrap/Form';
 import GoBack from "../GoBack/GoBack";
 import SortPostsContainer from "../SortPosts/SortPostsContainer";
 import closeCircle from "../../assets/svg/close-circle.svg";
-import s from "../../common/classes/common.module.css";
 import Image from "react-bootstrap/Image";
 import Menu from "../Menu/Menu";
 
@@ -49,9 +48,9 @@ const PostsInputRender: React.FC<postsInputRenderType> = (
 
 
     return <div className='position-relative' style={{border: "1px solid #dee2e6", borderRadius: "0.5rem"}}>
-        {patchFromState !== "about-me" && <Image src={closeCircle} className={s.CloseCircle}
-                                                 alt={"go back"} title={"go back"}
-                                                 onClick={() => onClearField()} // очистить поле поиска
+        {patchFromState !== "about-me" && <Image src={closeCircle}
+            style = {{ width: "1.5rem", position: "absolute", cursor: "pointer", top: "0.2rem", right: "5.2rem", zIndex: "100"}}
+            alt={"go back"} title={"go back"} onClick={() => onClearField()} // очистить поле поиска
         />}
 
         {patchFromState !== "about-me" // для страниц кроме about-me отобразить

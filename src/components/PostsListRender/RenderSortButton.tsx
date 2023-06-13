@@ -1,7 +1,6 @@
 import React, {memo} from "react";
 import sortAscending from "../../assets/svg/sort-ascending.svg"
 import sortDescending from "../../assets/svg/sort-descending.svg"
-import s from "../../common/classes/common.module.css";
 import Image from "react-bootstrap/Image";
 
 type renderSortButtonType = {

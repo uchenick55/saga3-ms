@@ -30,15 +30,16 @@ const PostsListRender: React.FC<postsListRenderType> = ( ({postsList}) => {
         pageSize, сurrentPage, currentRangeLocal, portionSize,
     } = paginationData
 
+    const {getCommentsByPostIdAC, setPaginationDataAC} = allPostsActions // извлекаем колбеки из allPostsActions
+
     const setPaginationData = useCallback ((paginationData: paginationDataType) => { // мемоизируем колбек для обновления данных пагинации
         dispatch( setPaginationDataAC( paginationData ) )
-    },[])
+    },[dispatch, setPaginationDataAC])
 
-    const {getCommentsByPostIdAC, setPaginationDataAC, setSearchPostQueryAC, setSortHeaderDirectionAC} = allPostsActions // извлекаем колбеки из allPostsActions
 
     const getComments = useCallback( (postId: number) => { // мемоизируем колбек получения комментариев для ререндеров
         dispatch( getCommentsByPostIdAC( postId ) )
-    }, [] )
+    }, [dispatch, getCommentsByPostIdAC] )
 
     // сделать полную копию полученых в пропсах постов
     const postsListCopied: Array<postType> = structuredClone( postsList ) // полная копия массива постов

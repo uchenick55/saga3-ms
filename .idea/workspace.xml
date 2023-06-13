@@ -55,14 +55,19 @@
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/countReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/countReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/Preloader/Preloader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/Preloader/Preloader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/hoc/withRouter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/hoc/withRouter.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/classes/common.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content/ContentContainer.module.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Content/ContentContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/ContentContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer/FooterContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/FooterContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GoBack/GoBack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GoBack/GoBack.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Menu/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Menu/Menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostInput/PostInputContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostInput/PostInputContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/PostItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/Posts.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/PostsInputRender.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostsInputRender.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/PostsListRender.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostsListRender.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/RenderPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/RenderPosts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/all-posts-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/all-posts-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/RenderSortButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/RenderSortButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SortPosts/SortPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SortPosts/SortPostsContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../samurai2.0" beforeDir="false" afterPath="$PROJECT_DIR$/../samurai2.0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sbrrt" beforeDir="false" afterPath="$PROJECT_DIR$/../sbrrt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scss_sass/scss_sass" beforeDir="false" afterPath="$PROJECT_DIR$/../scss_sass/scss_sass" afterDir="false" />
@@ -152,7 +157,7 @@
       <workItem from="1686402109399" duration="20281000" />
       <workItem from="1686462184600" duration="49928000" />
       <workItem from="1686662894828" duration="1554000" />
-      <workItem from="1686664476729" duration="15015000" />
+      <workItem from="1686664476729" duration="16345000" />
     </task>
     <servers />
   </component>
@@ -180,10 +185,10 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="387" y="139" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.672@0.0.1280.672" timestamp="1686467077720" />
-    <state x="371" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1686684457482">
+    <state x="371" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1686688282722">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="371" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.672@0.0.1280.672" timestamp="1686684457482" />
+    <state x="371" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.672@0.0.1280.672" timestamp="1686688282722" />
     <state x="287" y="69" key="FileChooserDialogImpl" timestamp="1686681418357">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
@@ -208,9 +213,9 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="347" y="45" width="873" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686687493406" />
-    <state x="303" y="0" width="672" height="670" key="search.everywhere.popup" timestamp="1686554820762">
+    <state x="303" y="0" width="672" height="670" key="search.everywhere.popup" timestamp="1686688586097">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="303" y="0" width="672" height="670" key="search.everywhere.popup/0.0.1280.672@0.0.1280.672" timestamp="1686554820762" />
+    <state x="303" y="0" width="672" height="670" key="search.everywhere.popup/0.0.1280.672@0.0.1280.672" timestamp="1686688586097" />
   </component>
 </project>

@@ -1,6 +1,6 @@
 import PostsInputRender from "../PostsListRender/PostsInputRender";
 import {allPostsActions, paginationDataType, PostsInitialState} from "../../redux/reducers/all-posts-reducer";
-import React, {useCallback} from "react";
+import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {globalStateType} from "../../redux/store/store-redux";
 
