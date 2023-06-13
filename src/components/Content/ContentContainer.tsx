@@ -6,7 +6,7 @@ import {Container} from "react-bootstrap";
 import s from "../../common/classes/common.module.css"
 
 const AllPostsList2 = React.lazy( () => import("../AllPostsList/AllPostsList") )
-const UserPosts = React.lazy( () => import("../UserPosts/UserPosts") )
+const UserPosts = React.lazy( () => import("../UserPosts/UserCommon") )
 const AboutMe = React.lazy( () => import("../AboutMe/AboutMe") )
 
 let ContentContainer: React.FC = () => { // вынес роутинг контента в отдельную компоненту

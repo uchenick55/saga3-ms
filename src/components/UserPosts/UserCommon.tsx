@@ -12,7 +12,7 @@ import UserCard from "./UserCard";
 type OwnPropsType = {
     ItemId: number // id пользователя
 }
-const UserPosts: React.FC<OwnPropsType> = ({ItemId}) => {
+const UserCommon: React.FC<OwnPropsType> = ({ItemId}) => {
     console.log( "UserPosts" )
 
     const dispatch = useDispatch()
@@ -28,7 +28,7 @@ const UserPosts: React.FC<OwnPropsType> = ({ItemId}) => {
     },[dispatch, ItemId])
 
     return <div>
-        <h2 className='d-flex justify-content-center'>Подробности о пользователе</h2>
+        <h2 className='d-flex justify-content-center'>О пользователе</h2>
         <UserCard UserData={UserData}/>
         <PostsListRender PostsList={AllPostsFilteredByUser}/>
 
@@ -37,4 +37,4 @@ const UserPosts: React.FC<OwnPropsType> = ({ItemId}) => {
 
 export default compose<React.ComponentType>(
     withRouter// получить данные ID из URL браузера и добавить в пропсы
-)( UserPosts )
+)( UserCommon )

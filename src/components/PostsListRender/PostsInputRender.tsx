@@ -62,7 +62,6 @@ const PostsInputRender: React.FC<PostsInputRenderType> = (
             <InputGroup.Text><SortPostsContainer/></InputGroup.Text>
             <Form.Control
                 placeholder="поиск по постам..."
-                autoFocus={true}
                 type="text"
                 value={QueryTmp}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {

@@ -55,11 +55,12 @@
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AboutMe/AboutMe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutMe/AboutMe.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AllPostsList/AllPostsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AllPostsList/AllPostsList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ErrorsRender.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ErrorsRender.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/CommentItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/CommentItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/PostItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserPosts/UserPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserPosts/UserPosts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content/ContentContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/ContentContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Menu/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Menu/Menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/PostsInputRender.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostsInputRender.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserPosts/UserCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserPosts/UserCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserPosts/UserPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserPosts/UserCommon.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../samurai2.0" beforeDir="false" afterPath="$PROJECT_DIR$/../samurai2.0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sbrrt" beforeDir="false" afterPath="$PROJECT_DIR$/../sbrrt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scss_sass/scss_sass" beforeDir="false" afterPath="$PROJECT_DIR$/../scss_sass/scss_sass" afterDir="false" />
@@ -92,7 +93,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tmp2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-kabzda-1-8" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -179,10 +180,10 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="371" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.672@0.0.1280.672" timestamp="1686498564704" />
-    <state x="287" y="69" key="FileChooserDialogImpl" timestamp="1686633119624">
+    <state x="287" y="69" key="FileChooserDialogImpl" timestamp="1686654727158">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="287" y="69" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1686633119624" />
+    <state x="287" y="69" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1686654727158" />
     <state width="1259" height="125" key="GridCell.Tab.0.bottom" timestamp="1686640391823">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
@@ -199,10 +200,10 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state width="1259" height="125" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1686640391823" />
-    <state x="347" y="45" width="587" height="582" key="find.popup" timestamp="1686639940778">
+    <state x="347" y="45" width="587" height="582" key="find.popup" timestamp="1686654714244">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="347" y="45" width="587" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686639940778" />
+    <state x="347" y="45" width="587" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686654714244" />
     <state x="303" y="0" width="672" height="670" key="search.everywhere.popup" timestamp="1686554820762">
       <screen x="0" y="0" width="1280" height="672" />
     </state>

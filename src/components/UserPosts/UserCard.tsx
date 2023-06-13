@@ -1,41 +1,71 @@
 import {UserDataType} from "../../common/commonTypes/commonTypes";
 import React from "react";
+import {Accordion, Col, ListGroup, Row} from "react-bootstrap";
 
 type UserCardType = {
     UserData: UserDataType
 }
 const UserCard: React.FC<UserCardType> = ({UserData}) => { // отрисовка карточки пользователя (автора постов)
     const {id, name, username, email, address, phone, website, company} = UserData
-    return <div>
-        <ul>
-            <li>id: {id}</li>
-            <li>name: {name}</li>
-            <li>username: {username}</li>
-            <li>email: {email}</li>
-            <li><b>address</b>
-                <ul>
-                    <li> street: {address?.street}</li>
-                    <li> suite: {address?.suite}</li>
-                    <li> city: {address?.city}</li>
-                    <li> zipcode: {address?.zipcode}</li>
-                    <li><b>geo</b>
-                        <ul>
-                            <li> {address?.geo?.lat}  </li>
-                            <li> {address?.geo?.lng}  </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li>phone: {phone}</li>
-            <li>website: {website}</li>
-            <div><b>company</b>
-                <ul>
-                    <li> name: {company?.name}</li>
-                    <li> catchPhrase: {company?.catchPhrase}</li>
-                    <li> bs: {company?.bs}</li>
-                </ul>
-            </div>
-        </ul>
+    return <div className='my-3'>
+        <Accordion defaultActiveKey="0" >
+            <Accordion.Item eventKey="0">
+                <Accordion.Header><h4>{name} </h4></Accordion.Header>
+                <Accordion.Body>
+                    <Row>
+                        <Col className='p-2' lg={3} md={6}>{/*lg={6} md={12}*/}
+                            <ListGroup>
+                                <ListGroup.Item variant="primary"><b>id:</b> {id}</ListGroup.Item>
+                                <ListGroup.Item variant="primary"><b>username:</b> {username}</ListGroup.Item>
+                                <ListGroup.Item variant="primary"><b>email:</b> {email}</ListGroup.Item>
+                                <ListGroup.Item variant="primary"><b>phone:</b> {phone}</ListGroup.Item>
+                                <ListGroup.Item variant="primary"><b>website:</b> {website}</ListGroup.Item>
+                            </ListGroup>
+                        </Col>
+                        <Col className='p-2'  lg={3} md={6}>
+                            <ListGroup >
+
+                                <ListGroup.Item variant="primary"><b>address</b></ListGroup.Item>
+                                <ListGroup.Item variant="secondary"><b>street:</b> {address?.street}</ListGroup.Item>
+                                <ListGroup.Item variant="secondary"><b>suite:</b> {address?.suite}</ListGroup.Item>
+                                <ListGroup.Item variant="secondary"><b>city:</b> {address?.city}</ListGroup.Item>
+                                <ListGroup.Item variant="secondary"><b>zipcode:</b> {address?.zipcode}</ListGroup.Item>
+
+                            </ListGroup>
+
+                        </Col>
+                        <Col className='p-2'  lg={3} md={6}>
+                            <ListGroup>
+
+                                <ListGroup.Item variant="primary"><b>geo</b></ListGroup.Item>
+                                <ListGroup.Item variant="secondary"><b>lat:</b>{address?.geo?.lat} </ListGroup.Item>
+                                <ListGroup.Item variant="secondary"><b>lng:</b>{address?.geo?.lng}</ListGroup.Item>
+
+                            </ListGroup>
+
+                        </Col>
+                        <Col className='p-2'  lg={3} md={6}>
+                            <ListGroup>
+
+                                <ListGroup.Item variant="primary"><b>company</b></ListGroup.Item>
+                                <ListGroup.Item variant="secondary"><b>name:</b> {company?.name}</ListGroup.Item>
+                                <ListGroup.Item variant="secondary"><b>catchPhrase:</b> {company?.catchPhrase}</ListGroup.Item>
+                                <ListGroup.Item variant="secondary"><b>bs:</b> {company?.bs}</ListGroup.Item>
+                            </ListGroup>
+
+                        </Col>
+
+                    </Row>
+
+
+
+
+
+                </Accordion.Body>
+            </Accordion.Item>
+        </Accordion>
+
+
     </div>
 }
 export default UserCard

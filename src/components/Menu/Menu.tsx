@@ -12,17 +12,31 @@ const Menu: React.FC = () => {
             placement="start"
         >
             <Offcanvas.Header closeButton>
-                <Offcanvas.Title/>
+                <Offcanvas.Title>
+                </Offcanvas.Title>
+
             </Offcanvas.Header>
+
             <Offcanvas.Body>
+
                 <Nav>
-                    <Nav.Link href='/'>Список постов</Nav.Link>
-                    <Nav.Link href='/#/about-me'>Обо мне
-                        <Image fluid={true} src={myAvatar} className={"rounded"}
-                               alt={"аватар"} title={`аватар`}
-                        /></Nav.Link>
+                    <Nav.Link href='/'><h3>Список постов</h3></Nav.Link>
+                    <Nav.Item><h3>Обо мне</h3>
+                        <Nav.Link href='/#/about-me'>
+                            <Image fluid={true} src={myAvatar} className={"rounded"} style={{height: "8rem"}}
+                                   alt={"аватар"} title={`аватар`}
+                            />
+                        </Nav.Link>
+                    </Nav.Item>
                     <Nav.Item>Евгений Сазонов</Nav.Item>
-                    <Nav.Link href="mailto:uchenick55@yandex.ru">uchenick55@yandex.ru</Nav.Link>
+                    <Nav.Link
+                        href="mailto:uchenick55@yandex.ru">uchenick55@yandex.ru
+                    </Nav.Link>
+
+
+
+
+
                 </Nav>
             </Offcanvas.Body>
         </Navbar.Offcanvas>

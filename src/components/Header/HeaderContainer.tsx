@@ -6,12 +6,13 @@ import {Col} from "react-bootstrap";
 
 function HeaderContainer() {
 
-    return <div>
+    return <div >
 
-        <Navbar bg="light" expand={false} className="mb-3" fixed="top"
+        <Navbar bg="light" expand={false} fixed="top"
                 collapseOnSelect={true}
+                className='mb-3 border-bottom shadow'
         >
-            <Container fluid>
+            <Container fluid >
                 <Col> <PostInputContainer/> </Col>
             </Container>
         </Navbar>
