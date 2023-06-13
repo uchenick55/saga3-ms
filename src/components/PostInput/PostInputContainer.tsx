@@ -10,6 +10,9 @@ const PostInputContainer: React.FC = () => {// Фильтрация постов
 
     const dispatch = useDispatch()
 
+    //имя страницы из URL
+    const patchFromState: string = useSelector( (state: GlobalStateType) => state.app.patch) //
+
     // извлекаем из стейта значение поисковой строки
     const SearchPostQuery: string = useSelector( (state: GlobalStateType) => state.allPosts.SearchPostQuery ) //
    //колбек на обновление поисковой строки
@@ -26,7 +29,7 @@ const PostInputContainer: React.FC = () => {// Фильтрация постов
     return <PostsInputRender //поле поиска по заголовкам постов
         SearchPostQuery={SearchPostQuery} setSearchPostQuery={setSearchPostQuery}
         setPaginationData={setPaginationData} PostsInitialState={PostsInitialState}
-        PaginationData={PaginationData}
+        PaginationData={PaginationData} patchFromState={patchFromState}
     />
 }
 export default PostInputContainer

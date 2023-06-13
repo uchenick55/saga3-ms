@@ -22,7 +22,7 @@ let ContentContainer: React.FC = () => { // вынес роутинг конте
 
     const patchFromState = useSelector((state:GlobalStateType)=>state.app.patch) // путь из URL, записанный в стейт
 
-    useEffect( () => { // определение и запись в стор пути из адресной строки бораузера
+    useEffect( () => { // определение и запись в стейт путь из адресной строки бораузера
 
         const UpdatedPatch: string = checkURL(location)
 

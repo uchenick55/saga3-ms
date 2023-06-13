@@ -23,12 +23,12 @@
       <change afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/saga/countSaga.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../redux-saga2/.idea/redux-saga2.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../redux-saga2/src/redux/store.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/common/functions/checkURL.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tmp/script1.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tmp2/src/Tmp.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tmp2/src/Tmp2.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tmp2/src/Tmp3.tsx" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tmp2/src/Tmp4.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmp2/src/components/GoBack/GoBack.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
@@ -56,7 +56,11 @@
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Content/ContentContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/ContentContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/app-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Menu/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Menu/Menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostInput/PostInputContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostInput/PostInputContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/PostsInputRender.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostsInputRender.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/RenderSortButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/RenderSortButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/saga/saga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/saga/saga.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../samurai2.0" beforeDir="false" afterPath="$PROJECT_DIR$/../samurai2.0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sbrrt" beforeDir="false" afterPath="$PROJECT_DIR$/../sbrrt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scss_sass/scss_sass" beforeDir="false" afterPath="$PROJECT_DIR$/../scss_sass/scss_sass" afterDir="false" />
@@ -145,6 +149,8 @@
       <workItem from="1686370223022" duration="14375000" />
       <workItem from="1686402109399" duration="20281000" />
       <workItem from="1686462184600" duration="49928000" />
+      <workItem from="1686662894828" duration="1554000" />
+      <workItem from="1686664476729" duration="3209000" />
     </task>
     <servers />
   </component>
@@ -176,30 +182,30 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="371" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.672@0.0.1280.672" timestamp="1686498564704" />
-    <state x="287" y="69" key="FileChooserDialogImpl" timestamp="1686661053365">
+    <state x="287" y="69" key="FileChooserDialogImpl" timestamp="1686669021877">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="287" y="69" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1686661053365" />
-    <state width="1259" height="125" key="GridCell.Tab.0.bottom" timestamp="1686662876110">
+    <state x="287" y="69" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1686669021877" />
+    <state width="1259" height="125" key="GridCell.Tab.0.bottom" timestamp="1686664480293">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1259" height="125" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1686662876110" />
-    <state width="1259" height="125" key="GridCell.Tab.0.center" timestamp="1686662876110">
+    <state width="1259" height="125" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1686664480293" />
+    <state width="1259" height="125" key="GridCell.Tab.0.center" timestamp="1686664480293">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1259" height="125" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1686662876110" />
-    <state width="1259" height="125" key="GridCell.Tab.0.left" timestamp="1686662876110">
+    <state width="1259" height="125" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1686664480293" />
+    <state width="1259" height="125" key="GridCell.Tab.0.left" timestamp="1686664480293">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1259" height="125" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1686662876110" />
-    <state width="1259" height="125" key="GridCell.Tab.0.right" timestamp="1686662876110">
+    <state width="1259" height="125" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1686664480293" />
+    <state width="1259" height="125" key="GridCell.Tab.0.right" timestamp="1686664480293">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1259" height="125" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1686662876110" />
-    <state x="347" y="45" width="587" height="582" key="find.popup" timestamp="1686660873694">
+    <state width="1259" height="125" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1686664480293" />
+    <state x="347" y="45" width="587" height="582" key="find.popup" timestamp="1686669018493">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="347" y="45" width="587" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686660873694" />
+    <state x="347" y="45" width="587" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686669018493" />
     <state x="303" y="0" width="672" height="670" key="search.everywhere.popup" timestamp="1686554820762">
       <screen x="0" y="0" width="1280" height="672" />
     </state>

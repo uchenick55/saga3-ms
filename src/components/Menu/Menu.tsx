@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Image from "react-bootstrap/Image";
 import myAvatar from "../../assets/jpeg/myAvarat.jpg";
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 const Menu: React.FC = () => {
     return <div>
@@ -20,21 +21,19 @@ const Menu: React.FC = () => {
             <Offcanvas.Body>
 
                 <Nav>
-                    <Nav.Link href='/'><h3>Список постов</h3></Nav.Link>
-                    <Nav.Item><h3>Обо мне</h3>
-                        <Nav.Link href='/#/about-me'>
+                    <Nav.Link href='#/'><h3>Список постов</h3></Nav.Link>
+                    <Nav.Link href='#/about-me/'>
+                        <Nav.Item><h3>Обо мне</h3>
+
                             <Image fluid={true} src={myAvatar} className={"rounded"} style={{height: "8rem"}}
                                    alt={"аватар"} title={`аватар`}
                             />
-                        </Nav.Link>
-                    </Nav.Item>
+                        </Nav.Item>
+                    </Nav.Link>
                     <Nav.Item>Евгений Сазонов</Nav.Item>
                     <Nav.Link
                         href="mailto:uchenick55@yandex.ru">uchenick55@yandex.ru
                     </Nav.Link>
-
-
-
 
 
                 </Nav>

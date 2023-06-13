@@ -1,7 +1,6 @@
 import React from "react";
 import sortAscending from "../../assets/svg/sort-ascending.svg"
 import sortDescending from "../../assets/svg/sort-descending.svg"
-import goBack from "../../assets/svg/back-arrow1.svg";
 import s from "../../common/classes/common.module.css";
 import Image from "react-bootstrap/Image";
 
