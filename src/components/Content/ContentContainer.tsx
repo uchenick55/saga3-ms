@@ -1,9 +1,12 @@
-import React, {Suspense} from "react";
-import {Route, Routes} from "react-router-dom";
+import React, {Suspense, useEffect} from "react";
+import {Route, Routes, useLocation} from "react-router-dom";
 import classes from "./ContentContainer.module.css"
 import ErrorBoundary from "../../common/ErrorBoundary/ErrorBoundary";
 import {Container} from "react-bootstrap";
-import s from "../../common/classes/common.module.css"
+import {useDispatch, useSelector} from "react-redux";
+import {AppActions} from "../../redux/reducers/app-reducer";
+import {GlobalStateType} from "../../redux/store/store-redux";
+import checkURL from "../../common/functions/checkURL";
 
 const AllPostsList2 = React.lazy( () => import("../AllPostsList/AllPostsList") )
 const UserPosts = React.lazy( () => import("../UserPosts/UserCommon") )
@@ -11,6 +14,25 @@ const AboutMe = React.lazy( () => import("../AboutMe/AboutMe") )
 
 let ContentContainer: React.FC = () => { // вынес роутинг контента в отдельную компоненту
 
+    const {setPatchAC}= AppActions // получить AC на обновление пути из URL
+
+    const location = useLocation()
+
+    const dispatch = useDispatch()
+
+    const patchFromState = useSelector((state:GlobalStateType)=>state.app.patch) // путь из URL, записанный в стейт
+
+    useEffect( () => { // определение и запись в стор пути из адресной строки бораузера
+
+        const UpdatedPatch: string = checkURL(location)
+
+        if (patchFromState!== UpdatedPatch) {
+            dispatch( setPatchAC( UpdatedPatch ))
+            // обновить данные пути patch в app-reducer
+            console.log(UpdatedPatch)
+        }
+    }, [location, setPatchAC] )
+    
     return <div>
         <Container style={{marginTop: "6rem", marginBottom: "2rem" }} className='border-1'>
             <ErrorBoundary> {/*Локальный обработчик ошибок ContentContainer*/}
