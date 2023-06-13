@@ -20,7 +20,7 @@ type postsInputRenderType = {
 const PostsInputRender: React.FC<postsInputRenderType> = (
     {searchPostQuery, setSearchPostQuery, setPaginationData, PostsInitialState, paginationData, patchFromState}) => {
     console.log( "PostsInputRender" )
-    const [QueryTmp, setQueryTmp] = useState( searchPostQuery )
+    const [queryTmp, setQueryTmp] = useState( searchPostQuery )
 
     const onChangeSearchPostQuery = (searchPostQuery: string) => {// задаем новый поисковый запрос
         setSearchPostQuery( searchPostQuery ) // обновляем локальный стейт
@@ -36,16 +36,16 @@ const PostsInputRender: React.FC<postsInputRenderType> = (
     }
 
     useEffect( () => { // задержка ввода input (не реагирует на каждый символ сразу)
-        const setSearchPostQueryTmp = QueryTmp // временное значение до задержки
+        const setSearchPostQueryTmp = queryTmp // временное значение до задержки
         const id = setTimeout( () => {
-            if (setSearchPostQueryTmp === QueryTmp) { // если по истечениию задержки поисковый запрос не изменился
-                onChangeSearchPostQuery( QueryTmp ) // применить поисковый запрос для фильтрации
+            if (setSearchPostQueryTmp === queryTmp) { // если по истечениию задержки поисковый запрос не изменился
+                onChangeSearchPostQuery( queryTmp ) // применить поисковый запрос для фильтрации
             }
         }, 500 ); // задержка, мс
         return () => {
             clearTimeout( id ); //
         };
-    }, [QueryTmp] );
+    }, [queryTmp] );
 
 
     return <div className='position-relative' style={{border: "1px solid #dee2e6", borderRadius: "0.5rem"}}>
@@ -62,7 +62,7 @@ const PostsInputRender: React.FC<postsInputRenderType> = (
             {patchFromState !== "about-me" && <Form.Control
                 placeholder="поиск по постам..."
                 type="text"
-                value={QueryTmp}
+                value={queryTmp}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setQueryTmp( e.target.value )
                 }}

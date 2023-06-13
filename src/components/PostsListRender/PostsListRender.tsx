@@ -1,17 +1,14 @@
-import React, {memo, useCallback, useState} from "react";
+import React, {useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {globalStateType} from "../../redux/store/store-redux";
 import {postType} from "../../common/commonTypes/commonTypes";
 import {
     allPostsActions,
     paginationDataType,
-    PostsInitialState
 } from "../../redux/reducers/all-posts-reducer";
 import Preloader from "../../common/Preloader/Preloader";
 import PaginationBS from "../../common/Pagination/PaginationBS";
 import postListSortFn from "./Functions/postListSortFn";
-import PostsInputRender from "./PostsInputRender";
-import RenderSortButton from "./RenderSortButton";
 import RenderPosts from "./RenderPosts";
 import postListPaginFn from "./Functions/postListPaginFn";
 import postListSearchFilterFn from "./Functions/postListSearchFilterFn";

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import sortAscending from "../../assets/svg/sort-ascending.svg"
 import sortDescending from "../../assets/svg/sort-descending.svg"
 import s from "../../common/classes/common.module.css";
@@ -8,7 +8,7 @@ type renderSortButtonType = {
     sortHeaderDirection: boolean | undefined,
     setSortHeaderDirection: (sortHeaderDirection: boolean | undefined) => void
 }
-const RenderSortButton:React.FC<renderSortButtonType> = ({sortHeaderDirection, setSortHeaderDirection}) => {
+const RenderSortButton:React.FC<renderSortButtonType> = memo(({sortHeaderDirection, setSortHeaderDirection}) => {
     console.log("RenderSortButton")
     return <Image src={sortHeaderDirection? sortDescending: sortAscending} style={{width: "2rem", cursor: "pointer"}}
                   alt={"сортировка постов"} title={"сортировка постов"}
@@ -18,5 +18,5 @@ const RenderSortButton:React.FC<renderSortButtonType> = ({sortHeaderDirection, s
                           : setSortHeaderDirection( !sortHeaderDirection ) // при последующих активациях реверс сортировки
                   }} // при клике перейти назад по истории
     />
-}
+})
 export default RenderSortButton

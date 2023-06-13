@@ -1,5 +1,5 @@
 import RenderSortButton from "../PostsListRender/RenderSortButton";
-import React from "react";
+import React, {useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {globalStateType} from "../../redux/store/store-redux";
 import {allPostsActions} from "../../redux/reducers/all-posts-reducer";
@@ -16,7 +16,7 @@ const SortPostsContainer: React.FC = () => {
 
     return <RenderSortButton // отрисовка кнопки сортировки
         sortHeaderDirection={sortHeaderDirection}
-        setSortHeaderDirection={setSortHeaderDirection}/>
+        setSortHeaderDirection={useCallback(setSortHeaderDirection,[]) }/>
 }
 
 export default SortPostsContainer
