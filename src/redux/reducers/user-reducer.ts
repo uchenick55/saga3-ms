@@ -21,14 +21,12 @@ const initialState = {//стейт по умолчанию
 type userInitialStateType = typeof initialState
 
 const userReducer = (state: userInitialStateType = initialState, action: userActionsTypes): userInitialStateType => {//редьюсер инициализации приложения
-    let stateCopy: userInitialStateType;// объявлениечасти части стейта до изменения редьюсером
     switch (action.type) {
         case SET_USER_DATA_TO_STATE:  // экшн записи данных пользователя в стейт
-            stateCopy = {
+            return {
                 ...state, // копия всего стейта
                 userData: action.userData, // запись данных пользователя в стейт
             }
-            return stateCopy; // возврат копии стейта после изменения
         default:
             return state; // по умолчанию стейт возврашается неизмененным
     }

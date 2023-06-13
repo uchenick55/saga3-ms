@@ -33,32 +33,27 @@ const initialState = {//стейт по умолчанию для инициал
 type appInitialStateType = typeof initialState
 
 const appReducer = (state: appInitialStateType = initialState, action: appActionTypes): appInitialStateType => {//редьюсер инициализации приложения
-    let stateCopy: appInitialStateType;// объявлениечасти части стейта до изменения редьюсером
     switch (action.type) {
         case SET_INITIALISED_APP:  // экшн инициализации приложения
-            stateCopy = {
+            return {
                 ...state, // копия всего стейта
                 initialisedApp: true, // смена флага инициализации приложения на true
             }
-            return stateCopy; // возврат копии стейта после изменения
         case TOGGLE_IS_FETCHING:
-            stateCopy = {
+            return {
                 ...state,
                 isFetching: action.isFetching
             }
-            return stateCopy; // возврат копии стейта после изменения
         case SET_ERROR:
-            stateCopy = {
+            return {
                 ...state,
                 error: action.error
             }
-            return stateCopy; // возврат копии стейта после изменения
         case SET_PATCH:
-            stateCopy = {
+            return {
                 ...state,
                 patch: action.patch
             }
-            return stateCopy; // возврат копии стейта после изменения
         default:
             return state; // по умолчанию стейт возврашается неизмененным
     }

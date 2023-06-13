@@ -13,10 +13,10 @@ type postItemType = {
     "id": number, // id статьи
     "title": string, // заголовок статьи
     "body": string // тело статьи
-    Avatar: string // общая картирнка аватара статьи
+    avatar: string // общая картирнка аватара статьи
     getComments: (id: number) => void // колбек для диспатча получить комментарии статьи
 }
-const PostItem: React.FC<postItemType> = memo( ({body, title, userId, Avatar, id, getComments}) => {
+const PostItem: React.FC<postItemType> = memo( ({body, title, userId, avatar, id, getComments}) => {
     console.log( "PostItem" )
     const allComments: Array<commentType> =
         useSelector( (state: globalStateType) => state.allPosts.allComments ) // получить комментарии
@@ -27,7 +27,7 @@ const PostItem: React.FC<postItemType> = memo( ({body, title, userId, Avatar, id
     return <div className='my-4'>
         {/* аватарка автора поста со ссылкой на его страницу */}
         <NavLink to={'/user-posts/' + userId}>
-            <Image fluid={true} src={Avatar} className="float-start my-2 mx-4 shadow rounded" style={{width: "5rem"}}
+            <Image fluid={true} src={avatar} className="float-start my-2 mx-4 shadow rounded" style={{width: "5rem"}}
                    alt={"Аватар пользователя"} title={`Все посты пользователя ${userId}`}
             />
         </NavLink>

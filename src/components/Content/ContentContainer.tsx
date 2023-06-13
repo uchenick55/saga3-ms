@@ -12,7 +12,7 @@ const AllPostsList2 = React.lazy( () => import("../AllPostsList/AllPostsList") )
 const UserPosts = React.lazy( () => import("../UserPosts/UserCommon") )
 const AboutMe = React.lazy( () => import("../AboutMe/AboutMe") )
 
-let ContentContainer: React.FC = () => { // вынес роутинг контента в отдельную компоненту
+const ContentContainer: React.FC = () => { // вынес роутинг контента в отдельную компоненту
 
     const {setPatchAC}= appActions // получить AC на обновление пути из URL
 

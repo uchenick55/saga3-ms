@@ -57,46 +57,39 @@ export type paginationDataType = typeof PostsInitialState.paginationData
 export type allPostsInitialStateType = typeof PostsInitialState
 
 const AllPostsReducer = (state: allPostsInitialStateType = PostsInitialState, action: allPostsActionsTypes): allPostsInitialStateType => {//редьюсер инициализации приложения
-    let stateCopy: allPostsInitialStateType;// объявлениечасти части стейта до изменения редьюсером
     switch (action.type) {
         case SET_ALL_POSTS:  // экшн записи массива постов
-            stateCopy = {
+            return {
                 ...state, // копия всего стейта
                 allPosts: action.allPosts, // смена флага инициализации приложения на true
             }
-            return stateCopy; // возврат копии стейта после изменения
         case SET_COMMENTS_TO_STATE:  // экшн записи комментариев в стор
             const allCommentsFiltered: Array<commentType> = // затираем все старые загруженные комментарии по данному ID поста, возможно уже написали новые
                 state.allComments.filter( comment => comment.postId !== action.CommentsByPostId[0].postId )
-            stateCopy = {
+            return {
                 ...state, // копия всего стейта
                 allComments: [...allCommentsFiltered, ...action.CommentsByPostId], // записываем загруженные комментарии по данному ID в общий список комментариев
             }
-            return stateCopy; // возврат копии стейта после изменения
         case SET_PAGINATION_DATA:  // экшн записи данных пагинации в стор
-            stateCopy = {
+            return {
                 ...state, // копия всего стейта
                 paginationData: action.paginationData, // записываем обновленные данные пагинации в стейт
             }
-            return stateCopy; // возврат копии стейта после изменения
         case SET_SHOW_COMMENTS:  // экшн записи showComments в стейт
-            stateCopy = {
+            return {
                 ...state, // копия всего стейта
                 showComments: action.showComments, // записываем обновленный массив showComments в стейт
             }
-            return stateCopy; // возврат копии стейта после изменения
         case SET_SEARCH_POST_QUERY:  //
-            stateCopy = {
+            return {
                 ...state, // копия всего стейта
                 searchPostQuery: action.searchPostQuery, // записываем обновленный searchPostQuery в стейт
             }
-            return stateCopy; // возврат копии стейта после изменения
         case SET_SORT_HEADER_DIRECTION:  // задать направление сортировки постов
-            stateCopy = {
+            return {
                 ...state, // копия всего стейта
                 sortHeaderDirection: action.sortHeaderDirection, // записываем обновленный sortHeaderDirection в стейт
             }
-            return stateCopy; // возврат копии стейта после изменения
         default:
             return state; // по умолчанию стейт возврашается неизмененным
     }

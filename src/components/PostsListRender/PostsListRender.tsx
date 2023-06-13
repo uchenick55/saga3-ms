@@ -53,7 +53,7 @@ const PostsListRender: React.FC<postsListRenderType> = ( ({postsList}) => {
     const sortHeaderDirection: boolean | undefined = useSelector( (state: globalStateType) => state.allPosts.sortHeaderDirection )
 
     // фильтруем заголовки на содержание поисковой строки (переводим в один регистр для стравнения)
-    let postsListFiltered: Array<postType> = postListSearchFilterFn(postsListCopied, searchPostQuery)
+    const postsListFiltered: Array<postType> = postListSearchFilterFn(postsListCopied, searchPostQuery)
 
     //сортируем фильтрованый список
     const postsListFiltSort: Array<postType> = postListSortFn( postsListFiltered, sortHeaderDirection )
