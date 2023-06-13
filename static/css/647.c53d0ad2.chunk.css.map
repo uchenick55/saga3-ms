@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/647.c53d0ad2.chunk.css","mappings":"AAAA,8BACI,uBAEJ","sources":["common/Pagination/Pagination.module.css"],"sourcesContent":[".pagination {\r\n    opacity: var(--opacity1);\r\n;\r\n}\r\n"],"names":[],"sourceRoot":""}
