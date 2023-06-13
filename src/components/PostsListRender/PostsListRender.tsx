@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {GlobalStateType} from "../../redux/store/store-redux";
 import {PostType} from "../../common/commonTypes/commonTypes";
 import {
-    AllPostsActions,
+    allPostsActions,
     PaginationDataType,
     PostsInitialState
 } from "../../redux/reducers/all-posts-reducer";
@@ -35,7 +35,7 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
         dispatch( setPaginationDataAC( PaginationData ) )
     },[])
 
-    const {getCommentsByPostIdAC, setPaginationDataAC, setSearchPostQueryAC, setSortHeaderDirectionAC} = AllPostsActions // извлекаем колбеки из AllPostsActions
+    const {getCommentsByPostIdAC, setPaginationDataAC, setSearchPostQueryAC, setSortHeaderDirectionAC} = allPostsActions // извлекаем колбеки из allPostsActions
 
     const getComments = useCallback( (postId: number) => { // мемоизируем колбек получения комментариев для ререндеров
         dispatch( getCommentsByPostIdAC( postId ) )

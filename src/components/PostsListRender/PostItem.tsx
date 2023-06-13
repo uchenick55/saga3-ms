@@ -18,11 +18,11 @@ type PostItemType = {
 }
 const PostItem: React.FC<PostItemType> = memo( ({body, title, userId, Avatar, id, getComments}) => {
     console.log( "PostItem" )
-    const AllComments: Array<CommentType> =
-        useSelector( (state: GlobalStateType) => state.allPosts.AllComments ) // получить комментарии
-    const ShowComments: Array<number> =
-        useSelector( (state: GlobalStateType) => state.allPosts.ShowComments ) // показать / скрыть комментарии
-    const CommentsFilteredById: Array<CommentType> = AllComments.filter( comment => comment.postId === id )
+    const allComments: Array<CommentType> =
+        useSelector( (state: GlobalStateType) => state.allPosts.allComments ) // получить комментарии
+    const showComments: Array<number> =
+        useSelector( (state: GlobalStateType) => state.allPosts.showComments ) // показать / скрыть комментарии
+    const CommentsFilteredById: Array<CommentType> = allComments.filter( comment => comment.postId === id )
 
     return <div className='my-4'>
         {/* аватарка автора поста со ссылкой на его страницу */}
@@ -45,7 +45,7 @@ const PostItem: React.FC<PostItemType> = memo( ({body, title, userId, Avatar, id
             </Button>
         </div>
 
-        {ShowComments.includes( id ) && CommentsFilteredById.map( (comment: CommentType) => {
+        {showComments.includes( id ) && CommentsFilteredById.map( (comment: CommentType) => {
             const {id, name, email, body} = comment
             return <CommentItem key={id} name={name} body={body} email={email}/>
         } )}

@@ -3,12 +3,13 @@
 }
 
 .SortImage {
-    width: 2rem;
+
 }
 
 .CloseCircle {
     width: 1.5rem;
     position: absolute;
+    cursor: pointer;
     top: 0.2rem;
     right: 5.2rem;
     z-index: 100;

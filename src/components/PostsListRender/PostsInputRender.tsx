@@ -1,10 +1,9 @@
-import {AllPostsInitialStateType, PaginationDataType} from "../../redux/reducers/all-posts-reducer";
+import {allPostsInitialStateType, PaginationDataType} from "../../redux/reducers/all-posts-reducer";
 import React, {useEffect, useState} from "react";
 import {Col, InputGroup, Row} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import GoBack from "../GoBack/GoBack";
 import SortPostsContainer from "../SortPosts/SortPostsContainer";
-import goBack from "../../assets/svg/back-arrow1.svg";
 import closeCircle from "../../assets/svg/close-circle.svg";
 import s from "../../common/classes/common.module.css";
 import Image from "react-bootstrap/Image";
@@ -12,7 +11,7 @@ import Menu from "../Menu/Menu";
 
 type PostsInputRenderType = {
     SearchPostQuery: string,
-    PostsInitialState: AllPostsInitialStateType,
+    PostsInitialState: allPostsInitialStateType,
     PaginationData: PaginationDataType,
     patchFromState: string
     setSearchPostQuery: (SearchPostQuery: string) => void

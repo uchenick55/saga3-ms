@@ -1,12 +1,12 @@
 import PostsInputRender from "../PostsListRender/PostsInputRender";
-import {AllPostsActions, PaginationDataType, PostsInitialState} from "../../redux/reducers/all-posts-reducer";
+import {allPostsActions, PaginationDataType, PostsInitialState} from "../../redux/reducers/all-posts-reducer";
 import React, {useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {GlobalStateType} from "../../redux/store/store-redux";
 
 const PostInputContainer: React.FC = () => {// Фильтрация постов по поисковой строке
 
-    const {setPaginationDataAC, setSearchPostQueryAC} = AllPostsActions // извлекаем из экшен креатор на получение комментариев
+    const {setPaginationDataAC, setSearchPostQueryAC} = allPostsActions // извлекаем из экшен креатор на получение комментариев
 
     const dispatch = useDispatch()
 

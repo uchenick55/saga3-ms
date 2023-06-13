@@ -10,7 +10,7 @@ type RenderSortButtonType = {
 }
 const RenderSortButton:React.FC<RenderSortButtonType> = ({sortHeaderDirection, setSortHeaderDirection}) => {
     console.log("RenderSortButton")
-    return <Image src={sortHeaderDirection? sortDescending: sortAscending} className={s.SortImage}
+    return <Image src={sortHeaderDirection? sortDescending: sortAscending} style={{width: "2rem", cursor: "pointer"}}
                   alt={"сортировка постов"} title={"сортировка постов"}
                   onClick={() => {
                       sortHeaderDirection === undefined // если направление сортировки не определено

@@ -2,10 +2,10 @@ import RenderSortButton from "../PostsListRender/RenderSortButton";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {GlobalStateType} from "../../redux/store/store-redux";
-import {AllPostsActions} from "../../redux/reducers/all-posts-reducer";
+import {allPostsActions} from "../../redux/reducers/all-posts-reducer";
 
 const SortPostsContainer: React.FC = () => {
-    const {setSortHeaderDirectionAC} = AllPostsActions // извлекаем колбеки из AllPostsActions
+    const {setSortHeaderDirectionAC} = allPostsActions // извлекаем колбеки из allPostsActions
 
     const dispatch = useDispatch()
 

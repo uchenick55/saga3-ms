@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {GlobalStateType} from "./redux/store/store-redux";
 import Preloader from "./common/Preloader/Preloader";
-import {AllPostsActions} from "./redux/reducers/all-posts-reducer";
+import {allPostsActions} from "./redux/reducers/all-posts-reducer";
 import {HashRouter} from "react-router-dom";
 import ErrorBoundary from "./common/ErrorBoundary/ErrorBoundary";
 import ContentContainer from "./components/Content/ContentContainer";
@@ -19,7 +19,7 @@ const App: React.FC = () => {
     const dispatch = useDispatch()
 
     useEffect( () => {
-        dispatch( AllPostsActions.getAllPostsAC() )// запускаем инициализацию приложения (получение данных с сервера)
+        dispatch( allPostsActions.getAllPostsAC() )// запускаем инициализацию приложения (получение данных с сервера)
     }, [dispatch] )
 
     if (!initialisedApp && !Errors) { // если не инициализировано приложение и ошибки отсутствуют, показать прелоадер
