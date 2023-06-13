@@ -45,7 +45,7 @@ export const PostsInitialState = {//стейт по умолчанию
         CurrentRangeLocal: 1, // текущий диапазон пагинации
         PortionSize: 5, // количество отображаемых страниц пагинации между порциями
     },
-    SearchPostQuery: "123"
+    SearchPostQuery: ""
 }
 export type PaginationDataType = typeof PostsInitialState.PaginationData
 

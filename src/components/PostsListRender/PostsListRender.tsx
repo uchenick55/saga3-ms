@@ -81,15 +81,14 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
     return <div>
         {isFetching && <Preloader/>} {/*если идет загрузка, показать прелоадер*/}
 
-        {postInpitRender} {/*поле поиска по заголовкам постов*/}
-
-        {renderSortButton} {/*отрисовка кнопки сортировки*/}
 
         {paginationRender} {/*пагинация*/}
 
         {PostsListFiltSortPagin.length>0
             ? renderPosts //отрисовка постов
             : <div>ничего не найдено</div> }
+        {renderSortButton} {/*отрисовка кнопки сортировки*/}
+
 
     </div>
 } )
