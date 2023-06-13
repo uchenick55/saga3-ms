@@ -7,7 +7,8 @@ export const GET_COMMENTS_BY_POST_ID = "myApp/app-reducer/GET_COMMENTS_BY_POST_I
 export const SET_COMMENTS_TO_STATE = "myApp/app-reducer/SET_COMMENTS_TO_STATE"; //константа записи в стейт комментариев по ID статьи
 export const SET_PAGINATION_DATA = "myApp/app-reducer/SET_PAGINATION_DATA"; //константа записи в стейт данных пагинации
 export const SET_SHOW_COMMENTS = "myApp/app-reducer/SET_SHOW_COMMENTS"; //константа записи в стейт данных пагинации
-export const SET_SEARCH_POST_QUERY = "myApp/app-reducer/SET_SEARCH_POST_QUERY"; //
+export const SET_SEARCH_POST_QUERY = "myApp/app-reducer/SET_SEARCH_POST_QUERY"; // задать поисковый запрос среди постов
+export const SET_SORT_HEADER_DIRECTION = "myApp/app-reducer/SET_SORT_HEADER_DIRECTION"; // задать рнаправление сортировки постов
 
 export const AllPostsActions = {
     getAllPostsAC: () => { // экшн креатор получения всех постов
@@ -30,6 +31,9 @@ export const AllPostsActions = {
     },
     setSearchPostQueryAC: (SearchPostQuery: string) => { //
         return {type: SET_SEARCH_POST_QUERY, SearchPostQuery} as const
+    },
+    setSortHeaderDirectionAC: (SortHeaderDirection: boolean | undefined) => { //
+        return {type: SET_SORT_HEADER_DIRECTION, SortHeaderDirection} as const
     }
 }
 
@@ -45,7 +49,8 @@ export const PostsInitialState = {//стейт по умолчанию
         CurrentRangeLocal: 1, // текущий диапазон пагинации
         PortionSize: 5, // количество отображаемых страниц пагинации между порциями
     },
-    SearchPostQuery: ""
+    SearchPostQuery: "", // поисковый запрос
+    SortHeaderDirection: undefined as boolean | undefined//направление сортировки
 }
 export type PaginationDataType = typeof PostsInitialState.PaginationData
 
@@ -84,6 +89,12 @@ const AllPostsReducer = (state: AllPostsInitialStateType = PostsInitialState, ac
             stateCopy = {
                 ...state, // копия всего стейта
                 SearchPostQuery: action.SearchPostQuery, // записываем обновленный SearchPostQuery в стейт
+            }
+            return stateCopy; // возврат копии стейта после изменения
+        case SET_SORT_HEADER_DIRECTION:  // задать направление сортировки постов
+            stateCopy = {
+                ...state, // копия всего стейта
+                SortHeaderDirection: action.SortHeaderDirection, // записываем обновленный SortHeaderDirection в стейт
             }
             return stateCopy; // возврат копии стейта после изменения
         default:

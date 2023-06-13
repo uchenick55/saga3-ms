@@ -35,40 +35,32 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
         dispatch( setPaginationDataAC( PaginationData ) )
     },[])
 
-    const {getCommentsByPostIdAC, setPaginationDataAC, setSearchPostQueryAC} = AllPostsActions // извлекаем из экшен креатор на получение комментариев
+    const {getCommentsByPostIdAC, setPaginationDataAC, setSearchPostQueryAC, setSortHeaderDirectionAC} = AllPostsActions // извлекаем колбеки из AllPostsActions
 
     const getComments = useCallback( (postId: number) => { // мемоизируем колбек получения комментариев для ререндеров
         dispatch( getCommentsByPostIdAC( postId ) )
     }, [] )
 
-    const isFetching: boolean = useSelector( (state: GlobalStateType) => state.app.isFetching ) // статус индикации загрузки
-
+    // сделать полную копию полученых в пропсах постов
     const PostsListCopied: Array<PostType> = structuredClone( PostsList ) // полная копия массива постов
 
-    //// Фильтрация постов по поисковой строке
-    const SearchPostQuery: string = useSelector( (state: GlobalStateType) => state.allPosts.SearchPostQuery ) //
-    const setSearchPostQuery =(SearchPostQuery:string) => dispatch(setSearchPostQueryAC(SearchPostQuery))
+    // извлечь статус загрузки
+    const isFetching: boolean = useSelector( (state: GlobalStateType) => state.app.isFetching ) // статус индикации загрузки
 
-    // определение направления сортировки по заголовкам массива постов
-    const [sortHeaderDirection, setSortHeaderDirection] = useState<boolean | undefined>( undefined )
+    // извлечь поисковый запрос из стейта
+    const SearchPostQuery: string = useSelector( (state: GlobalStateType) => state.allPosts.SearchPostQuery ) //
+
+    // извлечь направления сортировки по заголовкам массива постов
+    const sortHeaderDirection: boolean | undefined = useSelector( (state: GlobalStateType) => state.allPosts.SortHeaderDirection )
 
     // фильтруем заголовки на содержание поисковой строки (переводим в один регистр для стравнения)
     let PostsListFiltered: Array<PostType> = postListSearchFilterFn(PostsListCopied, SearchPostQuery)
 
-    //Список постов после фильтрации и сортировки
+    //сортируем фильтрованый список
     const PostsListFiltSort: Array<PostType> = postListSortFn( PostsListFiltered, sortHeaderDirection )
 
-    //Список постов после фильтрации, сортировки и пагинации
+    //Делаем пагинацию для отсортированого и отфильтрованого списка
     const PostsListFiltSortPagin: Array<PostType> = postListPaginFn( PostsListFiltSort, PageSize, CurrentPage )
-
-    const postInpitRender = <PostsInputRender //поле поиска по заголовкам постов
-        SearchPostQuery={SearchPostQuery} setSearchPostQuery={setSearchPostQuery}
-        setPaginationData={setPaginationData} PostsInitialState={PostsInitialState}
-        PaginationData={PaginationData}
-    />
-
-    const renderSortButton = <RenderSortButton // отрисовка кнопки сортировки
-        sortHeaderDirection={sortHeaderDirection} setSortHeaderDirection={setSortHeaderDirection}/>
 
     const paginationRender = <PaginationBS // отрисовка пагинации
         TotalPostsCount={PostsListFiltered.length} PageSize={PageSize}
@@ -81,15 +73,12 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
     return <div>
         {isFetching && <Preloader/>} {/*если идет загрузка, показать прелоадер*/}
 
-
         {paginationRender} {/*пагинация*/}
 
         {PostsListFiltSortPagin.length>0
             ? renderPosts //отрисовка постов
-            : <div>ничего не найдено</div> }
-        {renderSortButton} {/*отрисовка кнопки сортировки*/}
-
-
+            : <div>ничего не найдено</div>
+        }
     </div>
 } )
 export default PostsListRender

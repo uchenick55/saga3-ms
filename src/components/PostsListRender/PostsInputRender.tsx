@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {InputGroup} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import GoBack from "../GoBack/GoBack";
-import Navbar from "react-bootstrap/Navbar";
+import SortPostsContainer from "../SortPosts/SortPostsContainer";
 
 type PostsInputRenderType = {
     SearchPostQuery: string,
@@ -48,7 +48,7 @@ const PostsInputRender: React.FC<PostsInputRenderType> = (
 
         <InputGroup className="mb-3">
             <InputGroup.Text > <GoBack/> </InputGroup.Text>
-            <InputGroup.Text >Сортировка</InputGroup.Text>
+            <InputGroup.Text ><SortPostsContainer/></InputGroup.Text>
             <Form.Control
                 placeholder="поиск по постам"
                 autoFocus={true}
