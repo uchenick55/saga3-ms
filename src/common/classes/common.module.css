@@ -1,5 +1,5 @@
 .goBack {
-    width: 3rem;
+    width: 2rem;
     cursor: pointer;
 }
 
@@ -8,5 +8,13 @@
 }
 
 .SortImage {
-    width: 3rem;
+    width: 2rem;
+}
+
+.CloseCircle {
+    width: 1.5rem;
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+    z-index: 100;
 }

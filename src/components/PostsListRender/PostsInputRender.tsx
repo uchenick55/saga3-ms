@@ -4,6 +4,11 @@ import {InputGroup} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import GoBack from "../GoBack/GoBack";
 import SortPostsContainer from "../SortPosts/SortPostsContainer";
+import goBack from "../../assets/svg/back-arrow1.svg";
+import closeCircle from "../../assets/svg/close-circle.svg";
+
+import s from "../../common/classes/common.module.css";
+import Image from "react-bootstrap/Image";
 
 type PostsInputRenderType = {
     SearchPostQuery: string,
@@ -43,14 +48,19 @@ const PostsInputRender: React.FC<PostsInputRenderType> = (
     }, [QueryTmp]);
 
 
-    return <div>
-        <div onClick={() =>onClearField()}>x</div>
+    return <div className='position-relative'>
+        <div >
+            <Image src={closeCircle} className={s.CloseCircle}
+                   alt={"go back"} title={"go back"}
+                   onClick={() =>onClearField()} // очистить поле поиска
+            />
+        </div>
 
         <InputGroup className="mb-3">
             <InputGroup.Text > <GoBack/> </InputGroup.Text>
             <InputGroup.Text ><SortPostsContainer/></InputGroup.Text>
             <Form.Control
-                placeholder="поиск по постам"
+                placeholder="поиск по постам..."
                 autoFocus={true}
                 type="text"
                 value={QueryTmp}
