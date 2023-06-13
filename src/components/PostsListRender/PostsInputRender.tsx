@@ -9,6 +9,7 @@ import closeCircle from "../../assets/svg/close-circle.svg";
 
 import s from "../../common/classes/common.module.css";
 import Image from "react-bootstrap/Image";
+import Menu from "../Menu/Menu";
 
 type PostsInputRenderType = {
     SearchPostQuery: string,
@@ -19,8 +20,8 @@ type PostsInputRenderType = {
 }
 const PostsInputRender: React.FC<PostsInputRenderType> = (
     {SearchPostQuery, setSearchPostQuery, setPaginationData, PostsInitialState, PaginationData}) => {
-    console.log("PostsInputRender")
-    const [QueryTmp, setQueryTmp] = useState(SearchPostQuery)
+    console.log( "PostsInputRender" )
+    const [QueryTmp, setQueryTmp] = useState( SearchPostQuery )
 
     const onChangeSearchPostQuery = (SearchPostQuery: string) => {// задаем новый поисковый запрос
         setSearchPostQuery( SearchPostQuery ) // обновляем локальный стейт
@@ -32,42 +33,45 @@ const PostsInputRender: React.FC<PostsInputRenderType> = (
 
     const onClearField = () => {
         setSearchPostQuery( "" )
-        setQueryTmp("")
+        setQueryTmp( "" )
     }
 
-    useEffect(() => { // задержка ввода input (не реагирует на каждый символ сразу)
+    useEffect( () => { // задержка ввода input (не реагирует на каждый символ сразу)
         const setSearchPostQueryTmp = QueryTmp // временное значение до задержки
-        const id = setTimeout(() => {
+        const id = setTimeout( () => {
             if (setSearchPostQueryTmp === QueryTmp) { // если по истечениию задержки поисковый запрос не изменился
-                onChangeSearchPostQuery(QueryTmp) // применить поисковый запрос для фильтрации
+                onChangeSearchPostQuery( QueryTmp ) // применить поисковый запрос для фильтрации
             }
-        }, 500); // задержка, мс
+        }, 500 ); // задержка, мс
         return () => {
-            clearTimeout(id); //
+            clearTimeout( id ); //
         };
-    }, [QueryTmp]);
+    }, [QueryTmp] );
 
 
     return <div className='position-relative'>
-        <div >
+        <div>
             <Image src={closeCircle} className={s.CloseCircle}
                    alt={"go back"} title={"go back"}
-                   onClick={() =>onClearField()} // очистить поле поиска
+                   onClick={() => onClearField()} // очистить поле поиска
             />
         </div>
 
-        <InputGroup className="mb-3">
-            <InputGroup.Text > <GoBack/> </InputGroup.Text>
-            <InputGroup.Text ><SortPostsContainer/></InputGroup.Text>
+        <InputGroup>
+            <InputGroup.Text> <GoBack/> </InputGroup.Text>
+            <InputGroup.Text><SortPostsContainer/></InputGroup.Text>
             <Form.Control
                 placeholder="поиск по постам..."
                 autoFocus={true}
                 type="text"
                 value={QueryTmp}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setQueryTmp(e.target.value) }}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setQueryTmp( e.target.value )
+                }}
             />
+            <InputGroup.Text><Menu/></InputGroup.Text>
         </InputGroup>
-        <InputGroup.Text >меню</InputGroup.Text>
+
 
     </div>
 }
