@@ -32,7 +32,7 @@ const UserCommon: React.FC<ownPropsType> = ({itemId}) => {
         <UserCard userData={userData}/>
         <h4 className='d-flex justify-content-center'>Опубликованные посты</h4>
 
-        <PostsListRender PostsList={allPostsFilteredByUser}/>
+        <PostsListRender postsList={allPostsFilteredByUser}/>
 
     </div>
 }

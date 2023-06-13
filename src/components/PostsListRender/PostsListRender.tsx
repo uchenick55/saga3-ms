@@ -16,9 +16,9 @@ import notFound from "../../assets/svg/not-found.svg";
 import Image from "react-bootstrap/Image";
 
 type postsListRenderType = {
-    PostsList: Array<postType>
+    postsList: Array<postType>
 }
-const PostsListRender: React.FC<postsListRenderType> = ( ({PostsList}) => {
+const PostsListRender: React.FC<postsListRenderType> = ( ({postsList}) => {
 
     console.log( "PostsListRender" )
     const dispatch = useDispatch()
@@ -41,7 +41,7 @@ const PostsListRender: React.FC<postsListRenderType> = ( ({PostsList}) => {
     }, [] )
 
     // сделать полную копию полученых в пропсах постов
-    const PostsListCopied: Array<postType> = structuredClone( PostsList ) // полная копия массива постов
+    const postsListCopied: Array<postType> = structuredClone( postsList ) // полная копия массива постов
 
     // извлечь статус загрузки
     const isFetching: boolean = useSelector( (state: globalStateType) => state.app.isFetching ) // статус индикации загрузки
@@ -53,28 +53,28 @@ const PostsListRender: React.FC<postsListRenderType> = ( ({PostsList}) => {
     const sortHeaderDirection: boolean | undefined = useSelector( (state: globalStateType) => state.allPosts.sortHeaderDirection )
 
     // фильтруем заголовки на содержание поисковой строки (переводим в один регистр для стравнения)
-    let PostsListFiltered: Array<postType> = postListSearchFilterFn(PostsListCopied, searchPostQuery)
+    let postsListFiltered: Array<postType> = postListSearchFilterFn(postsListCopied, searchPostQuery)
 
     //сортируем фильтрованый список
-    const PostsListFiltSort: Array<postType> = postListSortFn( PostsListFiltered, sortHeaderDirection )
+    const postsListFiltSort: Array<postType> = postListSortFn( postsListFiltered, sortHeaderDirection )
 
     //Делаем пагинацию для отсортированого и отфильтрованого списка
-    const PostsListFiltSortPagin: Array<postType> = postListPaginFn( PostsListFiltSort, pageSize, сurrentPage )
+    const postsListFiltSortPagin: Array<postType> = postListPaginFn( postsListFiltSort, pageSize, сurrentPage )
 
     const paginationRender = <PaginationBS // отрисовка пагинации
-        totalPostsCount={PostsListFiltered.length} pageSize={pageSize}
+        totalPostsCount={postsListFiltered.length} pageSize={pageSize}
         сurrentPage={сurrentPage} currentRangeLocal={currentRangeLocal}
         portionSize={portionSize} setPaginationData={setPaginationData}
     />
 
-    const renderPosts = <RenderPosts PostsList={PostsListFiltSortPagin} getComments={getComments}/>
+    const renderPosts = <RenderPosts postsList={postsListFiltSortPagin} getComments={getComments}/>
 
     return <div>
         {isFetching && <Preloader/>} {/*если идет загрузка, показать прелоадер*/}
 
-        {PostsListFiltSortPagin.length>0 && paginationRender} {/*пагинация*/}
+        {postsListFiltSortPagin.length>0 && paginationRender} {/*пагинация*/}
 
-        {PostsListFiltSortPagin.length>0
+        {postsListFiltSortPagin.length>0
             ? renderPosts //отрисовка постов
             :  <div className='d-flex justify-content-center my-5'>
                 {!isFetching && <div>

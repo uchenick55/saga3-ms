@@ -1,9 +1,9 @@
 import {postType} from "../../../common/commonTypes/commonTypes";
 
-type postListSortFnType = (PostsList: Array<postType>, sortHeaderDirection: boolean | undefined) => Array<postType>
-const postListSortFn:postListSortFnType = (PostsList, sortHeaderDirection) => {
+type postListSortFnType = (postsList: Array<postType>, sortHeaderDirection: boolean | undefined) => Array<postType>
+const postListSortFn:postListSortFnType = (postsList, sortHeaderDirection) => {
     sortHeaderDirection !== undefined &&
-    PostsList.sort( (a: postType, b: postType) => { // сортируем массив постов по заголовкам
+    postsList.sort( (a: postType, b: postType) => { // сортируем массив постов по заголовкам
         const partA = a.title.toLowerCase(); // ignore upper and lowercase
         const partB = b.title.toLowerCase(); // ignore upper and lowercase
         return sortHeaderDirection // если прямая/обратная сортировка
@@ -11,6 +11,6 @@ const postListSortFn:postListSortFnType = (PostsList, sortHeaderDirection) => {
             : (partA < partB) ? 1 : -1 // возврат 1 или -1 для сортировки
     } )
 
-    return PostsList
+    return postsList
 }
 export default postListSortFn

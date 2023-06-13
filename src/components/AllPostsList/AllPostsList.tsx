@@ -10,7 +10,7 @@ const AllPostsList:React.FC = () => {
 
     return <div>
         <h2 className='d-flex justify-content-center'>Список постов</h2>
-        <PostsListRender PostsList={allPosts}/>
+        <PostsListRender postsList={allPosts}/>
     </div>
 }
 export default AllPostsList
