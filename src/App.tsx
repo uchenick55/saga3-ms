@@ -13,7 +13,7 @@ import FooterContainer from "./components/Footer/FooterContainer";
 
 const App: React.FC = () => {
     const initialisedApp: boolean = useSelector( (state: globalStateType) => state.app.initialisedApp )
-    const Errors: errorType = useSelector( (state: globalStateType) => state.app.error )
+    const error: errorType = useSelector( (state: globalStateType) => state.app.error )
 
 
     const dispatch = useDispatch()
@@ -22,13 +22,13 @@ const App: React.FC = () => {
         dispatch( allPostsActions.getAllPostsAC() )// запускаем инициализацию приложения (получение данных с сервера)
     }, [dispatch] )
 
-    if (!initialisedApp && !Errors) { // если не инициализировано приложение и ошибки отсутствуют, показать прелоадер
+    if (!initialisedApp && !error) { // если не инициализировано приложение и ошибки отсутствуют, показать прелоадер
         return <Preloader/>
     }
 
     return <div>
-        {Errors.stack // вывод ошибок запроса или контента
-            ? <ErrorsRender Errors={Errors} /> //вывод ошибок при наличии
+        {error.stack // вывод ошибок запроса или контента
+            ? <ErrorsRender error={error} /> //вывод ошибок при наличии
             : <HashRouter> {/*BrowserRouter для продакшн, HashRouter для gh-pages*/}
                 <ErrorBoundary> {/*Общий обработчик ошибок во всем приложении*/}
                     <HeaderContainer/> {/*заголовок*/}

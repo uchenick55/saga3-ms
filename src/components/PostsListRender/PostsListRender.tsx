@@ -12,6 +12,8 @@ import postListSortFn from "./Functions/postListSortFn";
 import RenderPosts from "./RenderPosts";
 import postListPaginFn from "./Functions/postListPaginFn";
 import postListSearchFilterFn from "./Functions/postListSearchFilterFn";
+import notFound from "../../assets/svg/not-found.svg";
+import Image from "react-bootstrap/Image";
 
 type postsListRenderType = {
     PostsList: Array<postType>
@@ -60,7 +62,7 @@ const PostsListRender: React.FC<postsListRenderType> = ( ({PostsList}) => {
     const PostsListFiltSortPagin: Array<postType> = postListPaginFn( PostsListFiltSort, pageSize, сurrentPage )
 
     const paginationRender = <PaginationBS // отрисовка пагинации
-        TotalPostsCount={PostsListFiltered.length} pageSize={pageSize}
+        totalPostsCount={PostsListFiltered.length} pageSize={pageSize}
         сurrentPage={сurrentPage} currentRangeLocal={currentRangeLocal}
         portionSize={portionSize} setPaginationData={setPaginationData}
     />
@@ -70,11 +72,18 @@ const PostsListRender: React.FC<postsListRenderType> = ( ({PostsList}) => {
     return <div>
         {isFetching && <Preloader/>} {/*если идет загрузка, показать прелоадер*/}
 
-        {paginationRender} {/*пагинация*/}
+        {PostsListFiltSortPagin.length>0 && paginationRender} {/*пагинация*/}
 
         {PostsListFiltSortPagin.length>0
             ? renderPosts //отрисовка постов
-            :  <div>{!isFetching && <div>ничего не найдено</div>}</div> // если загрузка завершена и данных нет, отобразить уведомление
+            :  <div className='d-flex justify-content-center my-5'>
+                {!isFetching && <div>
+                    <Image src={notFound} style={{width:"7rem"}}
+                           alt={"ничего не найдено"} title={"ничего не найдено"}
+                    />
+                    <h3>ничего не найдено</h3>
+                </div> }
+                </div> // если загрузка завершена и данных нет, отобразить уведомление
         }
 
     </div>

@@ -10,9 +10,9 @@ import withRouter from "../../common/hoc/withRouter";
 import UserCard from "./UserCard";
 
 type ownPropsType = {
-    ItemId: number // id пользователя
+    itemId: number // id пользователя
 }
-const UserCommon: React.FC<ownPropsType> = ({ItemId}) => {
+const UserCommon: React.FC<ownPropsType> = ({itemId}) => {
     console.log( "UserPosts" )
 
     const dispatch = useDispatch()
@@ -20,12 +20,12 @@ const UserCommon: React.FC<ownPropsType> = ({ItemId}) => {
     const userData: userDataType = useSelector( (state: globalStateType) => state.user.userData )  //данные автора статей по его ID
 
     //отфильтровать посты только по Id выбранного пользователя
-    const allPostsFilteredByUser: Array<postType> = allPosts.filter((post:postType)=>post.userId===ItemId)
+    const allPostsFilteredByUser: Array<postType> = allPosts.filter((post:postType)=>post.userId===itemId)
 
     useEffect(()=>{
-        dispatch( userActions.getUserDataAC(ItemId)  )//получить данные пользователя по его Id
+        dispatch( userActions.getUserDataAC(itemId)  )//получить данные пользователя по его Id
         dispatch( allPostsActions.setPaginationDataAC( PostsInitialState.paginationData ) ) // занулить пагинацию
-    },[dispatch, ItemId])
+    },[dispatch, itemId])
 
     return <div>
         <h2 className='d-flex justify-content-center'>О пользователе</h2>
