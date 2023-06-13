@@ -6,6 +6,7 @@ import {CommentType} from "../../common/commonTypes/commonTypes";
 import {useSelector} from "react-redux";
 import {GlobalStateType} from "../../redux/store/store-redux";
 import CommentItem from "./CommentItem";
+import {Button} from "react-bootstrap";
 
 type PostItemType = {
     "userId": number, // ID автора статей
@@ -23,20 +24,28 @@ const PostItem: React.FC<PostItemType> = memo( ({body, title, userId, Avatar, id
         useSelector( (state: GlobalStateType) => state.allPosts.ShowComments ) // показать / скрыть комментарии
     const CommentsFilteredById: Array<CommentType> = AllComments.filter( comment => comment.postId === id )
 
-    return <div>
+    return <div className='my-5'>
+        {/* аватарка автора поста со ссылкой на его страницу */}
         <NavLink to={'/user-posts/' + userId}>
-            <Image fluid={true} src={Avatar} className={s.PostItemImage}
+            <Image fluid={true} src={Avatar} className="float-start my-2 mx-4 shadow" style={{width: "5rem"}}
                    alt={"Аватар пользователя"} title={`Все посты пользователя ${userId}`}
             />
         </NavLink>
-        <h3> {title} </h3>
-        <div> {body} </div>
-        <button onClick={() => {
-            getComments( id )
-        }}>
-            Комментарии
-        </button>
-        {ShowComments.includes(id) && CommentsFilteredById.map( (comment: CommentType) => {
+        <h5><b>{title}</b></h5>
+        <div className="flex-grow-1 ms-3">
+            <div> {body} </div>
+        </div>
+
+
+        <div className='d-flex justify-content-end my-2'>
+            <Button className='btn-sm btn-secondary' onClick={() => {
+                getComments( id )
+            }}>
+                Комментарии
+            </Button>
+        </div>
+
+        {ShowComments.includes( id ) && CommentsFilteredById.map( (comment: CommentType) => {
             const {id, name, email, body} = comment
             return <CommentItem key={id} name={name} body={body} email={email}/>
         } )}

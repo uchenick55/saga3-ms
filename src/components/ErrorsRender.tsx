@@ -5,8 +5,8 @@ type ErrorsRenderType = {
 }
 const ErrorsRender: React.FC<ErrorsRenderType> = ({Errors}) => {
     console.log("ErrorsRender")
-    return <div className="col-md-8 offset-md-2 my-5">
-        <h3>{Errors.stack}</h3>
+    return <div className="d-flex justify-content-center my-5 py-5">
+        <h3>{Errors.message}</h3>
     </div>
 }
 export default ErrorsRender

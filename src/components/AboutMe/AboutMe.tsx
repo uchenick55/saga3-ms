@@ -4,7 +4,7 @@ import myAvatar from "../../assets/jpeg/myAvarat.jpg";
 
 const AboutMe: React.FC = () => {
     return <div>
-        <h2>Обо мне</h2>
+        <h2 className='d-flex justify-content-center'>Обо мне</h2>
         <p>Евгений Сазонов</p>
         <div><Image fluid={true} src={myAvatar} className={"rounded"}
                     alt={"аватар"} title={`аватар`}

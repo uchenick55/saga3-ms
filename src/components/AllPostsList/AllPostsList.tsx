@@ -9,7 +9,7 @@ const AllPostsList:React.FC = () => {
     const AllPosts: Array<PostType> = useSelector( (state: GlobalStateType) => state.allPosts.AllPosts )  //все посты с сервера
 
     return <div>
-        <h2>Список постов</h2>
+        <h2 className='d-flex justify-content-center'>Список постов</h2>
         <PostsListRender PostsList={AllPosts}/>
     </div>
 }

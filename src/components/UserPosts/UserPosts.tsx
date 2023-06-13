@@ -28,7 +28,7 @@ const UserPosts: React.FC<OwnPropsType> = ({ItemId}) => {
     },[dispatch, ItemId])
 
     return <div>
-        <h2>Подробности о пользователе</h2>
+        <h2 className='d-flex justify-content-center'>Подробности о пользователе</h2>
         <UserCard UserData={UserData}/>
         <PostsListRender PostsList={AllPostsFilteredByUser}/>
 
