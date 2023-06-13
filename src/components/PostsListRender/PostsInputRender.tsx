@@ -9,7 +9,7 @@ import s from "../../common/classes/common.module.css";
 import Image from "react-bootstrap/Image";
 import Menu from "../Menu/Menu";
 
-type PostsInputRenderType = {
+type postsInputRenderType = {
     searchPostQuery: string,
     PostsInitialState: allPostsInitialStateType,
     paginationData: paginationDataType,
@@ -17,7 +17,7 @@ type PostsInputRenderType = {
     setSearchPostQuery: (searchPostQuery: string) => void
     setPaginationData: (paginationData: paginationDataType) => void
 }
-const PostsInputRender: React.FC<PostsInputRenderType> = (
+const PostsInputRender: React.FC<postsInputRenderType> = (
     {searchPostQuery, setSearchPostQuery, setPaginationData, PostsInitialState, paginationData, patchFromState}) => {
     console.log( "PostsInputRender" )
     const [QueryTmp, setQueryTmp] = useState( searchPostQuery )

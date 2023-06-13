@@ -1,13 +1,13 @@
-import {PostType} from "../../common/commonTypes/commonTypes";
+import {postType} from "../../common/commonTypes/commonTypes";
 import React from "react";
 import PostItem from "./PostItem";
 import Avatar from "../../assets/svg/avatar-default.svg";
 
-type RenderPostsType = {
-    PostsList: Array<PostType>,
+type renderPostsType = {
+    PostsList: Array<postType>,
     getComments: (postId: number) => void
 }
-const RenderPosts:React.FC<RenderPostsType> = ({PostsList, getComments}) => {
+const RenderPosts:React.FC<renderPostsType> = ({PostsList, getComments}) => {
     console.log("RenderPosts")
     return <div>{
         PostsList// Во всех отсортированных и отфильтрованых постах с сервера

@@ -1,7 +1,7 @@
 import RenderSortButton from "../PostsListRender/RenderSortButton";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {GlobalStateType} from "../../redux/store/store-redux";
+import {globalStateType} from "../../redux/store/store-redux";
 import {allPostsActions} from "../../redux/reducers/all-posts-reducer";
 
 const SortPostsContainer: React.FC = () => {
@@ -10,7 +10,7 @@ const SortPostsContainer: React.FC = () => {
     const dispatch = useDispatch()
 
     // определение направления сортировки по заголовкам массива постов
-    const sortHeaderDirection: boolean | undefined = useSelector( (state: GlobalStateType) => state.allPosts.sortHeaderDirection )
+    const sortHeaderDirection: boolean | undefined = useSelector( (state: globalStateType) => state.allPosts.sortHeaderDirection )
     // колбек направления сортировки по заголовкам массива постов
     const setSortHeaderDirection = (sortHeaderDirection:boolean | undefined) => dispatch(setSortHeaderDirectionAC(sortHeaderDirection))
 

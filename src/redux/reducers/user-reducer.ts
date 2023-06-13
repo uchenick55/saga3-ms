@@ -1,4 +1,4 @@
-import {InferActionsTypes} from "../store/store-redux";
+import {inferActionsTypes} from "../store/store-redux";
 import {userDataType} from "../../common/commonTypes/commonTypes";
 
 export const GET_USER_DATA = "myApp/app-reducer/GET_USER_DATA"; //константа получения данных по пользователю
@@ -13,15 +13,15 @@ export const userActions = {
     },
 }
 
-type userActionsTypes = InferActionsTypes<typeof userActions>
+type userActionsTypes = inferActionsTypes<typeof userActions>
 
 const initialState = {//стейт по умолчанию
     userData: {} as userDataType, // данные по выбранному пользователю
 }
-export type UserInitialStateType = typeof initialState
+type userInitialStateType = typeof initialState
 
-const UserReducer = (state: UserInitialStateType = initialState, action: userActionsTypes): UserInitialStateType => {//редьюсер инициализации приложения
-    let stateCopy: UserInitialStateType;// объявлениечасти части стейта до изменения редьюсером
+const userReducer = (state: userInitialStateType = initialState, action: userActionsTypes): userInitialStateType => {//редьюсер инициализации приложения
+    let stateCopy: userInitialStateType;// объявлениечасти части стейта до изменения редьюсером
     switch (action.type) {
         case SET_USER_DATA_TO_STATE:  // экшн записи данных пользователя в стейт
             stateCopy = {
@@ -34,4 +34,4 @@ const UserReducer = (state: UserInitialStateType = initialState, action: userAct
     }
 }
 
-export default UserReducer
+export default userReducer

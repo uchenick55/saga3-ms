@@ -4,11 +4,11 @@ import sortDescending from "../../assets/svg/sort-descending.svg"
 import s from "../../common/classes/common.module.css";
 import Image from "react-bootstrap/Image";
 
-type RenderSortButtonType = {
+type renderSortButtonType = {
     sortHeaderDirection: boolean | undefined,
     setSortHeaderDirection: (sortHeaderDirection: boolean | undefined) => void
 }
-const RenderSortButton:React.FC<RenderSortButtonType> = ({sortHeaderDirection, setSortHeaderDirection}) => {
+const RenderSortButton:React.FC<renderSortButtonType> = ({sortHeaderDirection, setSortHeaderDirection}) => {
     console.log("RenderSortButton")
     return <Image src={sortHeaderDirection? sortDescending: sortAscending} style={{width: "2rem", cursor: "pointer"}}
                   alt={"сортировка постов"} title={"сортировка постов"}

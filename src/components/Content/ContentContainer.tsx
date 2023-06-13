@@ -5,7 +5,7 @@ import ErrorBoundary from "../../common/ErrorBoundary/ErrorBoundary";
 import {Container} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {appActions} from "../../redux/reducers/app-reducer";
-import {GlobalStateType} from "../../redux/store/store-redux";
+import {globalStateType} from "../../redux/store/store-redux";
 import checkURL from "../../common/functions/checkURL";
 
 const AllPostsList2 = React.lazy( () => import("../AllPostsList/AllPostsList") )
@@ -20,7 +20,7 @@ let ContentContainer: React.FC = () => { // вынес роутинг конте
 
     const dispatch = useDispatch()
 
-    const patchFromState = useSelector((state:GlobalStateType)=>state.app.patch) // путь из URL, записанный в стейт
+    const patchFromState = useSelector((state:globalStateType)=>state.app.patch) // путь из URL, записанный в стейт
 
     useEffect( () => { // определение и запись в стейт путь из адресной строки бораузера
 

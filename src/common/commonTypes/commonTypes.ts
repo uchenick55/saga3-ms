@@ -1,14 +1,14 @@
-export type PostType = {
+export type postType = {
     "userId": number,
     "id": number,
     "title": string,
     "body": string
 }
 
-export type NulableType<n> = null | n // тип нулевой
+export type nulableType<n> = null | n // тип нулевой
 
 
-export type CommentType = {
+export type commentType = {
     "postId": number, // id поста, к которому идут комментарии
     "id": number, // id данного сомментария
     "name": "quo vero reiciendis velit similique earum", // заголовок комментария
@@ -41,7 +41,7 @@ export type userDataType = {
     }
 }
 
-export type ErrorType = {
+export type errorType = {
     code: string,
     config: {},
     message:string,
@@ -51,7 +51,7 @@ export type ErrorType = {
 
 }
 
-export type JSPHResponseType<D=Array<PostType>> = { // тип ответа от сервера, по умолчанию - посты
+export type jSPHResponseType<D=Array<postType>> = { // тип ответа от сервера, по умолчанию - посты
     config: object,
     data: D,
     headers: object,

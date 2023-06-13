@@ -1,6 +1,6 @@
 import React, {ReactNode} from "react";
-import {NulableType} from "../commonTypes/commonTypes";
-type ErrorBoundaryPropsType = {
+import {nulableType} from "../commonTypes/commonTypes";
+type errorBoundaryPropsType = {
     children: ReactNode
 }
 
@@ -9,17 +9,17 @@ type errorInfoType = {
     componentStack: string
 }
 
-type ErrorBoundaryStateType = {
-    error: NulableType<errorType>,
-    errorInfo: NulableType<errorInfoType>
+type errorBoundaryStateType = {
+    error: nulableType<errorType>,
+    errorInfo: nulableType<errorInfoType>
 }
-class ErrorBoundary extends React.Component <ErrorBoundaryPropsType, ErrorBoundaryStateType> {
-    constructor(props:ErrorBoundaryPropsType) {
+class ErrorBoundary extends React.Component <errorBoundaryPropsType, errorBoundaryStateType> {
+    constructor(props:errorBoundaryPropsType) {
         super(props);
         this.state = { error: null, errorInfo: null };
     }
 
-    componentDidCatch(error: NulableType<errorType>, errorInfo: NulableType<errorInfoType>) {
+    componentDidCatch(error: nulableType<errorType>, errorInfo: nulableType<errorInfoType>) {
         //Засетать в локал стейт ошибки из вложенных компонентах, если появятся при рендере
         this.setState({
             error: error,

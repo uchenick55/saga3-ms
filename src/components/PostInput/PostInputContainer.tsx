@@ -2,7 +2,7 @@ import PostsInputRender from "../PostsListRender/PostsInputRender";
 import {allPostsActions, paginationDataType, PostsInitialState} from "../../redux/reducers/all-posts-reducer";
 import React, {useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {GlobalStateType} from "../../redux/store/store-redux";
+import {globalStateType} from "../../redux/store/store-redux";
 
 const PostInputContainer: React.FC = () => {// Фильтрация постов по поисковой строке
 
@@ -11,10 +11,10 @@ const PostInputContainer: React.FC = () => {// Фильтрация постов
     const dispatch = useDispatch()
 
     //имя страницы из URL
-    const patchFromState: string = useSelector( (state: GlobalStateType) => state.app.patch) //
+    const patchFromState: string = useSelector( (state: globalStateType) => state.app.patch) //
 
     // извлекаем из стейта значение поисковой строки
-    const searchPostQuery: string = useSelector( (state: GlobalStateType) => state.allPosts.searchPostQuery ) //
+    const searchPostQuery: string = useSelector( (state: globalStateType) => state.allPosts.searchPostQuery ) //
    //колбек на обновление поисковой строки
     const setSearchPostQuery = (searchPostQuery: string) => dispatch( setSearchPostQueryAC( searchPostQuery ) )
 
@@ -24,7 +24,7 @@ const PostInputContainer: React.FC = () => {// Фильтрация постов
     }
 
     //все данные пагинации
-    const paginationData: paginationDataType = useSelector( (state: GlobalStateType) => state.allPosts.paginationData )
+    const paginationData: paginationDataType = useSelector( (state: globalStateType) => state.allPosts.paginationData )
 
     return <PostsInputRender //поле поиска по заголовкам постов
         searchPostQuery={searchPostQuery} setSearchPostQuery={setSearchPostQuery}

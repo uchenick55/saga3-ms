@@ -4,12 +4,12 @@ import createSagaMiddleware from 'redux-saga'
 import rootSaga from "../saga/saga";
 import appReducer from "../reducers/app-reducer";
 import AllPostsReducer from "../reducers/all-posts-reducer";
-import UserReducer from "../reducers/user-reducer";
+import userReducer from "../reducers/user-reducer";
 
 const reducers = combineReducers({
     app: appReducer,
     allPosts: AllPostsReducer,
-    user: UserReducer
+    user: userReducer
 })
 
 const sagaMiddleware = createSagaMiddleware()
@@ -28,16 +28,16 @@ const store = createStore(
     ));
 type reducersType = typeof reducers
 
-export type GlobalStateType = ReturnType<reducersType>// глобальный тип стейта
+export type globalStateType = ReturnType<reducersType>// глобальный тип стейта
 
 //https://habr.com/ru/companies/alfa/articles/452620/ + https://www.youtube.com/watch?v=2yJXFMqEbJs&list=PLcvhF2Wqh7DM3z1XqMw0kPuxpbyMo3HvN&index=9&t=870s
 //Конструкция, позволяющая автоматически получать общий тип, основываясь на объекте из ActionCreator для каждого редьюсера
-export type PropertiesTypes<T>=T extends {[key:string]: infer U}? U:never
+type propertiesTypes<T>=T extends {[key:string]: infer U}? U:never
 //определяем тип переменной T = если переменная T является объектом {}, у которой ключ key является строкой (setStatus)
 // например setStatus: (newStatus: string) => { return {type: SET_STATUS, newStatus} as const},
 // то определяем тип экшн креатора (infer U) и возвращаем определенный тип, иначе ничего не возвращаем (never)
 
-export type InferActionsTypes<T extends {[key:string]: (...args: any) => any}> = ReturnType<PropertiesTypes<T>>
+export type inferActionsTypes<T extends {[key:string]: (...args: any) => any}> = ReturnType<propertiesTypes<T>>
 //автоматическое определение типов экшенов для работы в редюсерах
 
 sagaMiddleware.run(rootSaga)

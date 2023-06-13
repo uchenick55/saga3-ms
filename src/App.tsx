@@ -1,19 +1,19 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {GlobalStateType} from "./redux/store/store-redux";
+import {globalStateType} from "./redux/store/store-redux";
 import Preloader from "./common/Preloader/Preloader";
 import {allPostsActions} from "./redux/reducers/all-posts-reducer";
 import {HashRouter} from "react-router-dom";
 import ErrorBoundary from "./common/ErrorBoundary/ErrorBoundary";
 import ContentContainer from "./components/Content/ContentContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import {ErrorType} from "./common/commonTypes/commonTypes";
+import {errorType} from "./common/commonTypes/commonTypes";
 import ErrorsRender from "./components/ErrorsRender";
 import FooterContainer from "./components/Footer/FooterContainer";
 
 const App: React.FC = () => {
-    const initialisedApp: boolean = useSelector( (state: GlobalStateType) => state.app.initialisedApp )
-    const Errors: ErrorType = useSelector( (state: GlobalStateType) => state.app.error )
+    const initialisedApp: boolean = useSelector( (state: globalStateType) => state.app.initialisedApp )
+    const Errors: errorType = useSelector( (state: globalStateType) => state.app.error )
 
 
     const dispatch = useDispatch()

@@ -1,7 +1,7 @@
 import React, {memo, useCallback, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {GlobalStateType} from "../../redux/store/store-redux";
-import {PostType} from "../../common/commonTypes/commonTypes";
+import {globalStateType} from "../../redux/store/store-redux";
+import {postType} from "../../common/commonTypes/commonTypes";
 import {
     allPostsActions,
     paginationDataType,
@@ -16,16 +16,16 @@ import RenderPosts from "./RenderPosts";
 import postListPaginFn from "./Functions/postListPaginFn";
 import postListSearchFilterFn from "./Functions/postListSearchFilterFn";
 
-type PostsListRenderType = {
-    PostsList: Array<PostType>
+type postsListRenderType = {
+    PostsList: Array<postType>
 }
-const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
+const PostsListRender: React.FC<postsListRenderType> = ( ({PostsList}) => {
 
     console.log( "PostsListRender" )
     const dispatch = useDispatch()
 
     //все данные пагинации
-    const paginationData: paginationDataType = useSelector( (state: GlobalStateType) => state.allPosts.paginationData )
+    const paginationData: paginationDataType = useSelector( (state: globalStateType) => state.allPosts.paginationData )
 
     const { // извлекаем переменные из пагинации
         pageSize, сurrentPage, currentRangeLocal, portionSize,
@@ -42,25 +42,25 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
     }, [] )
 
     // сделать полную копию полученых в пропсах постов
-    const PostsListCopied: Array<PostType> = structuredClone( PostsList ) // полная копия массива постов
+    const PostsListCopied: Array<postType> = structuredClone( PostsList ) // полная копия массива постов
 
     // извлечь статус загрузки
-    const isFetching: boolean = useSelector( (state: GlobalStateType) => state.app.isFetching ) // статус индикации загрузки
+    const isFetching: boolean = useSelector( (state: globalStateType) => state.app.isFetching ) // статус индикации загрузки
 
     // извлечь поисковый запрос из стейта
-    const searchPostQuery: string = useSelector( (state: GlobalStateType) => state.allPosts.searchPostQuery ) //
+    const searchPostQuery: string = useSelector( (state: globalStateType) => state.allPosts.searchPostQuery ) //
 
     // извлечь направления сортировки по заголовкам массива постов
-    const sortHeaderDirection: boolean | undefined = useSelector( (state: GlobalStateType) => state.allPosts.sortHeaderDirection )
+    const sortHeaderDirection: boolean | undefined = useSelector( (state: globalStateType) => state.allPosts.sortHeaderDirection )
 
     // фильтруем заголовки на содержание поисковой строки (переводим в один регистр для стравнения)
-    let PostsListFiltered: Array<PostType> = postListSearchFilterFn(PostsListCopied, searchPostQuery)
+    let PostsListFiltered: Array<postType> = postListSearchFilterFn(PostsListCopied, searchPostQuery)
 
     //сортируем фильтрованый список
-    const PostsListFiltSort: Array<PostType> = postListSortFn( PostsListFiltered, sortHeaderDirection )
+    const PostsListFiltSort: Array<postType> = postListSortFn( PostsListFiltered, sortHeaderDirection )
 
     //Делаем пагинацию для отсортированого и отфильтрованого списка
-    const PostsListFiltSortPagin: Array<PostType> = postListPaginFn( PostsListFiltSort, pageSize, сurrentPage )
+    const PostsListFiltSortPagin: Array<postType> = postListPaginFn( PostsListFiltSort, pageSize, сurrentPage )
 
     const paginationRender = <PaginationBS // отрисовка пагинации
         TotalPostsCount={PostsListFiltered.length} pageSize={pageSize}
@@ -77,9 +77,8 @@ const PostsListRender: React.FC<PostsListRenderType> = ( ({PostsList}) => {
 
         {PostsListFiltSortPagin.length>0
             ? renderPosts //отрисовка постов
-            : <div>ничего не найдено</div>
+            :  <div>{!isFetching && <div>ничего не найдено</div>}</div> // если загрузка завершена и данных нет, отобразить уведомление
         }
-
 
     </div>
 } )

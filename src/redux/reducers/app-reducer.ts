@@ -1,5 +1,5 @@
-import {InferActionsTypes} from "../store/store-redux";
-import {ErrorType} from "../../common/commonTypes/commonTypes";
+import {inferActionsTypes} from "../store/store-redux";
+import {errorType} from "../../common/commonTypes/commonTypes";
 
 export const SET_INITIALISED_APP = "myApp/app-reducer/SET_INITIALISED_APP"; //константа инициализации приложения
 export const TOGGLE_IS_FETCHING = "myApp/users-reducer/TOGGLE_IS_FETCHING";// константа отображения/скрытия прелоадера
@@ -13,7 +13,7 @@ export const appActions = {
     toggleIsFetchingAC: (isFetching: boolean) => {
         return {type: TOGGLE_IS_FETCHING, isFetching} as const
     },
-    setErrorAC: (error: ErrorType) => {
+    setErrorAC: (error: errorType) => {
         return {type: SET_ERROR, error} as const
     },
     setPatchAC: (patch: string) => {
@@ -21,12 +21,12 @@ export const appActions = {
     },
 }
 
-type appActionTypes = InferActionsTypes<typeof appActions>
+type appActionTypes = inferActionsTypes<typeof appActions>
 
 const initialState = {//стейт по умолчанию для инициализации приложения
     initialisedApp: false, // флаг приложение инициализировано?
     isFetching: false, // статус загрузки (крутилка)
-    error: {} as ErrorType, // объект ошибки с сервера
+    error: {} as errorType, // объект ошибки с сервера
     patch: "" // путь из адресной строки
 }
 

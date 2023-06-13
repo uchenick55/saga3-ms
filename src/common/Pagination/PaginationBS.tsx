@@ -4,12 +4,12 @@ import Pagination from 'react-bootstrap/Pagination';
 import classes from "./Pagination.module.css"
 import {paginationDataType} from "../../redux/reducers/all-posts-reducer";
 
-type PaginationBSType = paginationDataType & {
+type paginationBSType = paginationDataType & {
     TotalPostsCount: number, // общее число постов на сервере
     setPaginationData: (paginationData:paginationDataType) => void// экшн креатор записи в стейт комментариев по ID статьи
 }
 
-const PaginationBS: React.FC<PaginationBSType> = memo ( (
+const PaginationBS: React.FC<paginationBSType> = memo ( (
     {
         TotalPostsCount, // общее число постов на сервере
         pageSize, // количество постов на одной странице

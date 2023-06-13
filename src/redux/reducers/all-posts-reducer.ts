@@ -1,5 +1,5 @@
-import {InferActionsTypes} from "../store/store-redux";
-import {CommentType, PostType} from "../../common/commonTypes/commonTypes";
+import {inferActionsTypes} from "../store/store-redux";
+import {commentType, postType} from "../../common/commonTypes/commonTypes";
 
 export const GET_ALL_POSTS = "myApp/app-reducer/GET_ALL_POSTS"; //константа получения всех постов
 export const SET_ALL_POSTS = "myApp/app-reducer/SET_ALL_POSTS"; //константа записи всех постов в стейт
@@ -14,13 +14,13 @@ export const allPostsActions = {
     getAllPostsAC: () => { // экшн креатор получения всех постов
         return {type: GET_ALL_POSTS} as const
     },
-    setAllPostsAC: (allPosts: Array<PostType>) => { // экшн креатор записи всех постов в стейт
+    setAllPostsAC: (allPosts: Array<postType>) => { // экшн креатор записи всех постов в стейт
         return {type: SET_ALL_POSTS, allPosts} as const
     },
     getCommentsByPostIdAC: (postId: number) => { // экшн креатор получения комментариев по ID статьи
         return {type: GET_COMMENTS_BY_POST_ID, postId} as const
     },
-    setCommentsByPostIdAC: (CommentsByPostId: Array<CommentType>) => { // экшн креатор записи в стейт комментариев по ID статьи
+    setCommentsByPostIdAC: (CommentsByPostId: Array<commentType>) => { // экшн креатор записи в стейт комментариев по ID статьи
         return {type: SET_COMMENTS_TO_STATE, CommentsByPostId} as const
     },
     setPaginationDataAC: (paginationData: paginationDataType) => { // экшн креатор записи в стейт комментариев по ID статьи
@@ -37,11 +37,11 @@ export const allPostsActions = {
     }
 }
 
-export type allPostsActionsTypes = InferActionsTypes<typeof allPostsActions>
+type allPostsActionsTypes = inferActionsTypes<typeof allPostsActions>
 
 export const PostsInitialState = {//стейт по умолчанию
-    allPosts: [] as Array<PostType>, // массив постов
-    allComments: [] as Array<CommentType>,// массив всех комментариев
+    allPosts: [] as Array<postType>, // массив постов
+    allComments: [] as Array<commentType>,// массив всех комментариев
     showComments: [] as Array<number>, //массив содержащий ID постов, на которые нужно показать комментарии
     paginationData: {// данные по пагинации
         pageSize: 5, // количество постов на одной странице
@@ -66,7 +66,7 @@ const AllPostsReducer = (state: allPostsInitialStateType = PostsInitialState, ac
             }
             return stateCopy; // возврат копии стейта после изменения
         case SET_COMMENTS_TO_STATE:  // экшн записи комментариев в стор
-            const allCommentsFiltered: Array<CommentType> = // затираем все старые загруженные комментарии по данному ID поста, возможно уже написали новые
+            const allCommentsFiltered: Array<commentType> = // затираем все старые загруженные комментарии по данному ID поста, возможно уже написали новые
                 state.allComments.filter( comment => comment.postId !== action.CommentsByPostId[0].postId )
             stateCopy = {
                 ...state, // копия всего стейта

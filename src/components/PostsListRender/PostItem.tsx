@@ -2,13 +2,13 @@ import React, {memo} from "react";
 import Image from "react-bootstrap/Image";
 import s from "./Posts.module.css"
 import {NavLink} from "react-router-dom";
-import {CommentType} from "../../common/commonTypes/commonTypes";
+import {commentType} from "../../common/commonTypes/commonTypes";
 import {useSelector} from "react-redux";
-import {GlobalStateType} from "../../redux/store/store-redux";
+import {globalStateType} from "../../redux/store/store-redux";
 import CommentItem from "./CommentItem";
 import {Button} from "react-bootstrap";
 
-type PostItemType = {
+type postItemType = {
     "userId": number, // ID автора статей
     "id": number, // id статьи
     "title": string, // заголовок статьи
@@ -16,18 +16,18 @@ type PostItemType = {
     Avatar: string // общая картирнка аватара статьи
     getComments: (id: number) => void // колбек для диспатча получить комментарии статьи
 }
-const PostItem: React.FC<PostItemType> = memo( ({body, title, userId, Avatar, id, getComments}) => {
+const PostItem: React.FC<postItemType> = memo( ({body, title, userId, Avatar, id, getComments}) => {
     console.log( "PostItem" )
-    const allComments: Array<CommentType> =
-        useSelector( (state: GlobalStateType) => state.allPosts.allComments ) // получить комментарии
+    const allComments: Array<commentType> =
+        useSelector( (state: globalStateType) => state.allPosts.allComments ) // получить комментарии
     const showComments: Array<number> =
-        useSelector( (state: GlobalStateType) => state.allPosts.showComments ) // показать / скрыть комментарии
-    const CommentsFilteredById: Array<CommentType> = allComments.filter( comment => comment.postId === id )
+        useSelector( (state: globalStateType) => state.allPosts.showComments ) // показать / скрыть комментарии
+    const CommentsFilteredById: Array<commentType> = allComments.filter( comment => comment.postId === id )
 
     return <div className='my-4'>
         {/* аватарка автора поста со ссылкой на его страницу */}
         <NavLink to={'/user-posts/' + userId}>
-            <Image fluid={true} src={Avatar} className="float-start my-2 mx-4 shadow" style={{width: "5rem"}}
+            <Image fluid={true} src={Avatar} className="float-start my-2 mx-4 shadow rounded" style={{width: "5rem"}}
                    alt={"Аватар пользователя"} title={`Все посты пользователя ${userId}`}
             />
         </NavLink>
@@ -45,7 +45,7 @@ const PostItem: React.FC<PostItemType> = memo( ({body, title, userId, Avatar, id
             </Button>
         </div>
 
-        {showComments.includes( id ) && CommentsFilteredById.map( (comment: CommentType) => {
+        {showComments.includes( id ) && CommentsFilteredById.map( (comment: commentType) => {
             const {id, name, email, body} = comment
             return <CommentItem key={id} name={name} body={body} email={email}/>
         } )}
