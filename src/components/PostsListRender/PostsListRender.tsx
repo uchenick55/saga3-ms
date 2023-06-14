@@ -20,7 +20,6 @@ type postsListRenderType = {
 }
 const PostsListRender: React.FC<postsListRenderType> = ( ({postsList}) => {
 
-    console.log( "PostsListRender" )
     const dispatch = useDispatch()
 
     //все данные пагинации

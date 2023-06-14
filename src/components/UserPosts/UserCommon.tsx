@@ -13,7 +13,6 @@ type ownPropsType = {
     itemId: number // id пользователя
 }
 const UserCommon: React.FC<ownPropsType> = ({itemId}) => {
-    console.log( "UserPosts" )
 
     const dispatch = useDispatch()
     const allPosts: Array<postType> = useSelector( (state: globalStateType) => state.allPosts.allPosts )  //все посты с сервера

@@ -16,7 +16,6 @@ type postItemType = {
     getComments: (id: number) => void // колбек для диспатча получить комментарии статьи
 }
 const PostItem: React.FC<postItemType> = memo( ({body, title, userId, avatar, id, getComments}) => {
-    console.log( "PostItem" )
     const allComments: Array<commentType> =
         useSelector( (state: globalStateType) => state.allPosts.allComments ) // получить комментарии
     const showComments: Array<number> =

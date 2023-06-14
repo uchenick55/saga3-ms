@@ -8,7 +8,6 @@ type renderSortButtonType = {
     setSortHeaderDirection: (sortHeaderDirection: boolean | undefined) => void
 }
 const RenderSortButton:React.FC<renderSortButtonType> = memo(({sortHeaderDirection, setSortHeaderDirection}) => {
-    console.log("RenderSortButton")
     return <Image src={sortHeaderDirection? sortDescending: sortAscending} style={{width: "2rem", cursor: "pointer"}}
                   alt={"сортировка постов"} title={"сортировка постов"}
                   onClick={() => {

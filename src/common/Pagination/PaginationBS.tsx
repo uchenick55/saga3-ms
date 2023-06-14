@@ -17,7 +17,6 @@ const PaginationBS: React.FC<paginationBSType> = memo ( (
         portionSize,// количество отображаемых страниц пагинации между порциями
         setPaginationData, // экшн креатор записи в стейт комментариев по ID статьи
     }) => {
-    console.log( "PaginationBS" )
     const pagesCount = Math.ceil( totalPostsCount / pageSize ); // сколько всего страниц можно вызвать
     //с постами пачками по pageSize
     const pages = []; // определяем массив страниц под все элементы

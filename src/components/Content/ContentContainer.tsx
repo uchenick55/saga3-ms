@@ -28,7 +28,6 @@ const ContentContainer: React.FC = () => { // вынес роутинг конт
         if (patchFromState!== UpdatedPatch) {
             dispatch( setPatchAC( UpdatedPatch ))
             // обновить данные пути patch в app-reducer
-            console.log("UpdatedPatch", UpdatedPatch)
         }
     }, [location, setPatchAC, dispatch, patchFromState] )
     

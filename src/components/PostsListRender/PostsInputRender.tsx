@@ -18,13 +18,11 @@ type postsInputRenderType = {
 }
 const PostsInputRender: React.FC<postsInputRenderType> = (
     {searchPostQuery, setSearchPostQuery, setPaginationData, PostsInitialState, paginationData, patchFromState}) => {
-    console.log( "PostsInputRender" )
     const [queryTmp, setQueryTmp] = useState( searchPostQuery )
 
     const onChangeSearchPostQuery = (searchPostQuery: string) => {// задаем новый поисковый запрос
         setSearchPostQuery( searchPostQuery ) // обновляем локальный стейт
         if (paginationData.сurrentPage !== 1) {//если страница пагинации !==1
-            console.log( "смена текущей страницы и диапазона пагинации на 1 при поиске" )
             setPaginationData( PostsInitialState.paginationData )
         }
     }

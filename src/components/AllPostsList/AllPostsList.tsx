@@ -5,7 +5,6 @@ import {useSelector} from "react-redux";
 import {globalStateType} from "../../redux/store/store-redux";
 
 const AllPostsList:React.FC = () => {
-    console.log("allPostsList")
     const allPosts: Array<postType> = useSelector( (state: globalStateType) => state.allPosts.allPosts )  //все посты с сервера
 
     return <div>
