@@ -55,19 +55,8 @@
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/countReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/countReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../redux-saga-jsx/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/classes/common.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/ContentContainer.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content/ContentContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content/ContentContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer/FooterContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/FooterContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GoBack/GoBack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GoBack/GoBack.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Menu/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Menu/Menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostInput/PostInputContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostInput/PostInputContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/PostItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/Posts.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/PostsInputRender.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostsInputRender.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/PostsListRender.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/PostsListRender.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostsListRender/RenderSortButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostsListRender/RenderSortButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SortPosts/SortPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SortPosts/SortPostsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/Preloader/Preloader.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/Preloader/Preloader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/Preloader/Preloader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../samurai2.0" beforeDir="false" afterPath="$PROJECT_DIR$/../samurai2.0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sbrrt" beforeDir="false" afterPath="$PROJECT_DIR$/../sbrrt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scss_sass/scss_sass" beforeDir="false" afterPath="$PROJECT_DIR$/../scss_sass/scss_sass" afterDir="false" />
@@ -193,29 +182,29 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="287" y="69" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1686681418357" />
-    <state width="1259" height="125" key="GridCell.Tab.0.bottom" timestamp="1686681366917">
+    <state width="1259" height="125" key="GridCell.Tab.0.bottom" timestamp="1686726658035">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1259" height="125" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1686681366917" />
-    <state width="1259" height="125" key="GridCell.Tab.0.center" timestamp="1686681366916">
+    <state width="1259" height="125" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1686726658035" />
+    <state width="1259" height="125" key="GridCell.Tab.0.center" timestamp="1686726658035">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1259" height="125" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1686681366916" />
-    <state width="1259" height="125" key="GridCell.Tab.0.left" timestamp="1686681366916">
+    <state width="1259" height="125" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1686726658035" />
+    <state width="1259" height="125" key="GridCell.Tab.0.left" timestamp="1686726658035">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1259" height="125" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1686681366916" />
-    <state width="1259" height="125" key="GridCell.Tab.0.right" timestamp="1686681366916">
+    <state width="1259" height="125" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1686726658035" />
+    <state width="1259" height="125" key="GridCell.Tab.0.right" timestamp="1686726658035">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1259" height="125" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1686681366916" />
-    <state x="347" y="45" width="873" height="582" key="find.popup" timestamp="1686687493406">
+    <state width="1259" height="125" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1686726658035" />
+    <state x="385" y="41" width="873" height="582" key="find.popup" timestamp="1686727020995">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="347" y="45" width="873" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686687493406" />
-    <state x="303" y="0" width="672" height="670" key="search.everywhere.popup" timestamp="1686688586097">
+    <state x="385" y="41" width="873" height="582" key="find.popup/0.0.1280.672@0.0.1280.672" timestamp="1686727020995" />
+    <state x="303" y="0" width="672" height="670" key="search.everywhere.popup" timestamp="1686718991008">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="303" y="0" width="672" height="670" key="search.everywhere.popup/0.0.1280.672@0.0.1280.672" timestamp="1686688586097" />
+    <state x="303" y="0" width="672" height="670" key="search.everywhere.popup/0.0.1280.672@0.0.1280.672" timestamp="1686718991008" />
   </component>
 </project>

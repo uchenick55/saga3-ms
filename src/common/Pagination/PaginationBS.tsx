@@ -1,5 +1,4 @@
 import React, {memo} from "react";
-import "bootstrap/dist/css/bootstrap.min.css"
 import Pagination from 'react-bootstrap/Pagination';
 import {paginationDataType} from "../../redux/reducers/all-posts-reducer";
 
